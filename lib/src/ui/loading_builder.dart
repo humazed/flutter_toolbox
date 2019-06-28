@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_utils/generated/i18n.dart';
-import 'package:flutter_utils/src/log.dart';
-import 'package:flutter_utils/src/model/error/error_response.dart';
+import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_toolbox/src/log.dart';
+import 'package:flutter_toolbox/src/model/error/error_response.dart';
 
 typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 

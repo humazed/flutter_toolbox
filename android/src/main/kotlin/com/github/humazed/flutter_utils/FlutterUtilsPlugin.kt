@@ -1,4 +1,4 @@
-package com.github.humazed.flutter_utils
+package com.github.humazed.flutter_toolbox
 
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -10,7 +10,7 @@ class FlutterUtilsPlugin: MethodCallHandler {
   companion object {
     @JvmStatic
     fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "flutter_utils")
+      val channel = MethodChannel(registrar.messenger(), "flutter_toolbox")
       channel.setMethodCallHandler(FlutterUtilsPlugin())
     }
   }

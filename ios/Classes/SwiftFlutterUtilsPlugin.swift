@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftFlutterUtilsPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_utils", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "flutter_toolbox", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterUtilsPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

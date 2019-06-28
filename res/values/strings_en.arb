@@ -2,5 +2,6 @@
   "required_field": "Required Field",
   "please_check_your_connection": "Please check your connection",
   "server_error": "Server error",
+  "the_email_address_or_password_is_wrong": "The email address or password is wrong",
   "this_file_is_not_an_image": "This file is not an image"
 }

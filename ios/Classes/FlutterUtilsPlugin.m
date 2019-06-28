@@ -1,5 +1,5 @@
 #import "FlutterUtilsPlugin.h"
-#import <flutter_utils/flutter_utils-Swift.h>
+#import <flutter_toolbox/flutter_toolbox-Swift.h>
 
 @implementation FlutterUtilsPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {

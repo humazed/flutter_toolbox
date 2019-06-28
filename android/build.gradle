@@ -1,4 +1,4 @@
-group 'com.github.humazed.flutter_utils'
+group 'com.github.humazed.flutter_toolbox'
 version '1.0-SNAPSHOT'
 
 buildscript {

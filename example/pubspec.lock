@@ -91,7 +91,7 @@ packages:
       name: flushbar
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.3"
+    version: "1.5.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -107,13 +107,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_utils:
+  flutter_toolbox:
     dependency: "direct dev"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0"
   fluttertoast:
     dependency: transitive
     description:

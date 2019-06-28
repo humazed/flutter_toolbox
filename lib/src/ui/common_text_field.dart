@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_utils/generated/i18n.dart';
+import 'package:flutter_toolbox/generated/i18n.dart';
 
 class CommonTextField extends StatelessWidget {
   final String hint;

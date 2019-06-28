@@ -1,4 +1,4 @@
-package com.github.humazed.flutter_utils_example
+package com.github.humazed.flutter_toolbox_example
 
 import android.os.Bundle
 

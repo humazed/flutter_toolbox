@@ -1,4 +1,4 @@
-# flutter_utils
+# flutter_toolbox
 
 Common flutter widgets and helper methods.
 

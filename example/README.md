@@ -1,6 +1,6 @@
-# flutter_utils_example
+# flutter_toolbox_example
 
-Demonstrates how to use the flutter_utils plugin.
+Demonstrates how to use the flutter_toolbox plugin.
 
 ## Getting Started
 

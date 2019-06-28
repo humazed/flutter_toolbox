@@ -1,5 +1,5 @@
-name: flutter_utils_example
-description: Demonstrates how to use the flutter_utils plugin.
+name: flutter_toolbox_example
+description: Demonstrates how to use the flutter_toolbox plugin.
 publish_to: 'none'
 
 environment:
@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_utils:
+  flutter_toolbox:
     path: ../
 
 # For information on the generic Dart part of this file, see the
