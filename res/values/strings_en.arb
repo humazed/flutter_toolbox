@@ -1,0 +1,6 @@
+{
+  "required_field": "Required Field",
+  "please_check_your_connection": "Please check your connection",
+  "server_error": "Server error",
+  "this_file_is_not_an_image": "This file is not an image"
+}
