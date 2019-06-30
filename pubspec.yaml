@@ -4,7 +4,7 @@ version: 1.1.0
 author: humazed <humazed@gmail.com>
 homepage: https://github.com/humazed/flutter_toolbox
 
-# flutter pub publish
+#  flutter pub pub publish --dry-run
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
