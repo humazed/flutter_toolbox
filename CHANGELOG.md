@@ -1,3 +1,7 @@
+## 1.1.0
+
+* No changes just update to indicate breaking change.
+
 ## 1.0.3
 
 * Remove common_button and common_text_field.
