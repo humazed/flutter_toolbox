@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_toolbox/generated/i18n.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text(''),
+          child: Text(S.of(context).please_check_your_connection),
         ),
       ),
     );

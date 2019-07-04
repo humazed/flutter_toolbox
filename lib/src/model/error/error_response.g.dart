@@ -7,7 +7,7 @@ part of errorresponse;
 // **************************************************************************
 
 ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) {
-  return ErrorResponse()..error = json['error'].toString();
+  return ErrorResponse()..error = json['error']?.toString();
 }
 
 Map<String, dynamic> _$ErrorResponseToJson(ErrorResponse instance) =>
