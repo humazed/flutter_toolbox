@@ -12,3 +12,4 @@ export 'package:flutter_toolbox/src/ui/multi_select_chip.dart';
 export 'package:flutter_toolbox/src/ui/time_picker_field.dart';
 export 'package:flutter_toolbox/src/ui/toast.dart';
 export 'package:flutter_toolbox/src/ui/wrap_dropdown_button.dart';
+export 'package:flutter_toolbox/src/ui/net_image.dart';

@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Added NetImage
+
 ## 1.2.0
 
 * change `d()` to take object not just a string to totally replace `print()`.
