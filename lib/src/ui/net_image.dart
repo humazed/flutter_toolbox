@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
-class net_image extends StatelessWidget {
+class NetImage extends StatelessWidget {
   /// Option to use cachemanager with other settings
   final BaseCacheManager cacheManager;
 
@@ -116,7 +116,7 @@ class net_image extends StatelessWidget {
   ///  * [BlendMode], which includes an illustration of the effect of each blend mode.
   final BlendMode colorBlendMode;
 
-  net_image(
+  NetImage(
     this.imageUrl, {
     Key key,
     this.imageBuilder,

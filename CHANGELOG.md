@@ -1,3 +1,7 @@
+## 1.3.3
+
+* rename net_image to NetImage.
+
 ## 1.3.2
 
 * updated cached_network_image.
