@@ -1,3 +1,7 @@
+## 1.3.1
+
+* Wrap the progressPar of the netImage into center
+
 ## 1.3.0
 
 * Added NetImage

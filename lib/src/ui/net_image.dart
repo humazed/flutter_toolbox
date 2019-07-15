@@ -142,7 +142,8 @@ class net_image extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      placeholder: placeholder ?? (_, __) => CircularProgressIndicator(),
+      placeholder:
+          placeholder ?? (_, __) => Center(child: CircularProgressIndicator()),
       errorWidget: errorWidget ?? (_, __, ___) => Icon(Icons.image),
       imageUrl: imageUrl,
       imageBuilder: imageBuilder,
