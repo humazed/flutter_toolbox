@@ -1,3 +1,8 @@
+## 1.3.2
+
+* updated cached_network_image.
+* added flutter_cache_manager to make pub happy.
+
 ## 1.3.1
 
 * Wrap the progressPar of the netImage into center
