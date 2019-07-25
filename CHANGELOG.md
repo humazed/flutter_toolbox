@@ -1,3 +1,7 @@
+## 1.4.0
+
+* added PaginateListView
+
 ## 1.3.3
 
 * rename net_image to NetImage.

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,6 +18,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const <Locale>[
+        Locale("en", ""),
+        Locale("ar", ""),
+      ],
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
