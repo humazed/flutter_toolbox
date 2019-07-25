@@ -1,3 +1,7 @@
+## 1.6.0
+
+* removed drawer as it's better to be in the app.
+
 ## 1.5.0
 
 * added paginate_list_view to flutter_toolbox
