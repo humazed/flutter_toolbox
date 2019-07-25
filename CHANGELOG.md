@@ -1,3 +1,8 @@
+## 1.5.0
+
+* added paginate_list_view to flutter_toolbox
+* change src from flutter_utils to flutter_toolbox
+
 ## 1.4.0
 
 * added PaginateListView
