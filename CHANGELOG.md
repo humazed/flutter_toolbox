@@ -1,3 +1,7 @@
+## 1.6.2
+
+* fix a bug in PaginateListView.
+
 ## 1.6.1
 
 * added mutable to PaginateListView.

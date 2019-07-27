@@ -25,19 +25,21 @@ class PaginateListView<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _pageLoadController = pageLoadController;
-    if (mutable) {
-      _pageLoadController = PagewiseLoadController(
-        pageSize: pageSize,
-        pageFuture: (int pageIndex) => pageFuture(pageIndex + 1),
-      );
-    }
-    return PagewiseListView(
-      pageSize: pageSize,
-      itemBuilder: itemBuilder,
-      pageFuture: (int pageIndex) => pageFuture(pageIndex + 1),
-      padding: padding,
-      pageLoadController: _pageLoadController,
-    );
+    return mutable || pageLoadController != null
+        ? PagewiseListView(
+            itemBuilder: itemBuilder,
+            padding: padding,
+            pageLoadController: pageLoadController ??
+                PagewiseLoadController(
+                  pageSize: pageSize,
+                  pageFuture: (int pageIndex) => pageFuture(pageIndex + 1),
+                ),
+          )
+        : PagewiseListView(
+            pageSize: pageSize,
+            itemBuilder: itemBuilder,
+            pageFuture: (int pageIndex) => pageFuture(pageIndex + 1),
+            padding: padding,
+          );
   }
 }
