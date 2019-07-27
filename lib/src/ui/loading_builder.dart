@@ -36,9 +36,9 @@ class LoadingBuilder<T> extends StatefulWidget {
   /// [AsyncSnapshot.hasError] will be true.)
   final T initialData;
 
-  /// default is true
+  /// default is false
   ///
-  /// set to false if the future will change.
+  /// set to true if the future will change.
   final bool mutable;
 
   @override
@@ -138,6 +138,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
 
             return widget.builder(context, snapshot.data);
         }
+        return widget.builder(context, snapshot.data);
       },
     );
   }

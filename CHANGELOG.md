@@ -1,3 +1,12 @@
+## 1.6.1
+
+* added mutable to PaginateListView.
+
+## 1.6.0+1
+
+* added pageLoadController to PaginateListView.
+* fixed comment in LoadingBuilder.
+
 ## 1.6.0
 
 * removed drawer as it's better to be in the app.
