@@ -145,7 +145,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
 
   void d(Object object) {
     var output =
-        "${Trace.current().frames[0].location}\n${Trace.current().frames[0].location} | $object";
+        "${Trace.current().frames[1].location}\n${Trace.current().frames[2].location} | $object";
 
     // the console prints the first 1000+ char and discard the rest so this work around.
     final pattern = new RegExp('.{1,1000}'); // 1000 is the size of each chunk
