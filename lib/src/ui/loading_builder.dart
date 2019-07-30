@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
-import 'package:flutter_toolbox/src/log.dart';
 import 'package:flutter_toolbox/src/model/error/error_response.dart';
+import 'package:stack_trace/stack_trace.dart';
 
 typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 
@@ -120,10 +120,10 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
             if (snapshot.hasError) {
               var error = snapshot.error;
               if (error is Response<ErrorResponse>) {
-                d('FutureLoadingBuilder#Error: ${error.body}');
+                d('error.body: ${error.body}');
                 return Center(child: Text('Error: ${error.body.error[0]}'));
               } else if (error is SocketException) {
-                d('FutureLoadingBuilder#Error:SocketException-> ${error.message}');
+                d('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
                     S.of(context).please_check_your_connection,
@@ -131,7 +131,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
                   ),
                 );
               } else {
-                d('FutureLoadingBuilder#Error: $error');
+                d('Unknow error: $error');
                 return Center(child: Text('server error'));
               }
             }
@@ -141,5 +141,14 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
         return widget.builder(context, snapshot.data);
       },
     );
+  }
+
+  void d(Object object) {
+    var output =
+        "${Trace.current().frames[0].location}\n${Trace.current().frames[0].location} | $object";
+
+    // the console prints the first 1000+ char and discard the rest so this work around.
+    final pattern = new RegExp('.{1,1000}'); // 1000 is the size of each chunk
+    pattern.allMatches(output).forEach((match) => debugPrint(match.group(0)));
   }
 }

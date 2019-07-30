@@ -134,7 +134,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.6.1"
+    version: "1.6.2"
   fluttertoast:
     dependency: transitive
     description:
