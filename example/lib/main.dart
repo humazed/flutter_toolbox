@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_toolbox/generated/i18n.dart' as toolbox;
-import 'package:stack_trace/stack_trace.dart';
 
 void main() => runApp(MyApp());
 
