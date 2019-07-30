@@ -6,6 +6,8 @@ import 'package:flutter_toolbox/generated/i18n.dart';
 import 'package:flutter_toolbox/src/model/error/error_response.dart';
 import 'package:stack_trace/stack_trace.dart';
 
+import '../../flutter_toolbox.dart';
+
 typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 
 class LoadingBuilder<T> extends StatefulWidget {
@@ -141,14 +143,5 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
         return widget.builder(context, snapshot.data);
       },
     );
-  }
-
-  void d(Object object) {
-    var output =
-        "${Trace.current().frames[1].location}\n${Trace.current().frames[2].location} | $object";
-
-    // the console prints the first 1000+ char and discard the rest so this work around.
-    final pattern = new RegExp('.{1,1000}'); // 1000 is the size of each chunk
-    pattern.allMatches(output).forEach((match) => debugPrint(match.group(0)));
   }
 }
