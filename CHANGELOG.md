@@ -1,3 +1,7 @@
+## 1.6.3
+
+* make loading builder logging more useful.
+
 ## 1.6.2
 
 * fix a bug in PaginateListView.
