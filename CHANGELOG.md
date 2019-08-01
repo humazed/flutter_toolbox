@@ -1,3 +1,7 @@
+## 1.6.4
+
+* Added TabRoundedLineIndicator.
+
 ## 1.6.3+2
 
 * revert changes in 1.6.3 and 1.6.3+1 wait for improvement in another time.
