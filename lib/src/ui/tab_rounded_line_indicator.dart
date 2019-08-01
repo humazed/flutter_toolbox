@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 enum TabRoundedLineIndicatorSize {
@@ -7,26 +8,28 @@ enum TabRoundedLineIndicatorSize {
 }
 
 class TabRoundedLineIndicator extends Decoration {
+  final BuildContext context;
   final double indicatorHeight;
   final Color indicatorColor;
   final TabRoundedLineIndicatorSize indicatorSize;
 
-  const TabRoundedLineIndicator({
-    @required this.indicatorHeight,
-    @required this.indicatorColor,
-    @required this.indicatorSize,
+  TabRoundedLineIndicator(
+    this.context, {
+    this.indicatorColor,
+    this.indicatorHeight = 4,
+    this.indicatorSize = TabRoundedLineIndicatorSize.normal,
   });
 
   @override
-  _MD2Painter createBoxPainter([VoidCallback onChanged]) {
-    return new _MD2Painter(this, onChanged);
+  _RoundedLinePainter createBoxPainter([VoidCallback onChanged]) {
+    return _RoundedLinePainter(this, onChanged);
   }
 }
 
-class _MD2Painter extends BoxPainter {
+class _RoundedLinePainter extends BoxPainter {
   final TabRoundedLineIndicator decoration;
 
-  _MD2Painter(this.decoration, VoidCallback onChanged)
+  _RoundedLinePainter(this.decoration, VoidCallback onChanged)
       : assert(decoration != null),
         super(onChanged);
 
@@ -51,14 +54,16 @@ class _MD2Painter extends BoxPainter {
     }
 
     final Paint paint = Paint();
-    paint.color = decoration.indicatorColor ?? Color(0xff1967d2);
+    paint.color =
+        decoration.indicatorColor ?? Theme.of(decoration.context).primaryColor;
     paint.style = PaintingStyle.fill;
     canvas.drawRRect(
-        RRect.fromRectAndCorners(
-          rect,
-          topRight: Radius.circular(8),
-          topLeft: Radius.circular(8),
-        ),
-        paint);
+      RRect.fromRectAndCorners(
+        rect,
+        topRight: Radius.circular(8),
+        topLeft: Radius.circular(8),
+      ),
+      paint,
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_toolbox/generated/i18n.dart' as toolbox;
 import 'package:flutter_toolbox/flutter_toolbox.dart';
+import 'package:flutter_toolbox/generated/i18n.dart' as toolbox;
 
 void main() => runApp(MyApp());
 
@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    var themeData = Theme.of(context);
     return MaterialApp(
       localizationsDelegates: const [
         toolbox.S.delegate,
@@ -29,6 +30,15 @@ class _MyAppState extends State<MyApp> {
         Locale("en", ""),
         Locale("ar", ""),
       ],
+      theme: ThemeData(
+        tabBarTheme: TabBarTheme(
+          indicator: TabRoundedLineIndicator(
+            context,
+            indicatorSize: TabRoundedLineIndicatorSize.normal,
+            indicatorHeight: 3,
+          ),
+        ),
+      ),
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -42,13 +52,14 @@ class _MyAppState extends State<MyApp> {
             bottom: TabBar(
               labelStyle: TextStyle(fontWeight: FontWeight.w700),
               indicatorSize: TabBarIndicatorSize.label,
-              labelColor: Color(0xff1967d2),
+              labelColor: themeData.primaryColor,
               unselectedLabelColor: Color(0xff5f6368),
               isScrollable: true,
               indicator: TabRoundedLineIndicator(
-                indicatorSize: TabRoundedLineIndicatorSize.full,
+                context,
+                indicatorSize: TabRoundedLineIndicatorSize.normal,
                 indicatorHeight: 3,
-                indicatorColor: Color(0xff1967d2),
+                indicatorColor: Theme.of(context).primaryColor,
               ),
               tabs: <Widget>[
                 Tab(

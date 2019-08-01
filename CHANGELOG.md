@@ -1,3 +1,7 @@
+## 1.6.4+1
+
+* Added defaults to TabRoundedLineIndicator.
+
 ## 1.6.4
 
 * Added TabRoundedLineIndicator.
