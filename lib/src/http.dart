@@ -22,16 +22,23 @@ Future<http.MultipartFile> multiFile(File image, String name) async {
   return multipartFile;
 }
 
-Future safeRequest(BuildContext context, Function request) async {
+Future safeRequest<T>(
+  BuildContext context,
+  Future<Response<T>> request,
+  Function(T result) onSuccess,
+) async {
   try {
-    await request();
-  } on Response<ErrorResponse> catch (e) {
-    d("Error: ${e.body.error}");
-    if (e.body.error == 'Unauthorized')
-      errorToast(S.of(context).the_email_address_or_password_is_wrong);
-    else
-      errorToast(e.body.error);
-  } on SocketException catch (e) {
+    final Response response = await request;
+    if (response.isSuccessful) {
+      onSuccess(response.body);
+    } else {
+      final error = (response.error as ErrorResponse).error;
+      if (error == 'Unauthorized access' || error == 'Unauthorized')
+        errorToast(S.of(context).the_email_address_or_password_is_wrong);
+      else
+        errorToast(error);
+    }
+  } on Response<ErrorResponse> catch (e) {} on SocketException catch (e) {
     d('SocketException-> $e');
     errorToast(S.of(context).please_check_your_connection);
   } catch (e) {

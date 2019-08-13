@@ -1,3 +1,7 @@
+##  2.0.0
+
+* handle the error in chopper 3.0.0.
+
 ##  1.7.0
 
 * updated chopper to 3.0.0.
