@@ -1,3 +1,7 @@
+##  1.7.0
+
+* updated chopper to 3.0.0.
+
 ## 1.6.4+1
 
 * Added defaults to TabRoundedLineIndicator.
