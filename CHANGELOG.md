@@ -1,3 +1,8 @@
+##  2.2.0
+
+* added await to onSuccess to behave predictably.
+* added on error. to safeRequest.
+
 ##  2.1.0
 
 * make onSuccess optional in safeRequest.

@@ -26,17 +26,19 @@ Future safeRequest<T>(
   BuildContext context,
   Future<Response<T>> request, {
   Function(T result) onSuccess,
+  Function(ErrorResponse result) onError,
 }) async {
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      if (onSuccess != null) onSuccess(response.body);
+      if (onSuccess != null) await onSuccess(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (error == 'Unauthorized access' || error == 'Unauthorized')
         errorToast(S.of(context).the_email_address_or_password_is_wrong);
       else
         errorToast(error);
+      await onError(response.error);
     }
   } on Response<ErrorResponse> catch (e) {} on SocketException catch (e) {
     d('SocketException-> $e');
