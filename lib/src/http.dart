@@ -24,13 +24,13 @@ Future<http.MultipartFile> multiFile(File image, String name) async {
 
 Future safeRequest<T>(
   BuildContext context,
-  Future<Response<T>> request,
+  Future<Response<T>> request, {
   Function(T result) onSuccess,
-) async {
+}) async {
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      onSuccess(response.body);
+      if (onSuccess != null) onSuccess(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (error == 'Unauthorized access' || error == 'Unauthorized')

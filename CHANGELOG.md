@@ -1,3 +1,7 @@
+##  2.1.0
+
+* make onSuccess optional in safeRequest.
+
 ##  2.0.0
 
 * handle the error in chopper 3.0.0.
