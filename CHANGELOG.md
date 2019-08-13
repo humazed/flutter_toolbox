@@ -1,3 +1,7 @@
+##  2.2.1
+
+* check if onError is null in safeRequest.
+
 ##  2.2.0
 
 * added await to onSuccess to behave predictably.

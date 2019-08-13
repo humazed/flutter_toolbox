@@ -38,7 +38,7 @@ Future safeRequest<T>(
         errorToast(S.of(context).the_email_address_or_password_is_wrong);
       else
         errorToast(error);
-      await onError(response.error);
+      if (onError != null) await onError(response.error);
     }
   } on Response<ErrorResponse> catch (e) {} on SocketException catch (e) {
     d('SocketException-> $e');
