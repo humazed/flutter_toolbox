@@ -1,3 +1,7 @@
+##  2.3.0
+
+* added navigation utils and push method inside it.
+
 ##  2.2.1
 
 * check if onError is null in safeRequest.
