@@ -1,3 +1,7 @@
+##  2.3.1
+
+* Added localization to time and date picker field.
+
 ##  2.3.0
 
 * added navigation utils and push method inside it.

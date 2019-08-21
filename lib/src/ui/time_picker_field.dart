@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_toolbox/generated/i18n.dart';
 
 class TimePickerField extends StatelessWidget {
   const TimePickerField({
@@ -29,7 +30,7 @@ class TimePickerField extends StatelessWidget {
     return _InputDropdown(
       labelText: labelText,
       valueText: selectedTime == null
-          ? "Select time"
+          ? S.of(context).select_time
           : selectedTime.format(context),
       valueStyle: valueStyle,
       onPressed: () => _selectDate(context),

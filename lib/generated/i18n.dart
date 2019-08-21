@@ -23,6 +23,8 @@ class S implements WidgetsLocalizations {
 
   String get please_check_your_connection => "Please check your connection";
   String get required_field => "Required Field";
+  String get select_date => "Select date";
+  String get select_time => "Select time";
   String get server_error => "Server error";
   String get the_email_address_or_password_is_wrong => "The email address or password is wrong";
   String get this_file_is_not_an_image => "This file is not an image";
@@ -35,9 +37,13 @@ class $ar extends S {
   TextDirection get textDirection => TextDirection.rtl;
 
   @override
+  String get select_date => "إختر التاريخ";
+  @override
   String get required_field => "حقل مطلوب";
   @override
   String get the_email_address_or_password_is_wrong => "البريد الإلكتروني او كلمة المرور غير صحيحة";
+  @override
+  String get select_time => "إختر الوقت";
   @override
   String get server_error => "خطأ من الخادم حاول مرة اخري";
   @override

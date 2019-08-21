@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_toolbox/generated/i18n.dart';
 import 'package:intl/intl.dart';
 
 import 'date_picker.dart';
@@ -37,7 +38,7 @@ class DatePickerField extends StatelessWidget {
     return _InputDropdown(
       labelText: labelText,
       valueText: selectedDate == null
-          ? "Select date"
+          ? S.of(context).select_date
           : DateFormat.yMMMd().format(selectedDate),
       valueStyle: valueStyle,
       onPressed: () => _selectDate(context),
