@@ -40,7 +40,7 @@ Future safeRequest<T>(
         errorToast(error);
       if (onError != null) await onError(response.error);
     }
-  } on Response<ErrorResponse> catch (e) {} on SocketException catch (e) {
+  } on SocketException catch (e) {
     d('SocketException-> $e');
     errorToast(S.of(context).please_check_your_connection);
   } catch (e) {

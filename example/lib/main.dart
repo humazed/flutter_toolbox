@@ -74,9 +74,11 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ),
-          body: Center(
-              //          child: Text(toolbox.S.of(context).please_check_your_connection),
-              ),
+          body: Builder(builder: (context) {
+            return Center(
+              child: Text(toolbox.S.of(context).please_check_your_connection),
+            );
+          }),
         ),
       ),
     );
