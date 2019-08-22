@@ -1,3 +1,7 @@
+##  2.5.1
+
+* Added pushReplacement to navigation.dart.
+
 ##  2.5.0
 
 * Added materialRoute to navigation.dart.
