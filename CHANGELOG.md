@@ -1,3 +1,7 @@
+##  2.4.0
+
+* Update deps.
+
 ##  2.3.1
 
 * Added localization to time and date picker field.
