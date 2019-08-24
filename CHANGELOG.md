@@ -1,3 +1,7 @@
+##  2.6.0
+
+* Fix ios build issues.
+
 ##  2.5.1
 
 * Added pushReplacement to navigation.dart.

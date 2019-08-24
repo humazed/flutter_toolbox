@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftFlutterUtilsPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterToolboxPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_toolbox", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterUtilsPlugin()
+    let instance = SwiftFlutterToolboxPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

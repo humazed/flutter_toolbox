@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 2.5.1
+version: 2.6.0
 author: humazed <humazed@gmail.com>
 homepage: https://github.com/humazed/flutter_toolbox
 
@@ -54,7 +54,7 @@ flutter:
   # adding or updating assets for this project.
   plugin:
     androidPackage: com.github.humazed.flutter_toolbox
-    pluginClass: FlutterUtilsPlugin
+    pluginClass: FlutterToolboxPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

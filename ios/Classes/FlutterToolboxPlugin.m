@@ -1,8 +1,8 @@
-#import "FlutterUtilsPlugin.h"
+#import "FlutterToolboxPlugin.h"
 #import <flutter_toolbox/flutter_toolbox-Swift.h>
 
-@implementation FlutterUtilsPlugin
+@implementation FlutterToolboxPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftFlutterUtilsPlugin registerWithRegistrar:registrar];
+  [SwiftFlutterToolboxPlugin registerWithRegistrar:registrar];
 }
 @end
