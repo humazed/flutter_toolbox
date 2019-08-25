@@ -1,3 +1,7 @@
+##  2.7.0
+
+* Added PaginateSliverList.
+
 ##  2.6.0
 
 * Fix ios build issues.
