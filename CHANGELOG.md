@@ -1,3 +1,7 @@
+##  2.7.1
+
+* Updated gradle and kotlin plugin.
+
 ##  2.7.0
 
 * Added PaginateSliverList.
