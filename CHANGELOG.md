@@ -1,3 +1,7 @@
+##  2.7.2
+
+* Added showServerErrorMessage to safeRest.
+
 ##  2.7.1
 
 * Updated gradle and kotlin plugin.

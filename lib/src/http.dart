@@ -27,6 +27,7 @@ Future safeRequest<T>(
   Future<Response<T>> request, {
   Function(T result) onSuccess,
   Function(ErrorResponse result) onError,
+  bool showServerErrorMessage = true,
 }) async {
   try {
     final Response response = await request;
@@ -34,10 +35,12 @@ Future safeRequest<T>(
       if (onSuccess != null) await onSuccess(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
-      if (error == 'Unauthorized access' || error == 'Unauthorized')
-        errorToast(S.of(context).the_email_address_or_password_is_wrong);
-      else
-        errorToast(error);
+      if (showServerErrorMessage) {
+        if (error == 'Unauthorized access' || error == 'Unauthorized')
+          errorToast(S.of(context).the_email_address_or_password_is_wrong);
+        else
+          errorToast(error);
+      }
       if (onError != null) await onError(response.error);
     }
   } on SocketException catch (e) {
