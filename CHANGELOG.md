@@ -1,3 +1,7 @@
+##  2.7.3
+
+* Improve error handling.
+
 ##  2.7.2
 
 * Added showServerErrorMessage to safeRest.

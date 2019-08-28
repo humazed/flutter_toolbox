@@ -32,7 +32,7 @@ Future safeRequest<T>(
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      if (onSuccess != null) await onSuccess(response.body);
+      if (onSuccess != null) onSuccess(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
@@ -41,11 +41,16 @@ Future safeRequest<T>(
         else
           errorToast(error);
       }
-      if (onError != null) await onError(response.error);
+      if (onError != null) onError(response.error);
     }
   } on SocketException catch (e) {
     d('SocketException-> $e');
     errorToast(S.of(context).please_check_your_connection);
+  } on ErrorResponse catch (e) {
+    d('ErrorResponse-> $e');
+    if (showServerErrorMessage) errorToast(e.error);
+
+    if (onError != null) onError(e);
   } catch (e) {
     d('LoginScreenState#_submit UnknownError-> $e');
     errorToast(S.of(context).server_error);
