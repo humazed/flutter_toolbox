@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pagewise/flutter_pagewise.dart';
+
+import 'pagewise/flutter_pagewise.dart';
 
 class PaginateListView<T> extends StatelessWidget {
   final ItemBuilder<T> itemBuilder;
