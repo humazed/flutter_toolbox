@@ -1,3 +1,7 @@
+##  2.7.4
+
+* Print the error in PaginateListView.
+
 ##  2.7.3
 
 * Improve error handling.

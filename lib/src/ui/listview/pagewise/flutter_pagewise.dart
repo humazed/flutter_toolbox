@@ -2,6 +2,7 @@ library flutter_pagewise;
 
 import 'package:flutter/material.dart';
 
+import '../../../../flutter_toolbox.dart';
 import 'helpers/grid_helpers.dart';
 
 typedef Widget ItemBuilder<T>(BuildContext context, T entry, int index);
@@ -467,6 +468,7 @@ class PagewiseLoadController<T> extends ChangeNotifier {
         page = await this.pageFuture(this._numberOfLoadedPages);
         this._numberOfLoadedPages++;
       } catch (error) {
+        d(error);
         this._error = error;
         this._isFetching = false;
         this.notifyListeners();
