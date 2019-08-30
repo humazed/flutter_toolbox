@@ -1,3 +1,7 @@
+##  2.7.5
+
+* Make future required in loading builder.
+
 ##  2.7.4
 
 * Print the error in PaginateListView.

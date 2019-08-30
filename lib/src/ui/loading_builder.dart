@@ -4,7 +4,6 @@ import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
 import 'package:flutter_toolbox/src/model/error/error_response.dart';
-import 'package:stack_trace/stack_trace.dart';
 
 import '../../flutter_toolbox.dart';
 
@@ -13,7 +12,7 @@ typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 class LoadingBuilder<T> extends StatefulWidget {
   const LoadingBuilder({
     Key key,
-    this.future,
+    @required this.future,
     this.initialData,
     @required this.builder,
     this.mutable = false,
@@ -62,7 +61,7 @@ class _LoadingBuilderState<T> extends State<LoadingBuilder<T>> {
 class FutureLoadingBuilder<T> extends StatefulWidget {
   const FutureLoadingBuilder({
     Key key,
-    this.future,
+    @required this.future,
     this.initialData,
     @required this.builder,
     this.mutable = false,
