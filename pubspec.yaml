@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 2.8.0
+version: 2.9.1
 author: humazed <humazed@gmail.com>
 homepage: https://github.com/humazed/flutter_toolbox
 
@@ -29,12 +29,7 @@ dependencies:
 
   http: ^0.12.0+2
   json_annotation: ^2.0.0
-#  chopper: ^3.0.0
-  chopper:
-    #        path: D:\AS\ASP\Prod\OpenSource\chopper\chopper
-    git:
-      url: git://github.com/humazed/chopper.git
-      path: chopper
+  chopper2: ^3.0.0
 
 
 dev_dependencies:

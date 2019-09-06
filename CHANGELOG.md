@@ -1,3 +1,11 @@
+##  2.9.1
+
+* Fix errors regarding chopper2.
+
+##  2.9.0
+
+* Depend on my chopper2.
+
 ##  2.8.0
 
 * Depend on my fork of chopper.

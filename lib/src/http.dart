@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:async/async.dart';
-import 'package:chopper/chopper.dart';
+import 'package:chopper2/chopper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
