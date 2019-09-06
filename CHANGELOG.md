@@ -1,3 +1,7 @@
+##  2.9.2
+
+* update chopper2.
+
 ##  2.9.1
 
 * Fix errors regarding chopper2.
