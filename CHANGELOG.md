@@ -1,3 +1,7 @@
+##  2.9.3
+
+* improve http logging.
+
 ##  2.9.2
 
 * update chopper2.

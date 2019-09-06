@@ -52,7 +52,7 @@ Future safeRequest<T>(
 
     if (onError != null) onError(e);
   } catch (e) {
-    d('LoginScreenState#_submit UnknownError-> $e');
+    d2('LoginScreenState#_submit UnknownError-> $e');
     errorToast(S.of(context).server_error);
   }
 }
