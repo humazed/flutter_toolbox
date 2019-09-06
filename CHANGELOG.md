@@ -1,3 +1,11 @@
+##  2.9.5
+
+* improve http logging.
+
+##  2.9.4
+
+* improve http logging.
+
 ##  2.9.3
 
 * improve http logging.

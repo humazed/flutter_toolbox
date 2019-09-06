@@ -44,10 +44,10 @@ Future safeRequest<T>(
       if (onError != null) onError(response.error);
     }
   } on SocketException catch (e) {
-    d('SocketException-> $e');
+    d2('SocketException-> $e');
     errorToast(S.of(context).please_check_your_connection);
   } on ErrorResponse catch (e) {
-    d('ErrorResponse-> $e');
+    d2('ErrorResponse-> $e');
     if (showServerErrorMessage) errorToast(e.error);
 
     if (onError != null) onError(e);
