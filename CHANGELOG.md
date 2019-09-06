@@ -1,3 +1,7 @@
+##  2.8.0
+
+* Depend on my fork of chopper.
+
 ##  2.7.5
 
 * Make future required in loading builder.

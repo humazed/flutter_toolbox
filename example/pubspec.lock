@@ -46,9 +46,11 @@ packages:
   chopper:
     dependency: transitive
     description:
-      name: chopper
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: chopper
+      ref: HEAD
+      resolved-ref: "86769c944423420b9a3c64e4bb455993f89b6a93"
+      url: "git://github.com/humazed/chopper.git"
+    source: git
     version: "3.0.0"
   collection:
     dependency: transitive
@@ -127,7 +129,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.7.4"
+    version: "2.7.5"
   fluttertoast:
     dependency: transitive
     description:
