@@ -121,10 +121,10 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
             if (snapshot.hasError) {
               var error = snapshot.error;
               if (error is Response<ErrorResponse>) {
-                d('error.body: ${error.body}');
+                d2('error.body: ${error.body}');
                 return Center(child: Text('Error: ${error.body.error[0]}'));
               } else if (error is SocketException) {
-                d('SocketException-> ${error.message}');
+                d2('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
                     S.of(context).please_check_your_connection,
@@ -132,7 +132,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
                   ),
                 );
               } else {
-                d('Unknow error: $error');
+                d2('Unknow error: $error');
                 return Center(child: Text('server error'));
               }
             }

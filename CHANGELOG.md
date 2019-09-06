@@ -1,3 +1,7 @@
+##  2.9.6
+
+* improve loadingBuilder logging.
+
 ##  2.9.5
 
 * improve http logging.
