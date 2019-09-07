@@ -1,3 +1,8 @@
+##  2.10.0
+
+* added pushAndRemoveUntil to navigator.
+* added the class name as the route name so it can be looked up later.
+
 ##  2.9.6
 
 * improve loadingBuilder logging.
