@@ -32,7 +32,7 @@ Future safeRequest<T>(
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      onSuccess.call(response.body);
+      onSuccess?.call(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {

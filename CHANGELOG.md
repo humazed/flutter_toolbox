@@ -1,3 +1,7 @@
+##  2.10.2
+
+* fix a bug in http.
+
 ##  2.10.1
 
 * Improve error methods for http.
