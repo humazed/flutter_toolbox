@@ -1,3 +1,7 @@
+##  2.10.1
+
+* Improve error methods for http.
+
 ##  2.10.0
 
 * added pushAndRemoveUntil to navigator.

@@ -32,7 +32,7 @@ Future safeRequest<T>(
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      if (onSuccess != null) onSuccess(response.body);
+      onSuccess.call(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
@@ -41,7 +41,7 @@ Future safeRequest<T>(
         else
           errorToast(error);
       }
-      if (onError != null) onError(response.error);
+      onError?.call(response.error);
     }
   } on SocketException catch (e) {
     d2('SocketException-> $e');
@@ -50,9 +50,9 @@ Future safeRequest<T>(
     d2('ErrorResponse-> $e');
     if (showServerErrorMessage) errorToast(e.error);
 
-    if (onError != null) onError(e);
+    onError?.call(e);
   } catch (e) {
-    d2('LoginScreenState#_submit UnknownError-> $e');
+    d2('UnknownError-> $e');
     errorToast(S.of(context).server_error);
   }
 }
