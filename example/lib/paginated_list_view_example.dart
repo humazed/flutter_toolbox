@@ -47,13 +47,14 @@ class PagewiseListViewExample extends StatelessWidget {
     return PaginatedListView(
       pageSize: PAGE_SIZE,
 //      mutable: true,
+      showRefreshIndicator: true,
       itemBuilder: this._itemBuilder,
       pageFuture: (pageIndex) =>
           BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
     );
   }
 
-  Widget _itemBuilder(context, PostModel entry, _) {
+  Widget _itemBuilder(BuildContext context, PostModel entry, int index) {
     return Column(
       children: <Widget>[
         ListTile(
@@ -82,14 +83,15 @@ class PagewiseSliverListExample extends StatelessWidget {
         floating: true,
       ),
       PaginatedSliverList(
-          pageSize: PAGE_SIZE,
-          itemBuilder: this._itemBuilder,
-          pageFuture: (pageIndex) =>
-              BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE))
+        pageSize: PAGE_SIZE,
+        itemBuilder: _itemBuilder,
+        pageFuture: (pageIndex) =>
+            BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
+      ),
     ]);
   }
 
-  Widget _itemBuilder(context, PostModel entry, _) {
+  Widget _itemBuilder(BuildContext context, PostModel entry, int index) {
     return Column(
       children: <Widget>[
         ListTile(
