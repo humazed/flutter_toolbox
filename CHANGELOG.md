@@ -1,3 +1,7 @@
+##  3.0.0
+
+* added refresh indicator to paginated_list_view.dart.
+
 ##  2.10.2
 
 * fix a bug in http.
