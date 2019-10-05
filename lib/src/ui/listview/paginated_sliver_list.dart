@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pagewise/flutter_pagewise.dart';
 
-class PaginateSliverList<T> extends StatelessWidget {
+class PaginatedSliverList<T> extends StatelessWidget {
   final ItemBuilder<T> itemBuilder;
   final PageFuture<T> pageFuture;
   final int pageSize;
@@ -13,7 +13,7 @@ class PaginateSliverList<T> extends StatelessWidget {
   /// set to true if the future will change.
   final bool mutable;
 
-  const PaginateSliverList({
+  const PaginatedSliverList({
     Key key,
     @required this.itemBuilder,
     @required this.pageFuture,
