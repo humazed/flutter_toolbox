@@ -25,7 +25,7 @@ class PaginatedSliverList<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return mutable || pageLoadController != null
-        ? PagewiseSliverList(
+        ? PagewiseSliverList<T>(
             itemBuilder: itemBuilder,
             pageLoadController: pageLoadController ??
                 PagewiseLoadController(
@@ -33,7 +33,7 @@ class PaginatedSliverList<T> extends StatelessWidget {
                   pageFuture: (int pageIndex) => pageFuture(pageIndex + 1),
                 ),
           )
-        : PagewiseSliverList(
+        : PagewiseSliverList<T>(
             pageSize: pageSize,
             itemBuilder: itemBuilder,
             pageFuture: (int pageIndex) => pageFuture(pageIndex + 1),
