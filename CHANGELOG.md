@@ -1,3 +1,7 @@
+##  3.1.0
+
+* Added connectionStatusBar.
+
 ##  3.0.0
 
 * added refresh indicator to paginated_list_view.dart.
