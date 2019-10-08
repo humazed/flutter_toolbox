@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pagewise Demo',
-      home: MyHomePage(),
+      home: PaginatedListViewPage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class PaginatedListViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
