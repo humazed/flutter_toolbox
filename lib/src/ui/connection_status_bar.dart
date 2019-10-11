@@ -19,20 +19,22 @@ class ConnectionStatusBar extends StatefulWidget {
     _overlayState = Overlay.of(context);
 
     _overlayEntry = OverlayEntry(
-      builder: (BuildContext context) => Stack(
-        children: <Widget>[
-          Positioned(
-            top: 0,
-            child: Material(
-              color: Colors.transparent,
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                child: ConnectionStatusBar(),
+      builder: (BuildContext context) => IgnorePointer(
+        child: Stack(
+          children: <Widget>[
+            Positioned(
+              top: 0,
+              child: Material(
+                color: Colors.transparent,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width,
+                  child: ConnectionStatusBar(),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
     _overlayState.insert(_overlayEntry);

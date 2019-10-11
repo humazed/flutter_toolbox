@@ -1,5 +1,9 @@
 ##  3.1.0
 
+* Ignore touch events on connectionStatusBar.
+
+##  3.1.0
+
 * Added connectionStatusBar.
 
 ##  3.0.0
