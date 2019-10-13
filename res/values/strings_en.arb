@@ -5,5 +5,7 @@
   "the_email_address_or_password_is_wrong": "The email address or password is wrong",
   "this_file_is_not_an_image": "This file is not an image",
   "select_time": "Select time",
-  "select_date": "Select date"
+  "select_date": "Select date",
+  "please_check_your_internet_connection": "Please check your internet connection",
+  "search": "Search..."
 }

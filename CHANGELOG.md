@@ -1,4 +1,9 @@
-##  3.1.0
+##  3.2.0
+
+* added SearchItemPicker
+* added localization to connection_status_bar.dart
+
+##  3.2.0
 
 * Ignore touch events on connectionStatusBar.
 

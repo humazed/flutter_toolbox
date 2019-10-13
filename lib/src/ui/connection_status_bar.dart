@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_toolbox/generated/i18n.dart';
 
 class ConnectionStatusBar extends StatefulWidget {
   final Widget title;
@@ -84,7 +85,7 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
               child: widget.title != null
                   ? widget.title
                   : Text(
-                      'Please check your internet connection',
+                      S.of(context).please_check_your_internet_connection,
                       style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
             ),

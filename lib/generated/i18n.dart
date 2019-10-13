@@ -22,7 +22,9 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get please_check_your_connection => "Please check your connection";
+  String get please_check_your_internet_connection => "Please check your internet connection";
   String get required_field => "Required Field";
+  String get search => "Search...";
   String get select_date => "Select date";
   String get select_time => "Select time";
   String get server_error => "Server error";
@@ -37,7 +39,11 @@ class $ar extends S {
   TextDirection get textDirection => TextDirection.rtl;
 
   @override
+  String get please_check_your_internet_connection => "الرجاء التاكد من اتصالك بالأنترنت";
+  @override
   String get select_date => "إختر التاريخ";
+  @override
+  String get search => "إبحث...";
   @override
   String get required_field => "حقل مطلوب";
   @override

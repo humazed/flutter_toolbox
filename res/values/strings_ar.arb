@@ -5,5 +5,7 @@
   "the_email_address_or_password_is_wrong": "البريد الإلكتروني او كلمة المرور غير صحيحة",
   "this_file_is_not_an_image": "هذا الملف ليس صورة",
   "select_time": "إختر الوقت",
-  "select_date": "إختر التاريخ"
+  "select_date": "إختر التاريخ",
+  "please_check_your_internet_connection": "الرجاء التاكد من اتصالك بالأنترنت",
+  "search": "إبحث..."
 }
