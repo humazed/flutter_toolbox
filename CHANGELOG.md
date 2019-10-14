@@ -1,3 +1,7 @@
+##  3.2.1
+
+* expose SearchItemPicker 
+
 ##  3.2.0
 
 * added SearchItemPicker
