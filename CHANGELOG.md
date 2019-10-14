@@ -1,4 +1,8 @@
-##  3.2.1
+##  3.2.2
+
+* added suffixIcon prefixIcon to SearchItemPicker
+ 
+ ##  3.2.1
 
 * expose SearchItemPicker 
 

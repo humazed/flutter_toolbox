@@ -9,7 +9,8 @@ class SearchItemPicker<T> extends StatefulWidget {
     @required this.hint,
     this.initialValue,
     this.disabledHint,
-    this.icon,
+    this.prefixIcon,
+    this.suffixIcon,
     this.border,
     this.elevation = 0,
     this.borderRadius = 0,
@@ -52,7 +53,9 @@ class SearchItemPicker<T> extends StatefulWidget {
   /// will display the [disabledHint] widget if it is non-null.
   final ValueChanged<T> onChanged;
 
-  final Widget icon;
+  final Widget prefixIcon;
+
+  final Widget suffixIcon;
 
   final double elevation;
 
@@ -96,8 +99,8 @@ class SearchItemPickerState<T> extends State<SearchItemPicker<T>> {
         child: ItemTextField(
           controller: itemController,
           hint: widget.hint,
-          suffixIcon: widget.icon,
-          prefixIcon: widget.icon,
+          suffixIcon: widget.suffixIcon,
+          prefixIcon: widget.prefixIcon,
           border: widget.border,
         ),
       ),
