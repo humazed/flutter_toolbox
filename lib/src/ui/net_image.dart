@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:photo_view/photo_view.dart';
 
 class NetImage extends StatelessWidget {
   /// Option to use cachemanager with other settings
@@ -116,6 +118,8 @@ class NetImage extends StatelessWidget {
   ///  * [BlendMode], which includes an illustration of the effect of each blend mode.
   final BlendMode colorBlendMode;
 
+  final bool fullScreen;
+
   NetImage(
     this.imageUrl, {
     Key key,
@@ -131,17 +135,18 @@ class NetImage extends StatelessWidget {
     this.fit,
     this.alignment: Alignment.center,
     this.repeat: ImageRepeat.noRepeat,
-    this.matchTextDirection: false,
+    this.matchTextDirection = false,
     this.httpHeaders,
     this.cacheManager,
-    this.useOldImageOnUrlChange: false,
+    this.useOldImageOnUrlChange = false,
     this.color,
     this.colorBlendMode,
+    this.fullScreen = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
+    var cachedNetworkImage = CachedNetworkImage(
       placeholder:
           placeholder ?? (_, __) => Center(child: CircularProgressIndicator()),
       errorWidget: errorWidget ?? (_, __, ___) => Icon(Icons.image),
@@ -163,6 +168,34 @@ class NetImage extends StatelessWidget {
       color: color,
       colorBlendMode: colorBlendMode,
       key: key,
+    );
+    return fullScreen
+        ? InkWell(
+            child: cachedNetworkImage,
+            onTap: () => Navigator.of(context).push(
+              CupertinoPageRoute(
+                builder: (_) => FullScreenImage(imageUrl),
+              ),
+            ),
+          )
+        : cachedNetworkImage;
+  }
+}
+
+class FullScreenImage extends StatelessWidget {
+  final String image;
+
+  FullScreenImage(this.image);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.black),
+      body: Container(
+        child: PhotoView(
+          imageProvider: NetworkImage(image),
+        ),
+      ),
     );
   }
 }

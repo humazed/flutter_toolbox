@@ -93,8 +93,14 @@ class HomePageState extends State<HomePage> {
           ],
         ),
         body: Builder(builder: (context) {
-          return Center(
-            child: Text(toolbox.S.of(context).please_check_your_connection),
+          return Column(
+            children: <Widget>[
+              Text(toolbox.S.of(context).please_check_your_connection),
+              NetImage(
+                'https://via.placeholder.com/150',
+                fullScreen: true,
+              ),
+            ],
           );
         }),
       ),

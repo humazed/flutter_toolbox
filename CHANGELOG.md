@@ -1,3 +1,7 @@
+##  3.3.0
+
+* added Full screen to netImage
+ 
 ##  3.2.2
 
 * added suffixIcon prefixIcon to SearchItemPicker
