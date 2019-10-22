@@ -26,7 +26,8 @@ Future safeRequest<T>(
   BuildContext context,
   Future<Response<T>> request, {
   Function(T result) onSuccess,
-  Function(ErrorResponse result) onError,
+  Function(ErrorResponse error) onError,
+  Function(dynamic error) onUnknownError,
   bool showServerErrorMessage = true,
 }) async {
   try {
@@ -53,6 +54,7 @@ Future safeRequest<T>(
     onError?.call(e);
   } catch (e) {
     d2('UnknownError-> $e');
+    onUnknownError?.call(e);
     errorToast(S.of(context).server_error);
   }
 }

@@ -1,3 +1,8 @@
+##  3.4.0
+
+* Added onUnknownError to http.dart.
+* updated deps
+
 ##  3.3.1
 
 * make the background color black for full image.
