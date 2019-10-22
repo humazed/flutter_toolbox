@@ -191,6 +191,7 @@ class FullScreenImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.black),
+      backgroundColor: Colors.black,
       body: Container(
         child: PhotoView(
           imageProvider: NetworkImage(image),

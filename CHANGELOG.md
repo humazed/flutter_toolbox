@@ -1,3 +1,7 @@
+##  3.3.1
+
+* make the background color black for full image.
+
 ##  3.3.0
 
 * added Full screen to netImage

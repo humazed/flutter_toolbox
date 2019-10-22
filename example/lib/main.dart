@@ -97,7 +97,7 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               Text(toolbox.S.of(context).please_check_your_connection),
               NetImage(
-                'https://via.placeholder.com/150',
+                'https://via.placeholder.com/300',
                 fullScreen: true,
               ),
             ],
