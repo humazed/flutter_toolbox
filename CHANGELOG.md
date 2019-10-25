@@ -1,3 +1,7 @@
+##  3.4.1
+
+* Make toolkit compatible with flutter master.
+
 ##  3.4.0
 
 * Added onUnknownError to http.dart.
