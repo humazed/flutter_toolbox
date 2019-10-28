@@ -63,7 +63,7 @@ packages:
       name: connectivity
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.5+1"
+    version: "0.4.5+2"
   convert:
     dependency: transitive
     description:
@@ -134,7 +134,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "3.4.0"
+    version: "3.5.0"
   fluttertoast:
     dependency: transitive
     description:
@@ -274,7 +274,7 @@ packages:
       name: photo_view
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.0"
+    version: "0.7.0"
   pub_semver:
     dependency: transitive
     description:
@@ -295,7 +295,7 @@ packages:
       name: shared_preferences
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.4"
+    version: "0.5.4+1"
   sky_engine:
     dependency: transitive
     description: flutter

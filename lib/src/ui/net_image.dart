@@ -141,7 +141,7 @@ class NetImage extends StatelessWidget {
     this.useOldImageOnUrlChange = false,
     this.color,
     this.colorBlendMode,
-    this.fullScreen = true,
+    this.fullScreen = false,
   });
 
   @override

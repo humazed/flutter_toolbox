@@ -1,3 +1,8 @@
+##  3.5.0
+
+* make netImage not zoomable.
+* updated deps.
+
 ##  3.4.1
 
 * Make toolkit compatible with flutter master.
