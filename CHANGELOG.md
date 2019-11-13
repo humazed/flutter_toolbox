@@ -1,3 +1,7 @@
+##  3.5.0+1
+
+* updated deps.
+
 ##  3.5.0
 
 * make netImage not zoomable.
