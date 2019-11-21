@@ -1,3 +1,7 @@
+##  3.5.1
+
+* improve `multiFile` and handle nulls in it.
+
 ##  3.5.0+1
 
 * updated deps.

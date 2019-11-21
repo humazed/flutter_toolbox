@@ -12,12 +12,14 @@ import 'package:path/path.dart';
 
 import 'model/error/error_response.dart';
 
-Future<http.MultipartFile> multiFile(File image, String name) async {
-  var stream = http.ByteStream(DelegatingStream.typed(image.openRead()));
-  var length = await image.length();
+Future<http.MultipartFile> multiFile(File file, String name) async {
+  if (file == null || name == null) return null;
 
-  var multipartFile =
-      http.MultipartFile(name, stream, length, filename: basename(image.path));
+  final stream = http.ByteStream(DelegatingStream.typed(file.openRead()));
+  final length = await file.length();
+
+  final multipartFile =
+      http.MultipartFile(name, stream, length, filename: basename(file.path));
 
   return multipartFile;
 }
