@@ -1,3 +1,8 @@
+##  3.5.2
+
+* Use the default MultipartFile.fromPath instead of implementing it myself.
+* updated deps
+
 ##  3.5.1
 
 * improve `multiFile` and handle nulls in it.

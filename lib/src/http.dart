@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:async/async.dart';
 import 'package:chopper2/chopper2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,20 +7,13 @@ import 'package:flutter_toolbox/generated/i18n.dart';
 import 'package:flutter_toolbox/src/log.dart';
 import 'package:flutter_toolbox/src/ui/toast.dart';
 import 'package:http/http.dart' as http;
-import 'package:path/path.dart';
 
 import 'model/error/error_response.dart';
 
 Future<http.MultipartFile> multiFile(File file, String name) async {
   if (file == null || name == null) return null;
 
-  final stream = http.ByteStream(DelegatingStream.typed(file.openRead()));
-  final length = await file.length();
-
-  final multipartFile =
-      http.MultipartFile(name, stream, length, filename: basename(file.path));
-
-  return multipartFile;
+  return http.MultipartFile.fromPath(name, file.path);
 }
 
 Future safeRequest<T>(
