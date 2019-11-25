@@ -1,3 +1,7 @@
+##  3.6.0
+
+* Added noItemsFoundBuilder noItemsFoundWidget to PaginatedListView and to PaginatedSliverList.
+
 ##  3.5.2
 
 * Use the default MultipartFile.fromPath instead of implementing it myself.

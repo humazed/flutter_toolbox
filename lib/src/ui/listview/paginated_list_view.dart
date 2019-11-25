@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'common.dart';
 import 'pagewise/flutter_pagewise.dart';
 
 class PaginatedListView<T> extends StatefulWidget {
@@ -7,6 +8,8 @@ class PaginatedListView<T> extends StatefulWidget {
   final PageFuture<T> pageFuture;
   final int pageSize;
   final EdgeInsetsGeometry padding;
+  final NoItemsFoundBuilder noItemsFoundBuilder;
+  final Widget noItemsFoundWidget;
   final PagewiseLoadController<T> pageLoadController;
 
   /// default is false
@@ -25,6 +28,8 @@ class PaginatedListView<T> extends StatefulWidget {
     @required this.pageFuture,
     this.pageSize = 10,
     this.padding,
+    this.noItemsFoundBuilder,
+    this.noItemsFoundWidget,
     this.pageLoadController,
     this.mutable = false,
     this.showRefreshIndicator = false,
@@ -44,8 +49,6 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
             onRefresh: () async {
               await widget.pageFuture(1);
               setState(() => _reload = true);
-              WidgetsBinding.instance
-                  .addPostFrameCallback((_) => _reload = false);
             },
             child: buildListView(),
           )
@@ -53,25 +56,28 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
   }
 
   Widget buildListView() {
-    return widget.mutable ||
-            widget.showRefreshIndicator ||
-            _reload ||
-            widget.pageLoadController != null
-        ? PagewiseListView<T>(
-            itemBuilder: widget.itemBuilder,
-            padding: widget.padding,
-            pageLoadController: widget.pageLoadController ??
-                PagewiseLoadController(
-                  pageSize: widget.pageSize,
-                  pageFuture: (int pageIndex) =>
-                      widget.pageFuture(pageIndex + 1),
-                ),
-          )
-        : PagewiseListView<T>(
-            pageSize: widget.pageSize,
-            itemBuilder: widget.itemBuilder,
-            pageFuture: (int pageIndex) => widget.pageFuture(pageIndex + 1),
-            padding: widget.padding,
-          );
+    final mutable = widget.mutable ||
+        widget.showRefreshIndicator ||
+        _reload ||
+        widget.pageLoadController != null;
+
+    final PageFuture<T> pageFuture =
+        (int pageIndex) => widget.pageFuture(pageIndex + 1);
+
+    final pageLoadController = widget.pageLoadController ??
+        PagewiseLoadController(
+          pageSize: widget.pageSize,
+          pageFuture: pageFuture,
+        );
+
+    return PagewiseListView<T>(
+      itemBuilder: widget.itemBuilder,
+      padding: widget.padding,
+      noItemsFoundBuilder: noItemsFoundBuilder(
+          widget.noItemsFoundBuilder, widget.noItemsFoundWidget),
+      pageLoadController: mutable ? pageLoadController : null,
+      pageSize: mutable ? null : widget.pageSize,
+      pageFuture: mutable ? null : pageFuture,
+    );
   }
 }

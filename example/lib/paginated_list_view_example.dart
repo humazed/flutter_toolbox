@@ -48,6 +48,7 @@ class PagewiseListViewExample extends StatelessWidget {
       pageSize: PAGE_SIZE,
 //      mutable: true,
       showRefreshIndicator: true,
+      noItemsFoundWidget: Icon(Icons.hourglass_empty),
       itemBuilder: this._itemBuilder,
       pageFuture: (pageIndex) =>
           BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
@@ -85,6 +86,7 @@ class PagewiseSliverListExample extends StatelessWidget {
       PaginatedSliverList(
         pageSize: PAGE_SIZE,
         itemBuilder: _itemBuilder,
+        noItemsFoundWidget: Icon(Icons.hourglass_empty),
         pageFuture: (pageIndex) =>
             BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
       ),
