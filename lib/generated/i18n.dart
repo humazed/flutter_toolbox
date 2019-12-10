@@ -58,6 +58,32 @@ class $ar extends S {
   String get please_check_your_connection => "تأكد من وجود انترنت";
 }
 
+class $ru extends S {
+  const $ru();
+
+  @override
+  TextDirection get textDirection => TextDirection.ltr;
+
+  @override
+  String get please_check_your_internet_connection => "Пожалуйста, проверьте ваше соединение";
+  @override
+  String get select_date => "Выберите дату";
+  @override
+  String get search => "Поиск...";
+  @override
+  String get required_field => "Обязательное поле";
+  @override
+  String get the_email_address_or_password_is_wrong => "Неверный адрес электронной почты или пароль";
+  @override
+  String get select_time => "Выберите время";
+  @override
+  String get server_error => "Ошибка сервера";
+  @override
+  String get this_file_is_not_an_image => "Этот файл не является изображением";
+  @override
+  String get please_check_your_connection => "Пожалуйста, проверьте ваше соединение";
+}
+
 class $en extends S {
   const $en();
 }
@@ -68,6 +94,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale("ar", ""),
+      Locale("ru", ""),
       Locale("en", ""),
     ];
   }
@@ -95,6 +122,9 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
       switch (lang) {
         case "ar":
           S.current = const $ar();
+          return SynchronousFuture<S>(S.current);
+        case "ru":
+          S.current = const $ru();
           return SynchronousFuture<S>(S.current);
         case "en":
           S.current = const $en();
