@@ -1,3 +1,7 @@
+##  4.0.0
+
+* Updated deps to support flutter the stable 1.12.13.
+
 ##  3.6.1
 
 * Added ru localization.
