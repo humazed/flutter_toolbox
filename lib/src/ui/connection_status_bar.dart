@@ -14,13 +14,8 @@ class ConnectionStatusBar extends StatefulWidget {
 
   _ConnectionStatusBarState createState() => _ConnectionStatusBarState();
 
-  static OverlayState _overlayState;
-  static OverlayEntry _overlayEntry;
-
   static void init(BuildContext context) async {
-    _overlayState = Overlay.of(context);
-
-    _overlayEntry = OverlayEntry(
+    final overlayEntry = OverlayEntry(
       builder: (BuildContext context) => IgnorePointer(
         child: Stack(
           children: <Widget>[
@@ -40,7 +35,7 @@ class ConnectionStatusBar extends StatefulWidget {
       ),
     );
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      _overlayState.insert(_overlayEntry);
+      Overlay.of(context).insert(overlayEntry);
     });
   }
 }

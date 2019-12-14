@@ -1,3 +1,9 @@
+##  4.1.0
+
+* added toolbox_app.dart.
+* updated toast.
+* fixed crash with connection_status_bar.dart
+
 ##  4.0.0
 
 * Updated deps to support flutter the stable 1.12.13.
