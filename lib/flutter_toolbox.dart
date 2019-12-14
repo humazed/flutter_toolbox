@@ -18,3 +18,4 @@ export 'package:flutter_toolbox/src/ui/listview/paginated_sliver_list.dart';
 export 'package:flutter_toolbox/src/ui/tab_rounded_line_indicator.dart';
 export 'package:flutter_toolbox/src/ui/connection_status_bar.dart';
 export 'package:flutter_toolbox/src/ui/search_item_picke.dart';
+export 'package:flutter_toolbox/src/toolbox_app.dart';

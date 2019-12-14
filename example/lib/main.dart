@@ -15,27 +15,29 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        toolbox.S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const <Locale>[
-        Locale("en", ""),
-        Locale("ar", ""),
-      ],
-      theme: ThemeData(
-        tabBarTheme: TabBarTheme(
-          indicator: TabRoundedLineIndicator(
-            context,
-            indicatorSize: TabRoundedLineIndicatorSize.normal,
-            indicatorHeight: 3,
+    return ToolboxApp(
+      child: MaterialApp(
+        localizationsDelegates: const [
+          toolbox.S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const <Locale>[
+          Locale("en", ""),
+          Locale("ar", ""),
+        ],
+        theme: ThemeData(
+          tabBarTheme: TabBarTheme(
+            indicator: TabRoundedLineIndicator(
+              context,
+              indicatorSize: TabRoundedLineIndicatorSize.normal,
+              indicatorHeight: 3,
+            ),
           ),
         ),
+        home: HomePage(),
       ),
-      home: HomePage(),
     );
   }
 }
@@ -99,6 +101,22 @@ class HomePageState extends State<HomePage> {
               NetImage(
                 'https://via.placeholder.com/300',
                 fullScreen: true,
+              ),
+              Row(
+                children: <Widget>[
+                  MaterialButton(
+                    child: Text('Error taost'),
+                    onPressed: () => errorToast('Error'),
+                  ),
+                  MaterialButton(
+                    child: Text('Success taost'),
+                    onPressed: () => successToast('Success'),
+                  ),
+                  MaterialButton(
+                    child: Text('taost'),
+                    onPressed: () => toast('أهلا بكم'),
+                  ),
+                ],
               ),
             ],
           );
