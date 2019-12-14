@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
 
 class ConnectionStatusBar extends StatefulWidget {
@@ -38,7 +39,9 @@ class ConnectionStatusBar extends StatefulWidget {
         ),
       ),
     );
-    _overlayState.insert(_overlayEntry);
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _overlayState.insert(_overlayEntry);
+    });
   }
 }
 
