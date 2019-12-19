@@ -1,3 +1,7 @@
+##  4.2.1
+
+* Expose toolbox_config.dart.
+
 ##  4.2.0
 
 * Added global config to the app.

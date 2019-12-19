@@ -19,3 +19,4 @@ export 'package:flutter_toolbox/src/ui/tab_rounded_line_indicator.dart';
 export 'package:flutter_toolbox/src/ui/connection_status_bar.dart';
 export 'package:flutter_toolbox/src/ui/search_item_picke.dart';
 export 'package:flutter_toolbox/src/config/toolbox_app.dart';
+export 'package:flutter_toolbox/src/config/toolbox_config.dart';
