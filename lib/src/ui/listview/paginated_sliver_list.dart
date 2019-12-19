@@ -55,7 +55,10 @@ class _PaginatedSliverListState<T> extends State<PaginatedSliverList<T>> {
     return PagewiseSliverList<T>(
       itemBuilder: widget.itemBuilder,
       noItemsFoundBuilder: noItemsFoundBuilder(
-          widget.noItemsFoundBuilder, widget.noItemsFoundWidget),
+        context,
+        noItemsFoundBuilder: widget.noItemsFoundBuilder,
+        noItemsFoundWidget: widget.noItemsFoundWidget,
+      ),
       pageLoadController: mutable ? pageLoadController : null,
       pageSize: mutable ? null : widget.pageSize,
       pageFuture: mutable ? null : pageFuture,

@@ -20,18 +20,20 @@ class PaginatedListViewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
           appBar: AppBar(
             title: Text('Pagewise'),
             bottom: TabBar(tabs: [
               Tab(text: 'List'),
+              Tab(text: 'Empty List'),
               Tab(text: 'SliverList'),
             ]),
           ),
           body: TabBarView(
             children: [
-              PagewiseListViewExample(),
+              PaginatedListViewExample(),
+              PaginatedListViewEmptyExample(),
               PagewiseSliverListExample(),
             ],
           )),
@@ -39,7 +41,7 @@ class PaginatedListViewPage extends StatelessWidget {
   }
 }
 
-class PagewiseListViewExample extends StatelessWidget {
+class PaginatedListViewExample extends StatelessWidget {
   static const int PAGE_SIZE = 10;
 
   @override
@@ -49,6 +51,38 @@ class PagewiseListViewExample extends StatelessWidget {
 //      mutable: true,
       showRefreshIndicator: true,
       noItemsFoundWidget: Icon(Icons.hourglass_empty),
+      itemBuilder: this._itemBuilder,
+      pageFuture: (pageIndex) =>
+          BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
+    );
+  }
+
+  Widget _itemBuilder(BuildContext context, PostModel entry, int index) {
+    return Column(
+      children: <Widget>[
+        ListTile(
+          leading: Icon(
+            Icons.person,
+            color: Colors.brown[200],
+          ),
+          title: Text(entry.title),
+          subtitle: Text(entry.body),
+        ),
+        Divider()
+      ],
+    );
+  }
+}
+class PaginatedListViewEmptyExample extends StatelessWidget {
+  static const int PAGE_SIZE = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return PaginatedListView(
+      pageSize: PAGE_SIZE,
+//      mutable: true,
+      showRefreshIndicator: true,
+//      noItemsFoundWidget: Icon(Icons.hourglass_empty),
       itemBuilder: this._itemBuilder,
       pageFuture: (pageIndex) =>
           BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),

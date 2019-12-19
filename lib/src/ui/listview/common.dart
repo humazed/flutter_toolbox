@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_toolbox/src/config/toolbox_config.dart';
 import 'package:flutter_toolbox/src/ui/listview/pagewise/flutter_pagewise.dart';
 
 NoItemsFoundBuilder noItemsFoundBuilder(
-  NoItemsFoundBuilder noItemsFoundBuilder,
-  Widget noItemsFoundWidget,
-) {
+  BuildContext context, {
+  @required NoItemsFoundBuilder noItemsFoundBuilder,
+  @required Widget noItemsFoundWidget,
+}) {
   final defaultNoItemsFoundBuilder = noItemsFoundWidget == null
       ? null
       : (BuildContext context) {
-          final height = MediaQuery.of(context).size.height - 124;
+          final height = MediaQuery.of(context).size.height - kToolbarHeight;
           return SizedBox(
             height: height,
             child: Center(
@@ -17,5 +19,25 @@ NoItemsFoundBuilder noItemsFoundBuilder(
           );
         };
 
-  return noItemsFoundBuilder ?? defaultNoItemsFoundBuilder;
+  final localNoItemFound = noItemsFoundBuilder ?? defaultNoItemsFoundBuilder;
+
+  final config = ToolboxConfig.of(context);
+  final globalNoItemFound = config.noItemsFoundBuilder ??
+      _buildNoItemFoundBuilder(config.noItemsFoundWidget);
+
+  return localNoItemFound ?? globalNoItemFound;
+}
+
+NoItemsFoundBuilder _buildNoItemFoundBuilder(Widget noItemsFoundWidget) {
+  return (BuildContext context) {
+    // remove the height of the appBar and some to make sure
+    // the noItemsFoundWidget don't scroll
+    final height = MediaQuery.of(context).size.height - kToolbarHeight * 3;
+    return SizedBox(
+      height: height,
+      child: Center(
+        child: noItemsFoundWidget,
+      ),
+    );
+  };
 }

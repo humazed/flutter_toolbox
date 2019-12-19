@@ -74,7 +74,10 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
       itemBuilder: widget.itemBuilder,
       padding: widget.padding,
       noItemsFoundBuilder: noItemsFoundBuilder(
-          widget.noItemsFoundBuilder, widget.noItemsFoundWidget),
+        context,
+        noItemsFoundBuilder: widget.noItemsFoundBuilder,
+        noItemsFoundWidget: widget.noItemsFoundWidget,
+      ),
       pageLoadController: mutable ? pageLoadController : null,
       pageSize: mutable ? null : widget.pageSize,
       pageFuture: mutable ? null : pageFuture,

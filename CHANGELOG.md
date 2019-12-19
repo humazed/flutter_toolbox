@@ -1,3 +1,9 @@
+##  4.2.0
+
+* Added global config to the app.
+* Added config for noItemsFoundWidget.
+* make the SearchItemPicker hide the empty text items.
+
 ##  4.1.0
 
 * added toolbox_app.dart.

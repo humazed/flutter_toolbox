@@ -1,7 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 4.1.0
-author: humazed <humazed@gmail.com>
+version: 4.2.0
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -19,6 +18,7 @@ dependencies:
   async: ^2.4.0
 
   stack_trace: ^1.9.3
+  provider: ^3.2.0
   oktoast: ^2.2.1
   flushbar: ^1.9.1
   shared_preferences: ^0.5.6
