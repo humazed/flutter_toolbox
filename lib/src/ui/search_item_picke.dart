@@ -109,18 +109,22 @@ class SearchItemPickerState<T> extends State<SearchItemPicker<T>> {
 }
 
 class ItemsList<T> extends StatefulWidget {
+  ItemsList({
+    Key key,
+    @required List<ListItem<T>> items,
+    @required this.hint,
+  })  : items = items.where((item) => item.text?.isNotEmpty == true).toList(),
+        super(key: key);
+
   final List<ListItem<T>> items;
   final String hint;
-
-  const ItemsList({Key key, @required this.items, @required this.hint})
-      : super(key: key);
 
   static Future<ListItem<T>> pickItem<T>(
     BuildContext context,
     List<ListItem<T>> items,
     String hint,
   ) async {
-    var results = await Navigator.of(context).push(
+    dynamic results = await Navigator.of(context).push(
       MaterialPageRoute<dynamic>(
         builder: (BuildContext context) {
           return ItemsList(
