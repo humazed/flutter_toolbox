@@ -1,3 +1,7 @@
+##  4.3.1
+
+* Improve hero in NetImage.
+
 ##  4.3.0
 
 * Added swiping support to the image.

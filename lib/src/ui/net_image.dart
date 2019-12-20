@@ -180,10 +180,12 @@ class NetImage extends StatelessWidget {
       borderRadius: borderRadius ?? BorderRadius.circular(0),
       child: Stack(
         children: <Widget>[
-          Hero(
-            tag: imageUrl,
-            child: cachedNetworkImage,
-          ),
+          fullScreen
+              ? Hero(
+                  tag: imageUrl,
+                  child: cachedNetworkImage,
+                )
+              : cachedNetworkImage,
           Positioned.fill(
             child: Material(
               color: Colors.transparent,
@@ -203,9 +205,9 @@ class NetImage extends StatelessWidget {
 }
 
 class FullScreenImage extends StatelessWidget {
-  final String imageUrl;
-
   FullScreenImage(this.imageUrl);
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
