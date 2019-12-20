@@ -1,3 +1,7 @@
+##  4.3.0
+
+* Added swiping support to the image.
+
 ##  4.2.1
 
 * Expose toolbox_config.dart.

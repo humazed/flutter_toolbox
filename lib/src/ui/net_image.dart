@@ -2,9 +2,35 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:photo_view/photo_view.dart';
 
 class NetImage extends StatelessWidget {
+  NetImage(
+    this.imageUrl, {
+    Key key,
+    this.imageBuilder,
+    this.placeholder,
+    this.errorWidget,
+    this.fadeOutDuration: const Duration(milliseconds: 300),
+    this.fadeOutCurve: Curves.easeOut,
+    this.fadeInDuration: const Duration(milliseconds: 700),
+    this.fadeInCurve: Curves.easeIn,
+    this.width,
+    this.height,
+    this.fit,
+    this.alignment: Alignment.center,
+    this.repeat: ImageRepeat.noRepeat,
+    this.matchTextDirection = false,
+    this.httpHeaders,
+    this.cacheManager,
+    this.useOldImageOnUrlChange = false,
+    this.color,
+    this.colorBlendMode,
+    this.fullScreen = false,
+    this.borderRadius, // defaults to 0
+  });
+
   /// Option to use cachemanager with other settings
   final BaseCacheManager cacheManager;
 
@@ -118,35 +144,15 @@ class NetImage extends StatelessWidget {
   ///  * [BlendMode], which includes an illustration of the effect of each blend mode.
   final BlendMode colorBlendMode;
 
+  /// default false.
   final bool fullScreen;
 
-  NetImage(
-    this.imageUrl, {
-    Key key,
-    this.imageBuilder,
-    this.placeholder,
-    this.errorWidget,
-    this.fadeOutDuration: const Duration(milliseconds: 300),
-    this.fadeOutCurve: Curves.easeOut,
-    this.fadeInDuration: const Duration(milliseconds: 700),
-    this.fadeInCurve: Curves.easeIn,
-    this.width,
-    this.height,
-    this.fit,
-    this.alignment: Alignment.center,
-    this.repeat: ImageRepeat.noRepeat,
-    this.matchTextDirection = false,
-    this.httpHeaders,
-    this.cacheManager,
-    this.useOldImageOnUrlChange = false,
-    this.color,
-    this.colorBlendMode,
-    this.fullScreen = false,
-  });
+  /// defaults to 0
+  final BorderRadius borderRadius;
 
   @override
   Widget build(BuildContext context) {
-    var cachedNetworkImage = CachedNetworkImage(
+    final cachedNetworkImage = CachedNetworkImage(
       placeholder:
           placeholder ?? (_, __) => Center(child: CircularProgressIndicator()),
       errorWidget: errorWidget ?? (_, __, ___) => Icon(Icons.image),
@@ -169,32 +175,57 @@ class NetImage extends StatelessWidget {
       colorBlendMode: colorBlendMode,
       key: key,
     );
-    return fullScreen
-        ? InkWell(
+
+    return ClipRRect(
+      borderRadius: borderRadius ?? BorderRadius.circular(0),
+      child: Stack(
+        children: <Widget>[
+          Hero(
+            tag: imageUrl,
             child: cachedNetworkImage,
-            onTap: () => Navigator.of(context).push(
-              CupertinoPageRoute(
-                builder: (_) => FullScreenImage(imageUrl),
+          ),
+          Positioned.fill(
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: fullScreen ? () => _openFullScreen(context) : null,
               ),
             ),
-          )
-        : cachedNetworkImage;
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future _openFullScreen(BuildContext context) {
+    return push(context, FullScreenImage(imageUrl));
   }
 }
 
 class FullScreenImage extends StatelessWidget {
-  final String image;
+  final String imageUrl;
 
-  FullScreenImage(this.image);
+  FullScreenImage(this.imageUrl);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black),
-      backgroundColor: Colors.black,
-      body: Container(
-        child: PhotoView(
-          imageProvider: NetworkImage(image),
+    return Dismissible(
+      key: Key(imageUrl),
+      direction: DismissDirection.vertical,
+      onDismissed: (direction) => Navigator.of(context).pop(),
+      child: Dismissible(
+        key: Key(imageUrl),
+        onDismissed: (direction) => Navigator.of(context).pop(),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            leading: CloseButton(),
+          ),
+          backgroundColor: Colors.black,
+          body: PhotoView(
+            imageProvider: NetworkImage(imageUrl),
+            heroAttributes: PhotoViewHeroAttributes(tag: imageUrl),
+          ),
         ),
       ),
     );

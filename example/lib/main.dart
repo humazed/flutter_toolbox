@@ -103,6 +103,10 @@ class HomePageState extends State<HomePage> {
                 'https://via.placeholder.com/300',
                 fullScreen: true,
               ),
+              NetImage(
+                'https://via.placeholder.com/50',
+                fullScreen: true,
+              ),
               Row(
                 children: <Widget>[
                   MaterialButton(
