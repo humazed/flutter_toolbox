@@ -1,3 +1,7 @@
+##  4.4.1
+
+* added maps.dart to toolbox.dart.
+
 ##  4.4.0
 
 * Added `launchGoogleMaps`.
