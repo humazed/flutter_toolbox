@@ -1,3 +1,8 @@
+##  4.3.2
+
+* Make the hero animation in NetImage opt in 
+  as it was causing crashes when there is multiple image with the same url in the same page.
+
 ##  4.3.1
 
 * Improve hero in NetImage.

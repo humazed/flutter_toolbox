@@ -28,6 +28,7 @@ class NetImage extends StatelessWidget {
     this.color,
     this.colorBlendMode,
     this.fullScreen = false,
+    this.hero = false,
     this.borderRadius, // defaults to 0
   });
 
@@ -147,6 +148,11 @@ class NetImage extends StatelessWidget {
   /// default false.
   final bool fullScreen;
 
+  /// Adds hero animation, uses the url as the hero tag.
+  /// [fullScreen] needs to be true for this to work.
+  /// default false.
+  final bool hero;
+
   /// defaults to 0
   final BorderRadius borderRadius;
 
@@ -180,7 +186,7 @@ class NetImage extends StatelessWidget {
       borderRadius: borderRadius ?? BorderRadius.circular(0),
       child: Stack(
         children: <Widget>[
-          fullScreen
+          fullScreen && hero
               ? Hero(
                   tag: imageUrl,
                   child: cachedNetworkImage,
