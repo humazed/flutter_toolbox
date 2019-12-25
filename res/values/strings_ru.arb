@@ -7,5 +7,6 @@
   "select_time": "Выберите время",
   "select_date": "Выберите дату",
   "please_check_your_internet_connection": "Пожалуйста, проверьте ваше соединение",
-  "search": "Поиск..."
+  "search": "Поиск...",
+  "could_not_launch_google_maps": "Не удалось запустить Google Maps"
 }

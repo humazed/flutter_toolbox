@@ -7,5 +7,6 @@
   "select_time": "إختر الوقت",
   "select_date": "إختر التاريخ",
   "please_check_your_internet_connection": "الرجاء التاكد من اتصالك بالأنترنت",
-  "search": "إبحث..."
+  "search": "إبحث...",
+  "could_not_launch_google_maps": "لا يمكن فتح خرائط جوجل"
 }

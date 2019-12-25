@@ -1,3 +1,7 @@
+##  4.4.0
+
+* Added `launchGoogleMaps`.
+
 ##  4.3.3
 
 * Updated provider: ^4.0.0.

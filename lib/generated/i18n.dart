@@ -21,6 +21,7 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get could_not_launch_google_maps => "Could not launch google maps";
   String get please_check_your_connection => "Please check your connection";
   String get please_check_your_internet_connection => "Please check your internet connection";
   String get required_field => "Required Field";
@@ -40,6 +41,8 @@ class $ar extends S {
 
   @override
   String get please_check_your_internet_connection => "الرجاء التاكد من اتصالك بالأنترنت";
+  @override
+  String get could_not_launch_google_maps => "لا يمكن فتح خرائط جوجل";
   @override
   String get select_date => "إختر التاريخ";
   @override
@@ -66,6 +69,8 @@ class $ru extends S {
 
   @override
   String get please_check_your_internet_connection => "Пожалуйста, проверьте ваше соединение";
+  @override
+  String get could_not_launch_google_maps => "Не удалось запустить Google Maps";
   @override
   String get select_date => "Выберите дату";
   @override
