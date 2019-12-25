@@ -1,3 +1,7 @@
+##  4.3.3
+
+* Updated provider: ^4.0.0.
+
 ##  4.3.2
 
 * Make the hero animation in NetImage opt in 
