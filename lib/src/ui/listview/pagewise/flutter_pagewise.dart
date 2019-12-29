@@ -468,7 +468,7 @@ class PagewiseLoadController<T> extends ChangeNotifier {
         page = await this.pageFuture(this._numberOfLoadedPages);
         this._numberOfLoadedPages++;
       } catch (error) {
-        d(error);
+        d2(error);
         this._error = error;
         this._isFetching = false;
         this.notifyListeners();

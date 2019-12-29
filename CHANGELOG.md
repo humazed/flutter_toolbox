@@ -1,5 +1,10 @@
 ##  4.4.1
 
+* Improve error reporting in flutter_pagewise.dart.
+* updated deps
+
+##  4.4.1
+
 * added maps.dart to toolbox.dart.
 
 ##  4.4.0
