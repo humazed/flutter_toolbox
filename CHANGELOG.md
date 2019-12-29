@@ -1,3 +1,7 @@
+##  4.4.3
+
+* revert changes fron 4.4.2 in flutter_pagewise.dart.
+
 ##  4.4.2
 
 * Improve error reporting in flutter_pagewise.dart.
