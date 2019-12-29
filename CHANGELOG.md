@@ -1,4 +1,4 @@
-##  4.4.1
+##  4.4.2
 
 * Improve error reporting in flutter_pagewise.dart.
 * updated deps
