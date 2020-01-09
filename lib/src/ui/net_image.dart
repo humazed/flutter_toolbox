@@ -194,7 +194,7 @@ class NetImage extends StatelessWidget {
               : cachedNetworkImage,
           Positioned.fill(
             child: Material(
-              color: Colors.transparent,
+              type: MaterialType.transparency,
               child: InkWell(
                 onTap: fullScreen ? () => _openFullScreen(context) : null,
               ),

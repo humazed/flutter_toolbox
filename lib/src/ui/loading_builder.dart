@@ -133,7 +133,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
                 );
               } else {
                 d2('Unknow error: $error');
-                return Center(child: Text('server error'));
+                return Center(child: Text(S.current.server_error));
               }
             }
 

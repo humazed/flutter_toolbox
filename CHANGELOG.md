@@ -1,3 +1,9 @@
+##  4.4.4
+
+* improve handling of showRefreshIndicator in PaginatedListView.
+* localize the string server_error.
+* update deps.
+
 ##  4.4.3
 
 * revert changes fron 4.4.2 in flutter_pagewise.dart.

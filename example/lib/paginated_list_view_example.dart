@@ -41,19 +41,30 @@ class PaginatedListViewPage extends StatelessWidget {
   }
 }
 
-class PaginatedListViewExample extends StatelessWidget {
+class PaginatedListViewExample extends StatefulWidget {
   static const int PAGE_SIZE = 10;
 
   @override
+  _PaginatedListViewExampleState createState() => _PaginatedListViewExampleState();
+}
+
+class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
+  @override
+  void initState() {
+    super.initState();
+    d('_PaginatedListViewExampleState.initState');
+  }
+  @override
   Widget build(BuildContext context) {
     return PaginatedListView(
-      pageSize: PAGE_SIZE,
+      pageSize: PaginatedListViewExample.PAGE_SIZE,
 //      mutable: true,
       showRefreshIndicator: true,
       noItemsFoundWidget: Icon(Icons.hourglass_empty),
       itemBuilder: this._itemBuilder,
-      pageFuture: (pageIndex) =>
-          BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
+      pageFuture: (pageIndex) {
+        return BackendService.getPosts(pageIndex * PaginatedListViewExample.PAGE_SIZE, PaginatedListViewExample.PAGE_SIZE);
+      },
     );
   }
 

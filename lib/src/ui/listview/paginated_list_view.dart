@@ -57,9 +57,11 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
 
   Widget buildListView() {
     final mutable = widget.mutable ||
-        widget.showRefreshIndicator ||
+//        widget.showRefreshIndicator || removed as there it serve no purpose leave here just in case there is a side effect
         _reload ||
         widget.pageLoadController != null;
+
+    _reload = false;
 
     final PageFuture<T> pageFuture =
         (int pageIndex) => widget.pageFuture(pageIndex + 1);
