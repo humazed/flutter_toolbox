@@ -1,3 +1,7 @@
+##  4.4.6
+
+* depend on more flexible versions of intl intl_translation 
+
 ##  4.4.5
 
 * updated deps.
