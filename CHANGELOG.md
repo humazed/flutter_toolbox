@@ -1,3 +1,8 @@
+##  4.4.5
+
+* updated deps.
+* depend on more flexible versions of intl intl_translation 
+
 ##  4.4.4
 
 * improve handling of showRefreshIndicator in PaginatedListView.

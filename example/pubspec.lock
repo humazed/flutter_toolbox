@@ -202,7 +202,7 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.3"
+    version: "0.6.3+1"
   intl:
     dependency: transitive
     description:
@@ -216,7 +216,7 @@ packages:
       name: intl_translation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.8"
+    version: "0.17.7"
   js:
     dependency: transitive
     description:
@@ -349,7 +349,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.1"
+    version: "4.0.2"
   pub_semver:
     dependency: transitive
     description:
