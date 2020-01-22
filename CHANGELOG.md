@@ -1,3 +1,7 @@
+##  4.4.8
+
+* revert versions of intl intl_translation 
+
 ##  4.4.7
 
 * depend on more flexible versions of intl intl_translation 

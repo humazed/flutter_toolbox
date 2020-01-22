@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 4.4.7
+version: 4.4.8
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -13,8 +13,8 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: '>=0.16.0 <0.16.1'
-  intl_translation: '>=0.17.0 <0.17.8'
+  intl: ^0.16.0
+  intl_translation: ^0.17.8
   async: ^2.4.0
 
   stack_trace: ^1.9.3
