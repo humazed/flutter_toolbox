@@ -12,3 +12,11 @@ Future<void> launchGoogleMaps(double latitude, double longitude) async {
     errorToast(S.current.could_not_launch_google_maps);
   }
 }
+
+Future<void> safeLaunch(String urlString) async {
+  if (await canLaunch(urlString)) {
+    await launch(urlString);
+  } else {
+    errorToast(S.current.couldnt_open_this_url);
+  }
+}

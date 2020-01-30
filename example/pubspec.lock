@@ -148,7 +148,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.4.7"
+    version: "4.4.9"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -216,7 +216,7 @@ packages:
       name: intl_translation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.17.7"
+    version: "0.17.9"
   js:
     dependency: transitive
     description:
@@ -370,7 +370,7 @@ packages:
       name: shared_preferences
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.6"
+    version: "0.5.6+1"
   shared_preferences_macos:
     dependency: transitive
     description:

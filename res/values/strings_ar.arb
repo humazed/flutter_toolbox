@@ -8,5 +8,6 @@
   "select_date": "إختر التاريخ",
   "please_check_your_internet_connection": "الرجاء التاكد من اتصالك بالأنترنت",
   "search": "إبحث...",
-  "could_not_launch_google_maps": "لا يمكن فتح خرائط جوجل"
+  "could_not_launch_google_maps": "لا يمكن فتح خرائط جوجل",
+  "couldnt_open_this_url": "لا يمكن فتح هذا الرابط"
 }

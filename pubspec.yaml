@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 4.4.8
+version: 4.4.9
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -21,7 +21,7 @@ dependencies:
   provider: ^4.0.2
   oktoast: ^2.3.0
   flushbar: ^1.9.1
-  shared_preferences: ^0.5.6
+  shared_preferences: ^0.5.6+1
   image_picker: ^0.6.3+1
   cached_network_image: ^2.0.0
   flutter_cache_manager: ^1.1.3

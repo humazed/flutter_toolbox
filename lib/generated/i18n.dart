@@ -22,6 +22,7 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get could_not_launch_google_maps => "Could not launch google maps";
+  String get couldnt_open_this_url => "Couldn't open this url";
   String get please_check_your_connection => "Please check your connection";
   String get please_check_your_internet_connection => "Please check your internet connection";
   String get required_field => "Required Field";
@@ -59,6 +60,8 @@ class $ar extends S {
   String get this_file_is_not_an_image => "هذا الملف ليس صورة";
   @override
   String get please_check_your_connection => "تأكد من وجود انترنت";
+  @override
+  String get couldnt_open_this_url => "لا يمكن فتح هذا الرابط";
 }
 
 class $ru extends S {
@@ -87,6 +90,8 @@ class $ru extends S {
   String get this_file_is_not_an_image => "Этот файл не является изображением";
   @override
   String get please_check_your_connection => "Пожалуйста, проверьте ваше соединение";
+  @override
+  String get couldnt_open_this_url => "Couldn't open this url";
 }
 
 class $en extends S {

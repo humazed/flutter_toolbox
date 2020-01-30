@@ -8,5 +8,6 @@
   "select_date": "Select date",
   "please_check_your_internet_connection": "Please check your internet connection",
   "search": "Search...",
-  "could_not_launch_google_maps": "Could not launch google maps"
+  "could_not_launch_google_maps": "Could not launch google maps",
+  "couldnt_open_this_url": "Couldn't open this url"
 }

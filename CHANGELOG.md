@@ -1,3 +1,7 @@
+##  4.4.9
+
+* added safeLaunch to url_launchers
+ 
 ##  4.4.8
 
 * revert versions of intl intl_translation 
