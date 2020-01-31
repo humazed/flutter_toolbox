@@ -9,5 +9,6 @@
   "please_check_your_internet_connection": "Пожалуйста, проверьте ваше соединение",
   "search": "Поиск...",
   "could_not_launch_google_maps": "Не удалось запустить Google Maps",
-  "couldnt_open_this_url": "Couldn't open this url"
+  "couldnt_open_this_url": "Couldn't open this url",
+  "couldnt_open_the_mail_app": "Couldn't open the mail app"
 }

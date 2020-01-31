@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,5 +19,18 @@ Future<void> safeLaunch(String urlString) async {
     await launch(urlString);
   } else {
     errorToast(S.current.couldnt_open_this_url);
+  }
+}
+
+Future<void> sendMail({
+  @required String email,
+  String subject = '',
+  String body = '',
+}) async {
+  var url = 'mailto:$email?subject=$subject&body=$body';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    errorToast(S.current.couldnt_open_the_mail_app);
   }
 }
