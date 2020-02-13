@@ -56,14 +56,14 @@ packages:
       name: build_config
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.2"
+    version: "0.4.1+1"
   build_daemon:
     dependency: transitive
     description:
       name: build_daemon
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "2.1.0"
   build_resolvers:
     dependency: transitive
     description:
@@ -77,14 +77,14 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.3"
+    version: "1.7.4"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.3"
+    version: "4.0.0"
   built_collection:
     dependency: transitive
     description:
@@ -334,10 +334,10 @@ packages:
     description:
       path: json_serializable
       ref: HEAD
-      resolved-ref: "8e1df0333a2dc339eb2721d6bd3a30734219de54"
+      resolved-ref: ebb843c3bd2e403c7fef7f3537c20e8b737bfc5f
       url: "git://github.com/humazed/json_serializable.git"
     source: git
-    version: "2.2.2-dev"
+    version: "2.3.0-dev"
   kernel:
     dependency: transitive
     description:
@@ -400,7 +400,7 @@ packages:
       name: oktoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   package_config:
     dependency: transitive
     description:
@@ -477,7 +477,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.2"
+    version: "4.0.4"
   pub_semver:
     dependency: transitive
     description:
