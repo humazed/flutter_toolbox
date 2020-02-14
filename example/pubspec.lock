@@ -148,7 +148,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "4.4.9"
+    version: "4.4.11"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -286,7 +286,7 @@ packages:
       name: oktoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   package_config:
     dependency: transitive
     description:
@@ -349,7 +349,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.2"
+    version: "4.0.4"
   pub_semver:
     dependency: transitive
     description:

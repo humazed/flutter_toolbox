@@ -30,7 +30,7 @@ class TimePickerField extends StatelessWidget {
     return _InputDropdown(
       labelText: labelText,
       valueText: selectedTime == null
-          ? S.of(context).select_time
+          ? S.of(context)?.select_time ?? 'Select time'
           : selectedTime.format(context),
       valueStyle: valueStyle,
       onPressed: () => _selectDate(context),

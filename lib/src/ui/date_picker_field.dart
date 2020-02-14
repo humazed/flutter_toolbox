@@ -38,7 +38,7 @@ class DatePickerField extends StatelessWidget {
     return _InputDropdown(
       labelText: labelText,
       valueText: selectedDate == null
-          ? S.of(context).select_date
+          ? S.of(context)?.select_date ?? 'Select date'
           : DateFormat.yMMMd().format(selectedDate),
       valueStyle: valueStyle,
       onPressed: () => _selectDate(context),

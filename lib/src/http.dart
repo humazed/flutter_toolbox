@@ -32,7 +32,8 @@ Future safeRequest<T>(
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
         if (error == 'Unauthorized access' || error == 'Unauthorized')
-          errorToast(S.of(context).the_email_address_or_password_is_wrong);
+          errorToast(S.of(context)?.the_email_address_or_password_is_wrong ??
+              'The email address or password is wrong');
         else
           errorToast(error);
       }
@@ -40,7 +41,8 @@ Future safeRequest<T>(
     }
   } on SocketException catch (e) {
     d2('SocketException-> $e');
-    errorToast(S.of(context).please_check_your_connection);
+    errorToast(S.of(context)?.please_check_your_connection ??
+        'Please check your connection');
   } on ErrorResponse catch (e) {
     d2('ErrorResponse-> $e');
     if (showServerErrorMessage) errorToast(e.error);
@@ -49,6 +51,6 @@ Future safeRequest<T>(
   } catch (e) {
     d2('UnknownError-> $e');
     onUnknownError?.call(e);
-    errorToast(S.of(context).server_error);
+    errorToast(S.of(context)?.server_error ?? 'Server error');
   }
 }

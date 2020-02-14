@@ -11,5 +11,6 @@ class ToolboxConfig {
   final NoItemsFoundBuilder noItemsFoundBuilder;
   final Widget noItemsFoundWidget;
 
-  static ToolboxConfig of(BuildContext context) => Provider.of<ToolboxConfig>(context);
+  static ToolboxConfig of(BuildContext context) =>
+      Provider.of<ToolboxConfig>(context);
 }

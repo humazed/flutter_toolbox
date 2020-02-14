@@ -98,7 +98,7 @@ class HomePageState extends State<HomePage> {
         body: Builder(builder: (context) {
           return Column(
             children: <Widget>[
-              Text(toolbox.S.of(context).please_check_your_connection),
+              Text(toolbox.S.of(context)?.please_check_your_connection ?? 'Please check your connection'),
               NetImage(
                 'https://via.placeholder.com/300',
                 fullScreen: true,

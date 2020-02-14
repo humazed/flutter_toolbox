@@ -127,13 +127,15 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
                 d2('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
-                    S.of(context).please_check_your_connection,
+                    S.of(context)?.please_check_your_connection ??
+                        'Please check your connection',
                     overflow: TextOverflow.fade,
                   ),
                 );
               } else {
                 d2('Unknow error: $error');
-                return Center(child: Text(S.current.server_error));
+                return Center(
+                    child: Text(S.of(context)?.server_error ?? 'Server error'));
               }
             }
 

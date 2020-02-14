@@ -1,3 +1,7 @@
+##  4.4.12
+
+* Handle the case when the localization is not available.
+
 ##  4.4.11
 
 * Added ink_well_stacked.
