@@ -162,11 +162,15 @@ class NetImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _errorWidget = errorWidget ?? (_, __, ___) => Icon(Icons.image);
+
+    if (imageUrl?.isNotEmpty != true) return _errorWidget(context, '', null);
+
     final cachedNetworkImage = CachedNetworkImage(
+      imageUrl: imageUrl,
       placeholder:
           placeholder ?? (_, __) => Center(child: CircularProgressIndicator()),
-      errorWidget: errorWidget ?? (_, __, ___) => Icon(Icons.image),
-      imageUrl: imageUrl,
+      errorWidget: _errorWidget,
       imageBuilder: imageBuilder,
       fadeOutDuration: fadeOutDuration,
       fadeOutCurve: fadeOutCurve,

@@ -1,3 +1,7 @@
+##  4.4.15
+
+* Handled wrong url in NetImage.
+
 ##  4.4.14
 
 * Added size to NetImage.
