@@ -29,7 +29,8 @@ class NetImage extends StatelessWidget {
     this.colorBlendMode,
     this.fullScreen = false,
     this.hero = false,
-    this.borderRadius, // defaults to 0
+    this.borderRadius,
+    this.onTap,
   });
 
   /// Option to use cachemanager with other settings
@@ -156,6 +157,9 @@ class NetImage extends StatelessWidget {
   /// defaults to 0
   final BorderRadius borderRadius;
 
+  /// Called when the user taps this part of the image.
+  final GestureTapCallback onTap;
+
   @override
   Widget build(BuildContext context) {
     final cachedNetworkImage = CachedNetworkImage(
@@ -184,23 +188,33 @@ class NetImage extends StatelessWidget {
 
     return ClipRRect(
       borderRadius: borderRadius ?? BorderRadius.circular(0),
-      child: Stack(
-        children: <Widget>[
-          fullScreen && hero
-              ? Hero(
-                  tag: imageUrl,
-                  child: cachedNetworkImage,
-                )
-              : cachedNetworkImage,
-          Positioned.fill(
-            child: Material(
-              type: MaterialType.transparency,
-              child: InkWell(
-                onTap: fullScreen ? () => _openFullScreen(context) : null,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Stack(
+          children: <Widget>[
+            fullScreen && hero
+                ? Hero(
+                    tag: imageUrl,
+                    child: cachedNetworkImage,
+                  )
+                : cachedNetworkImage,
+            Positioned.fill(
+              child: Material(
+                type: MaterialType.transparency,
+                child: InkWell(
+                  onTap: () {
+                    if (onTap != null) {
+                      return onTap;
+                    } else {
+                      return fullScreen ? () => _openFullScreen(context) : null;
+                    }
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

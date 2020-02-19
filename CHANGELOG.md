@@ -1,3 +1,9 @@
+##  4.4.13
+
+* Added `onTap` to NetImage.
+* Added size to NetImage.
+* updated deps.
+
 ##  4.4.12
 
 * Handle the case when the localization is not available.
