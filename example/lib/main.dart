@@ -98,7 +98,8 @@ class HomePageState extends State<HomePage> {
         body: Builder(builder: (context) {
           return Column(
             children: <Widget>[
-              Text(toolbox.S.of(context)?.please_check_your_connection ?? 'Please check your connection'),
+              Text(toolbox.S.of(context)?.please_check_your_connection ??
+                  'Please check your connection'),
               NetImage(
                 'https://via.placeholder.com/300',
                 fullScreen: true,
@@ -106,6 +107,10 @@ class HomePageState extends State<HomePage> {
               NetImage(
                 'https://via.placeholder.com/50',
                 fullScreen: true,
+              ),
+              NetImage(
+                'https://via.placeholder.com/50',
+                borderRadius: BorderRadius.circular(8),
               ),
               Row(
                 children: <Widget>[

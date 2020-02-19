@@ -207,13 +207,9 @@ class NetImage extends StatelessWidget {
               child: Material(
                 type: MaterialType.transparency,
                 child: InkWell(
-                  onTap: () {
-                    if (onTap != null) {
-                      return onTap;
-                    } else {
-                      return fullScreen ? () => _openFullScreen(context) : null;
-                    }
-                  },
+                  onTap: onTap != null
+                      ? onTap
+                      : fullScreen ? () => _openFullScreen(context) : null,
                 ),
               ),
             ),
