@@ -186,11 +186,11 @@ class NetImage extends StatelessWidget {
       key: key,
     );
 
-    return ClipRRect(
-      borderRadius: borderRadius ?? BorderRadius.circular(0),
-      child: SizedBox(
-        width: width,
-        height: height,
+    return SizedBox(
+      width: width,
+      height: height,
+      child: ClipRRect(
+        borderRadius: borderRadius ?? BorderRadius.circular(0),
         child: Stack(
           children: <Widget>[
             fullScreen && hero

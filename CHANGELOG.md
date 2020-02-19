@@ -1,3 +1,7 @@
+##  4.4.14
+
+* Added size to NetImage.
+
 ##  4.4.13
 
 * Added `onTap` to NetImage.
