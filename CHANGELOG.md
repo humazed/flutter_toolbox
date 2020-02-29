@@ -1,3 +1,7 @@
+##  4.4.18
+
+* fix bug in `LoadingBuilder` and `FutureLoadingBuilder`.
+
 ##  4.4.17
 
 * Added `loadingBuilder` and `loadingWidget` to `LoadingBuilder` and `FutureLoadingBuilder`.
