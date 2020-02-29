@@ -8,14 +8,17 @@ import 'package:flutter_toolbox/src/model/error/error_response.dart';
 import '../../flutter_toolbox.dart';
 
 typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
+typedef LoadingWidgetBuilder<T> = Widget Function(BuildContext context);
 
 class LoadingBuilder<T> extends StatefulWidget {
   const LoadingBuilder({
     Key key,
     @required this.future,
-    this.initialData,
     @required this.builder,
+    this.initialData,
     this.mutable = false,
+    this.loadingBuilder,
+    this.loadingWidget,
   })  : assert(builder != null),
         super(key: key);
 
@@ -42,6 +45,12 @@ class LoadingBuilder<T> extends StatefulWidget {
   /// set to true if the future will change.
   final bool mutable;
 
+  /// set only if loadingWidget if null
+  final LoadingWidgetBuilder loadingBuilder;
+
+  /// set only if loadingBuilder if null
+  final Widget loadingWidget;
+
   @override
   _LoadingBuilderState<T> createState() => _LoadingBuilderState<T>();
 }
@@ -50,11 +59,15 @@ class _LoadingBuilderState<T> extends State<LoadingBuilder<T>> {
   @override
   Widget build(BuildContext context) {
     return FutureLoadingBuilder<Response<T>>(
-        future: widget.future, //        initialData: widget.initialData,
-        mutable: widget.mutable,
-        builder: (context, response) {
-          return widget.builder(context, response.body);
-        });
+      future: widget.future,
+      //        initialData: widget.initialData,
+      mutable: widget.mutable,
+      builder: (context, response) {
+        return widget.builder(context, response.body);
+      },
+      loadingBuilder: widget.loadingBuilder,
+      loadingWidget: widget.loadingWidget,
+    );
   }
 }
 
@@ -62,10 +75,15 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   const FutureLoadingBuilder({
     Key key,
     @required this.future,
-    this.initialData,
     @required this.builder,
+    this.loadingBuilder,
+    this.loadingWidget,
+    this.initialData,
     this.mutable = false,
   })  : assert(builder != null),
+        assert((loadingBuilder == null && loadingWidget == null) ||
+            (loadingBuilder != null && loadingWidget == null) ||
+            loadingBuilder == null && loadingWidget != null),
         super(key: key);
 
   /// The asynchronous computation to which this builder is currently connected,
@@ -91,9 +109,20 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   /// set to false if the future will change.
   final bool mutable;
 
+  /// set only if loadingWidget if null
+  final LoadingWidgetBuilder loadingBuilder;
+
+  /// set only if loadingBuilder if null
+  final Widget loadingWidget;
+
   @override
   _FutureLoadingBuilderState<T> createState() =>
       _FutureLoadingBuilderState<T>();
+
+  static bool atMostOneIsSet(List<Object> list) {
+    int trueSum = list.where((item) => item != null).length;
+    return trueSum <= 1;
+  }
 }
 
 class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
@@ -115,7 +144,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
           case ConnectionState.none:
           case ConnectionState.active:
           case ConnectionState.waiting:
-            return Center(child: CircularProgressIndicator());
+            return buildLoading();
 
           case ConnectionState.done:
             if (snapshot.hasError) {
@@ -144,5 +173,11 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
         return widget.builder(context, snapshot.data);
       },
     );
+  }
+
+  Center buildLoading() {
+    if (widget.loadingBuilder != null) return widget.loadingBuilder(context);
+    if (widget.loadingWidget != null) return widget.loadingWidget;
+    return Center(child: CircularProgressIndicator());
   }
 }
