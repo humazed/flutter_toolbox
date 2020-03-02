@@ -1,3 +1,7 @@
+##  4.5.0
+
+* Added StringExtension;
+
 ##  4.4.18
 
 * fix bug in `LoadingBuilder` and `FutureLoadingBuilder`.
