@@ -10,5 +10,6 @@
   "search": "Search...",
   "could_not_launch_google_maps": "Could not launch google maps",
   "couldnt_open_this_url": "Couldn't open this url",
-  "couldnt_open_the_mail_app": "Couldn't open the mail app"
+  "couldnt_open_the_mail_app": "Couldn't open the mail app",
+  "couldnt_open_the_phone_app": "Couldn't open the phone app"
 }

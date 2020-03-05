@@ -36,3 +36,13 @@ Future<void> sendMail({
         S.current?.couldnt_open_the_mail_app ?? "Couldn't open the mail app");
   }
 }
+
+Future<void> call(String phone) async {
+  var url = 'tel:$phone';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    errorToast(
+        S.current?.couldnt_open_the_phone_app ?? "Couldn't open the phone app");
+  }
+}

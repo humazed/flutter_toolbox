@@ -10,5 +10,6 @@
   "search": "إبحث...",
   "could_not_launch_google_maps": "لا يمكن فتح خرائط جوجل",
   "couldnt_open_this_url": "لا يمكن فتح هذا الرابط",
-  "couldnt_open_the_mail_app": "لا يمكن فتح تطبيق البريد الإلكتروني"
+  "couldnt_open_the_mail_app": "لا يمكن فتح تطبيق البريد الإلكتروني",
+  "couldnt_open_the_phone_app": "لا يمكن فتح تطبيق الهاتف"
 }

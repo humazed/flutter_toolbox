@@ -23,6 +23,7 @@ class S implements WidgetsLocalizations {
 
   String get could_not_launch_google_maps => "Could not launch google maps";
   String get couldnt_open_the_mail_app => "Couldn't open the mail app";
+  String get couldnt_open_the_phone_app => "Couldn't open the phone app";
   String get couldnt_open_this_url => "Couldn't open this url";
   String get please_check_your_connection => "Please check your connection";
   String get please_check_your_internet_connection => "Please check your internet connection";
@@ -49,6 +50,8 @@ class $ar extends S {
   String get select_date => "إختر التاريخ";
   @override
   String get couldnt_open_the_mail_app => "لا يمكن فتح تطبيق البريد الإلكتروني";
+  @override
+  String get couldnt_open_the_phone_app => "لا يمكن فتح تطبيق الهاتف";
   @override
   String get search => "إبحث...";
   @override
@@ -81,6 +84,8 @@ class $ru extends S {
   String get select_date => "Выберите дату";
   @override
   String get couldnt_open_the_mail_app => "Couldn't open the mail app";
+  @override
+  String get couldnt_open_the_phone_app => "Couldn't open the phone app";
   @override
   String get search => "Поиск...";
   @override

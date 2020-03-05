@@ -1,3 +1,7 @@
+##  4.5.1
+
+* Added `call` to url_launcher;
+
 ##  4.5.0
 
 * Added StringExtension;
