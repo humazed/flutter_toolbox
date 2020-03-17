@@ -1,3 +1,7 @@
+##  4.5.2
+
+* updated deps.
+
 ##  4.5.1
 
 * Added `call` to url_launcher;
