@@ -23,3 +23,4 @@ export 'package:flutter_toolbox/src/url_launchers.dart';
 export 'package:flutter_toolbox/src/config/toolbox_app.dart';
 export 'package:flutter_toolbox/src/config/toolbox_config.dart';
 export 'package:flutter_toolbox/src/extentions/string_extentions.dart';
+export 'package:flutter_toolbox/src/extentions/future_extentions.dart';
