@@ -49,14 +49,6 @@ class $ar extends S {
   @override
   String get select_date => "إختر التاريخ";
   @override
-  String get couldnt_open_the_mail_app => "لا يمكن فتح تطبيق البريد الإلكتروني";
-  @override
-  String get couldnt_open_the_phone_app => "لا يمكن فتح تطبيق الهاتف";
-  @override
-  String get search => "إبحث...";
-  @override
-  String get required_field => "حقل مطلوب";
-  @override
   String get the_email_address_or_password_is_wrong => "البريد الإلكتروني او كلمة المرور غير صحيحة";
   @override
   String get select_time => "إختر الوقت";
@@ -64,6 +56,14 @@ class $ar extends S {
   String get server_error => "خطأ من الخادم حاول مرة اخري";
   @override
   String get this_file_is_not_an_image => "هذا الملف ليس صورة";
+  @override
+  String get couldnt_open_the_phone_app => "لا يمكن فتح تطبيق الهاتف";
+  @override
+  String get couldnt_open_the_mail_app => "لا يمكن فتح تطبيق البريد الإلكتروني";
+  @override
+  String get search => "إبحث...";
+  @override
+  String get required_field => "حقل مطلوب";
   @override
   String get please_check_your_connection => "تأكد من وجود انترنت";
   @override
@@ -83,14 +83,6 @@ class $ru extends S {
   @override
   String get select_date => "Выберите дату";
   @override
-  String get couldnt_open_the_mail_app => "Couldn't open the mail app";
-  @override
-  String get couldnt_open_the_phone_app => "Couldn't open the phone app";
-  @override
-  String get search => "Поиск...";
-  @override
-  String get required_field => "Обязательное поле";
-  @override
   String get the_email_address_or_password_is_wrong => "Неверный адрес электронной почты или пароль";
   @override
   String get select_time => "Выберите время";
@@ -98,6 +90,14 @@ class $ru extends S {
   String get server_error => "Ошибка сервера";
   @override
   String get this_file_is_not_an_image => "Этот файл не является изображением";
+  @override
+  String get couldnt_open_the_phone_app => "Couldn't open the phone app";
+  @override
+  String get couldnt_open_the_mail_app => "Couldn't open the mail app";
+  @override
+  String get search => "Поиск...";
+  @override
+  String get required_field => "Обязательное поле";
   @override
   String get please_check_your_connection => "Пожалуйста, проверьте ваше соединение";
   @override
