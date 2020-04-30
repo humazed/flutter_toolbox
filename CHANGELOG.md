@@ -1,3 +1,8 @@
+##  4.7.0
+
+* json_annotation: ^3.0.1
+* build_runner: ^1.9.0
+
 ##  4.6.2
 
 * revert 2.6.1.
