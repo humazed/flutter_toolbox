@@ -1,3 +1,7 @@
+##  4.8.2
+
+* Added childAspectRatio, crossAxisSpacing and mainAxisSpacing toPaginatedGridView.
+
 ##  4.8.1
 
 * Added PaginatedGridView to toolbox.dart.

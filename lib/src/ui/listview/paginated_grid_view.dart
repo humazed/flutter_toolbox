@@ -11,6 +11,12 @@ class PaginatedGridView<T> extends StatefulWidget {
   /// The number of children in the cross axis.
   final int crossAxisCount;
 
+  final double childAspectRatio;
+
+  final double crossAxisSpacing;
+
+  final double mainAxisSpacing;
+
   final int pageSize;
   final EdgeInsetsGeometry padding;
   final NoItemsFoundBuilder noItemsFoundBuilder;
@@ -34,6 +40,9 @@ class PaginatedGridView<T> extends StatefulWidget {
     @required this.itemBuilder,
     @required this.pageFuture,
     @required this.crossAxisCount,
+    this.childAspectRatio = 1.0,
+    this.crossAxisSpacing = 0.0,
+    this.mainAxisSpacing = 0.0,
     this.pageSize = 10,
     this.padding,
     this.noItemsFoundBuilder,
@@ -83,6 +92,9 @@ class _PaginatedGridViewState<T> extends State<PaginatedGridView<T>> {
 
     return PagewiseGridView<T>.count(
       crossAxisCount: widget.crossAxisCount,
+      childAspectRatio: widget.childAspectRatio,
+      crossAxisSpacing: widget.crossAxisSpacing,
+      mainAxisSpacing: widget.mainAxisSpacing,
       itemBuilder: widget.itemBuilder,
       padding: widget.padding,
       noItemsFoundBuilder: noItemsFoundBuilder(
