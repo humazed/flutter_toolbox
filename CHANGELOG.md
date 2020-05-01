@@ -1,3 +1,7 @@
+##  4.8.3
+
+* Added paginated_grid_view_count and paginated_grid_view_extent.
+
 ##  4.8.2
 
 * Added childAspectRatio, crossAxisSpacing and mainAxisSpacing toPaginatedGridView.

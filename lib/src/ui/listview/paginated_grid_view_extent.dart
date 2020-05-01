@@ -4,12 +4,12 @@ import 'package:flutter/rendering.dart';
 import 'common.dart';
 import 'pagewise/flutter_pagewise.dart';
 
-class PaginatedGridView<T> extends StatefulWidget {
+class PaginatedGridViewExtent<T> extends StatefulWidget {
   final ItemBuilder<T> itemBuilder;
   final PageFuture<T> pageFuture;
 
   /// The number of children in the cross axis.
-  final int crossAxisCount;
+  final double maxCrossAxisExtent;
 
   final double childAspectRatio;
 
@@ -35,11 +35,11 @@ class PaginatedGridView<T> extends StatefulWidget {
 
   final Axis scrollDirection;
 
-  const PaginatedGridView({
+  const PaginatedGridViewExtent({
     Key key,
     @required this.itemBuilder,
     @required this.pageFuture,
-    @required this.crossAxisCount,
+    @required this.maxCrossAxisExtent,
     this.childAspectRatio = 1.0,
     this.crossAxisSpacing = 0.0,
     this.mainAxisSpacing = 0.0,
@@ -54,10 +54,10 @@ class PaginatedGridView<T> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PaginatedGridViewState<T> createState() => _PaginatedGridViewState<T>();
+  _PaginatedGridViewExtentState<T> createState() => _PaginatedGridViewExtentState<T>();
 }
 
-class _PaginatedGridViewState<T> extends State<PaginatedGridView<T>> {
+class _PaginatedGridViewExtentState<T> extends State<PaginatedGridViewExtent<T>> {
   bool _reload = false;
 
   @override
@@ -90,8 +90,8 @@ class _PaginatedGridViewState<T> extends State<PaginatedGridView<T>> {
           pageFuture: pageFuture,
         );
 
-    return PagewiseGridView<T>.count(
-      crossAxisCount: widget.crossAxisCount,
+    return PagewiseGridView<T>.extent(
+      maxCrossAxisExtent: widget.maxCrossAxisExtent,
       childAspectRatio: widget.childAspectRatio,
       crossAxisSpacing: widget.crossAxisSpacing,
       mainAxisSpacing: widget.mainAxisSpacing,
