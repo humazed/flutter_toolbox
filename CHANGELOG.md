@@ -1,6 +1,11 @@
+##  4.8.0
+
+* Added PaginatedGridView.
+* Added scrollDirection to PaginatedGridView and PaginatedListView.
+
 ##  4.7.1
 
-* change serverFormatter to en
+* change serverFormatter to en.
 
 ##  4.7.0
 

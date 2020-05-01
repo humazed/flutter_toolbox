@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'common.dart';
 import 'pagewise/flutter_pagewise.dart';
 
-class PaginatedListView<T> extends StatefulWidget {
+class PaginatedGridView<T> extends StatefulWidget {
   final ItemBuilder<T> itemBuilder;
   final PageFuture<T> pageFuture;
+
+  /// The number of children in the cross axis.
+  final int crossAxisCount;
+
   final int pageSize;
   final EdgeInsetsGeometry padding;
   final NoItemsFoundBuilder noItemsFoundBuilder;
@@ -24,10 +29,11 @@ class PaginatedListView<T> extends StatefulWidget {
 
   final Axis scrollDirection;
 
-  const PaginatedListView({
+  const PaginatedGridView({
     Key key,
     @required this.itemBuilder,
     @required this.pageFuture,
+    @required this.crossAxisCount,
     this.pageSize = 10,
     this.padding,
     this.noItemsFoundBuilder,
@@ -39,10 +45,10 @@ class PaginatedListView<T> extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PaginatedListViewState<T> createState() => _PaginatedListViewState<T>();
+  _PaginatedGridViewState<T> createState() => _PaginatedGridViewState<T>();
 }
 
-class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
+class _PaginatedGridViewState<T> extends State<PaginatedGridView<T>> {
   bool _reload = false;
 
   @override
@@ -53,12 +59,12 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
               await widget.pageFuture(1);
               setState(() => _reload = true);
             },
-            child: buildListView(),
+            child: buildGridView(),
           )
-        : buildListView();
+        : buildGridView();
   }
 
-  Widget buildListView() {
+  Widget buildGridView() {
     final mutable = widget.mutable ||
 //        widget.showRefreshIndicator || removed as there it serve no purpose leave here just in case there is a side effect
         _reload ||
@@ -75,7 +81,8 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
           pageFuture: pageFuture,
         );
 
-    return PagewiseListView<T>(
+    return PagewiseGridView<T>.count(
+      crossAxisCount: widget.crossAxisCount,
       itemBuilder: widget.itemBuilder,
       padding: widget.padding,
       noItemsFoundBuilder: noItemsFoundBuilder(
