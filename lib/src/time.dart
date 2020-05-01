@@ -10,7 +10,7 @@ String serverTimeFormat(TimeOfDay time) {
   return '$hour:$minute';
 }
 
-final serverFormatter = DateFormat('yyyy-MM-dd');
+final serverFormatter = DateFormat('yyyy-MM-dd', 'en');
 
 String serverDateFormat(DateTime date) {
   if (date == null) return null;
