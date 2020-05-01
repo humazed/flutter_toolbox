@@ -15,6 +15,7 @@ export 'package:flutter_toolbox/src/ui/wrap_dropdown_button.dart';
 export 'package:flutter_toolbox/src/ui/net_image.dart';
 export 'package:flutter_toolbox/src/ui/listview/paginated_list_view.dart';
 export 'package:flutter_toolbox/src/ui/listview/paginated_sliver_list.dart';
+export 'package:flutter_toolbox/src/ui/listview/paginated_grid_view.dart';
 export 'package:flutter_toolbox/src/ui/tab_rounded_line_indicator.dart';
 export 'package:flutter_toolbox/src/ui/connection_status_bar.dart';
 export 'package:flutter_toolbox/src/ui/search_item_picke.dart';

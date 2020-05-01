@@ -1,3 +1,7 @@
+##  4.8.1
+
+* Added PaginatedGridView to toolbox.dart.
+
 ##  4.8.0
 
 * Added PaginatedGridView.
