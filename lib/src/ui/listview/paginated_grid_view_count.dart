@@ -34,6 +34,7 @@ class PaginatedGridViewCount<T> extends StatefulWidget {
   final bool showRefreshIndicator;
 
   final Axis scrollDirection;
+  final bool shrinkWrap;
 
   const PaginatedGridViewCount({
     Key key,
@@ -51,10 +52,12 @@ class PaginatedGridViewCount<T> extends StatefulWidget {
     this.mutable = false,
     this.showRefreshIndicator = false,
     this.scrollDirection = Axis.vertical,
+    this.shrinkWrap = false,
   }) : super(key: key);
 
   @override
-  _PaginatedGridViewCountState<T> createState() => _PaginatedGridViewCountState<T>();
+  _PaginatedGridViewCountState<T> createState() =>
+      _PaginatedGridViewCountState<T>();
 }
 
 class _PaginatedGridViewCountState<T> extends State<PaginatedGridViewCount<T>> {
@@ -106,6 +109,7 @@ class _PaginatedGridViewCountState<T> extends State<PaginatedGridViewCount<T>> {
       pageSize: mutable ? null : widget.pageSize,
       pageFuture: mutable ? null : pageFuture,
       scrollDirection: widget.scrollDirection,
+      shrinkWrap: widget.shrinkWrap,
     );
   }
 }

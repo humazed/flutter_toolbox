@@ -1,3 +1,7 @@
+##  4.8.4
+
+* Added shrinkWrap to paginated list and grid.
+
 ##  4.8.3
 
 * Added paginated_grid_view_count and paginated_grid_view_extent.

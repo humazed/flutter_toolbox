@@ -23,6 +23,7 @@ class PaginatedListView<T> extends StatefulWidget {
   final bool showRefreshIndicator;
 
   final Axis scrollDirection;
+  final bool shrinkWrap;
 
   const PaginatedListView({
     Key key,
@@ -36,6 +37,7 @@ class PaginatedListView<T> extends StatefulWidget {
     this.mutable = false,
     this.showRefreshIndicator = false,
     this.scrollDirection = Axis.vertical,
+    this.shrinkWrap = false,
   }) : super(key: key);
 
   @override
@@ -87,6 +89,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
       pageSize: mutable ? null : widget.pageSize,
       pageFuture: mutable ? null : pageFuture,
       scrollDirection: widget.scrollDirection,
+      shrinkWrap: widget.shrinkWrap,
     );
   }
 }
