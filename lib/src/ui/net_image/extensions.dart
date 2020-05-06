@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 extension ImageUtil on String {
   String getSizedFormattedUrl(BuildContext context, {int width, int height}) {
-    final devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    var devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+    final pixelRatio = devicePixelRatio > 2 ? 2 : devicePixelRatio;
 
-    if (width != null) width = (width * devicePixelRatio).toInt();
-    if (height != null) height = (height * devicePixelRatio).toInt();
+    if (width != null) width = (width * pixelRatio).toInt();
+    if (height != null) height = (height * pixelRatio).toInt();
 
     var uri = Uri.tryParse(this);
     if (uri != null) {

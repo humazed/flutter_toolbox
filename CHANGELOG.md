@@ -1,3 +1,7 @@
+##  5.0.1
+
+* make the pixelRatio smaller for bigger screens.
+
 ##  5.0.0
 
 * **Breaking** pass the `ToolboxConfig` directly.
