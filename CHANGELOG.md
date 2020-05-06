@@ -1,3 +1,8 @@
+##  5.0.0
+
+* **Breaking** pass the `ToolboxConfig` directly.
+* added useWeservResizer.
+
 ##  4.8.4
 
 * Added shrinkWrap to paginated list and grid.

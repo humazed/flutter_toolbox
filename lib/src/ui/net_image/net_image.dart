@@ -5,7 +5,11 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:photo_view/photo_view.dart';
 
-class NetImage extends StatelessWidget {
+import 'extensions.dart';
+
+const imageResizerUl = 'https://images.weserv.nl/?url=';
+
+class NetImage extends StatefulWidget {
   NetImage(
     this.imageUrl, {
     Key key,
@@ -161,55 +165,75 @@ class NetImage extends StatelessWidget {
   final GestureTapCallback onTap;
 
   @override
+  _NetImageState createState() => _NetImageState();
+}
+
+class _NetImageState extends State<NetImage> {
+  Future _openFullScreen(BuildContext context) {
+    return push(context, FullScreenImage(widget.imageUrl));
+  }
+
+  String _getFormattedUrl(String originalImageUrl, BoxConstraints constraints) {
+    if (originalImageUrl?.isNotEmpty != true) return '';
+
+    final imageUrl = '$imageResizerUl$originalImageUrl';
+
+    int width;
+    int height;
+    if (constraints.maxWidth != double.infinity) {
+      width = constraints.maxWidth.toInt();
+    }
+    if (constraints.maxHeight != double.infinity) {
+      height = constraints.maxHeight.toInt();
+    }
+    return imageUrl?.getSizedFormattedUrl(context,
+            width: width, height: height) ??
+        "";
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final _errorWidget = errorWidget ?? (_, __, ___) => Icon(Icons.image);
+    final useWeservResizer = ToolboxConfig.of(context).useWeservResizer;
 
-    if (imageUrl?.isNotEmpty != true) return _errorWidget(context, '', null);
+    if (useWeservResizer != true) return _image(widget.imageUrl);
 
-    final cachedNetworkImage = CachedNetworkImage(
-      imageUrl: imageUrl,
-      placeholder:
-          placeholder ?? (_, __) => Center(child: CircularProgressIndicator()),
-      errorWidget: _errorWidget,
-      imageBuilder: imageBuilder,
-      fadeOutDuration: fadeOutDuration,
-      fadeOutCurve: fadeOutCurve,
-      fadeInDuration: fadeInDuration,
-      fadeInCurve: fadeInCurve,
-      width: width,
-      height: height,
-      fit: fit,
-      alignment: alignment,
-      repeat: repeat,
-      matchTextDirection: matchTextDirection,
-      httpHeaders: httpHeaders,
-      cacheManager: cacheManager,
-      useOldImageOnUrlChange: useOldImageOnUrlChange,
-      color: color,
-      colorBlendMode: colorBlendMode,
-      key: key,
+    return LayoutBuilder(
+      builder: (ctx, constraints) {
+        if (widget.width != null || widget.height != null) {
+          constraints = BoxConstraints(
+              maxWidth: widget.width ?? double.minPositive,
+              maxHeight: widget.height ?? double.minPositive);
+        }
+
+        final url = _getFormattedUrl(widget.imageUrl, constraints);
+        return _image(url);
+      },
     );
+  }
 
+  SizedBox _image(String url) {
     return SizedBox(
-      width: width,
-      height: height,
+      width: widget.width,
+      height: widget.height,
       child: ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.circular(0),
+        borderRadius: widget.borderRadius ?? BorderRadius.circular(0),
         child: Stack(
           children: <Widget>[
-            fullScreen && hero
+            widget.fullScreen && widget.hero
                 ? Hero(
-                    tag: imageUrl,
-                    child: cachedNetworkImage,
+                    tag: widget.imageUrl,
+                    child: _cachedNetworkImage(),
                   )
-                : cachedNetworkImage,
+                : _cachedNetworkImage(),
             Positioned.fill(
               child: Material(
                 type: MaterialType.transparency,
                 child: InkWell(
-                  onTap: onTap != null
-                      ? onTap
-                      : fullScreen ? () => _openFullScreen(context) : null,
+                  onTap: widget.onTap != null
+                      ? widget.onTap
+                      : widget.fullScreen
+                          ? () => _openFullScreen(context)
+                          : null,
                 ),
               ),
             ),
@@ -219,8 +243,36 @@ class NetImage extends StatelessWidget {
     );
   }
 
-  Future _openFullScreen(BuildContext context) {
-    return push(context, FullScreenImage(imageUrl));
+  CachedNetworkImage _cachedNetworkImage() {
+    final _errorWidget =
+        widget.errorWidget ?? (_, __, ___) => Icon(Icons.image);
+
+    if (widget.imageUrl?.isNotEmpty != true)
+      return _errorWidget(context, '', null);
+
+    return CachedNetworkImage(
+      imageUrl: widget.imageUrl,
+      placeholder: widget.placeholder ??
+          (_, __) => Center(child: CircularProgressIndicator()),
+      errorWidget: _errorWidget,
+      imageBuilder: widget.imageBuilder,
+      fadeOutDuration: widget.fadeOutDuration,
+      fadeOutCurve: widget.fadeOutCurve,
+      fadeInDuration: widget.fadeInDuration,
+      fadeInCurve: widget.fadeInCurve,
+      width: widget.width,
+      height: widget.height,
+      fit: widget.fit,
+      alignment: widget.alignment,
+      repeat: widget.repeat,
+      matchTextDirection: widget.matchTextDirection,
+      httpHeaders: widget.httpHeaders,
+      cacheManager: widget.cacheManager,
+      useOldImageOnUrlChange: widget.useOldImageOnUrlChange,
+      color: widget.color,
+      colorBlendMode: widget.colorBlendMode,
+      key: widget.key,
+    );
   }
 }
 

@@ -6,10 +6,12 @@ class ToolboxConfig {
   ToolboxConfig({
     this.noItemsFoundBuilder,
     this.noItemsFoundWidget,
+    this.useWeservResizer = false,
   });
 
   final NoItemsFoundBuilder noItemsFoundBuilder;
   final Widget noItemsFoundWidget;
+  final bool useWeservResizer;
 
   static ToolboxConfig of(BuildContext context) =>
       Provider.of<ToolboxConfig>(context);

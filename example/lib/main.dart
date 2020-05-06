@@ -5,19 +5,18 @@ import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:flutter_toolbox/generated/i18n.dart' as toolbox;
 
 import 'paginated_list_view_example.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 void main() => runApp(MyApp());
 
-class MyCM extends BaseCacheManager{
+class MyCM extends BaseCacheManager {
   MyCM(String cacheKey) : super(cacheKey);
 
   @override
   Future<String> getFilePath() {
     return null;
   }
-
 }
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -27,7 +26,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ToolboxApp(
-      noItemsFoundWidget: Icon(Icons.subject),
+      toolboxConfig: ToolboxConfig(
+        noItemsFoundWidget: Icon(Icons.subject),
+      ),
       child: MaterialApp(
         localizationsDelegates: const [
           toolbox.S.delegate,

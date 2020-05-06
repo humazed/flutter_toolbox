@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_toolbox/src/config/toolbox_config.dart';
-import 'package:flutter_toolbox/src/ui/listview/pagewise/flutter_pagewise.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
@@ -12,15 +11,13 @@ class ToolboxApp extends StatefulWidget {
   const ToolboxApp({
     Key key,
     @required this.child,
-    this.noItemsFoundBuilder,
-    this.noItemsFoundWidget,
+    this.toolboxConfig,
   }) : super(key: key);
 
   /// Usually should be [MaterialApp] or [CupertinoApp].
   final Widget child;
 
-  final NoItemsFoundBuilder noItemsFoundBuilder;
-  final Widget noItemsFoundWidget;
+  final ToolboxConfig toolboxConfig;
 
   @override
   _ToolboxAppState createState() => _ToolboxAppState();
@@ -47,10 +44,7 @@ class _ToolboxAppState extends State<ToolboxApp> {
       position: ToastPosition.bottom,
       radius: 50,
       child: Provider.value(
-        value: ToolboxConfig(
-          noItemsFoundBuilder: widget.noItemsFoundBuilder,
-          noItemsFoundWidget: widget.noItemsFoundWidget,
-        ),
+        value: widget.toolboxConfig,
         child: widget.child,
       ),
     );
