@@ -10,7 +10,7 @@ import 'extensions.dart';
 const imageResizerUl = 'https://images.weserv.nl/?url=';
 
 class NetImage extends StatefulWidget {
-  NetImage(
+  const NetImage(
     this.imageUrl, {
     Key key,
     this.imageBuilder,
@@ -191,24 +191,29 @@ class _NetImageState extends State<NetImage> {
         "";
   }
 
+  var resizedImageUrl;
+
+  @override
+  void initState() {
+    super.initState();
+
+    resizedImageUrl = _getFormattedUrl(
+      widget.imageUrl,
+      BoxConstraints(
+        maxWidth: widget.width ?? double.minPositive,
+        maxHeight: widget.height ?? double.minPositive,
+      ),
+    );
+    print(resizedImageUrl);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final useWeservResizer = ToolboxConfig.of(context).useWeservResizer;
-
-    if (useWeservResizer != true) return _image(widget.imageUrl);
-
-    return LayoutBuilder(
-      builder: (ctx, constraints) {
-        if (widget.width != null || widget.height != null) {
-          constraints = BoxConstraints(
-              maxWidth: widget.width ?? double.minPositive,
-              maxHeight: widget.height ?? double.minPositive);
-        }
-
-        final url = _getFormattedUrl(widget.imageUrl, constraints);
-        return _image(url);
-      },
-    );
+    if (ToolboxConfig.of(context).useWeservResizer == true) {
+      return _image(resizedImageUrl);
+    } else {
+      return _image(widget.imageUrl);
+    }
   }
 
   SizedBox _image(String url) {

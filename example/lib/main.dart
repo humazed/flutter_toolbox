@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ToolboxApp(
       toolboxConfig: ToolboxConfig(
+        useWeservResizer: true,
         noItemsFoundWidget: Icon(Icons.subject),
       ),
       child: MaterialApp(
