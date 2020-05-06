@@ -191,29 +191,25 @@ class _NetImageState extends State<NetImage> {
         "";
   }
 
-  var resizedImageUrl;
-
-  @override
-  void initState() {
-    super.initState();
-
-    resizedImageUrl = _getFormattedUrl(
-      widget.imageUrl,
-      BoxConstraints(
-        maxWidth: widget.width ?? double.minPositive,
-        maxHeight: widget.height ?? double.minPositive,
-      ),
-    );
-    print(resizedImageUrl);
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (ToolboxConfig.of(context).useWeservResizer == true) {
-      return _image(resizedImageUrl);
-    } else {
+    if (ToolboxConfig.of(context).useWeservResizer != true)
       return _image(widget.imageUrl);
-    }
+
+    return LayoutBuilder(
+      builder: (ctx, constraints) {
+        if (widget.width != null || widget.height != null) {
+          constraints = BoxConstraints(
+            maxWidth: widget.width ?? double.minPositive,
+            maxHeight: widget.height ?? double.minPositive,
+          );
+        }
+
+        final url = _getFormattedUrl(widget.imageUrl, constraints);
+        print(url);
+        return _image(url);
+      },
+    );
   }
 
   SizedBox _image(String url) {
@@ -227,9 +223,9 @@ class _NetImageState extends State<NetImage> {
             widget.fullScreen && widget.hero
                 ? Hero(
                     tag: widget.imageUrl,
-                    child: _cachedNetworkImage(),
+                    child: _cachedNetworkImage(url),
                   )
-                : _cachedNetworkImage(),
+                : _cachedNetworkImage(url),
             Positioned.fill(
               child: Material(
                 type: MaterialType.transparency,
@@ -248,15 +244,14 @@ class _NetImageState extends State<NetImage> {
     );
   }
 
-  CachedNetworkImage _cachedNetworkImage() {
+  CachedNetworkImage _cachedNetworkImage(String imageUrl) {
     final _errorWidget =
         widget.errorWidget ?? (_, __, ___) => Icon(Icons.image);
 
-    if (widget.imageUrl?.isNotEmpty != true)
-      return _errorWidget(context, '', null);
+    if (imageUrl?.isNotEmpty != true) return _errorWidget(context, '', null);
 
     return CachedNetworkImage(
-      imageUrl: widget.imageUrl,
+      imageUrl: imageUrl,
       placeholder: widget.placeholder ??
           (_, __) => Center(child: CircularProgressIndicator()),
       errorWidget: _errorWidget,

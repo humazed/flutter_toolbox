@@ -1,3 +1,7 @@
+##  5.0.3
+
+* Fix Network image resizing not working.
+
 ##  5.0.2
 
 * Fix Network image resizing not working.

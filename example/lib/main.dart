@@ -115,14 +115,17 @@ class HomePageState extends State<HomePage> {
                   'Please check your connection'),
               NetImage(
                 'https://via.placeholder.com/300',
+                width: 300,
                 fullScreen: true,
               ),
               NetImage(
                 'https://via.placeholder.com/50',
                 fullScreen: true,
+                width: 50,
               ),
               NetImage(
                 'https://via.placeholder.com/50',
+                width: 50,
                 borderRadius: BorderRadius.circular(8),
               ),
               Row(

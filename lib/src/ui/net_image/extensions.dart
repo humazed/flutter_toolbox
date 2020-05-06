@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
-import '../../../flutter_toolbox.dart';
+import 'package:flutter/material.dart';
 
 extension ImageUtil on String {
   String getSizedFormattedUrl(BuildContext context, {int width, int height}) {
     // this doesn't work in init state and using it inside the build method causes rebuilds.
     // so setting the ratio to 1 for now.
-//    var devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
-    final pixelRatio = 1;
-//    final pixelRatio = devicePixelRatio > 2 ? 2 : devicePixelRatio;
+    var devicePixelRatio = MediaQuery.of(context).devicePixelRatio;
+//    final pixelRatio = 1;
+    final pixelRatio = max(devicePixelRatio, 1.5);
 
     String widthPram = '';
     String heightPram = '';
