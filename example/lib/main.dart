@@ -128,6 +128,11 @@ class HomePageState extends State<HomePage> {
                 width: 50,
                 borderRadius: BorderRadius.circular(8),
               ),
+              NetImage(
+                null,
+                width: 50,
+                borderRadius: BorderRadius.circular(8),
+              ),
               Row(
                 children: <Widget>[
                   MaterialButton(

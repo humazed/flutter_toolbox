@@ -1,3 +1,7 @@
+##  5.0.4
+
+* Fix Network image throwing when there is an wrong image url.
+
 ##  5.0.3
 
 * Fix Network image resizing not working.

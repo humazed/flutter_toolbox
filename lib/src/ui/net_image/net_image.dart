@@ -212,7 +212,7 @@ class _NetImageState extends State<NetImage> {
     );
   }
 
-  SizedBox _image(String url) {
+  Widget _image(String url) {
     return SizedBox(
       width: widget.width,
       height: widget.height,
@@ -244,7 +244,7 @@ class _NetImageState extends State<NetImage> {
     );
   }
 
-  CachedNetworkImage _cachedNetworkImage(String imageUrl) {
+  Widget _cachedNetworkImage(String imageUrl) {
     final _errorWidget =
         widget.errorWidget ?? (_, __, ___) => Icon(Icons.image);
 
