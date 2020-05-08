@@ -1,3 +1,7 @@
+##  5.0.5
+
+* In safeRequest await on onSuccess and onError callbacks.
+
 ##  5.0.4
 
 * Fix Network image throwing when there is an wrong image url.

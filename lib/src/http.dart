@@ -27,7 +27,7 @@ Future safeRequest<T>(
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      onSuccess?.call(response.body);
+      await onSuccess?.call(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
@@ -37,7 +37,7 @@ Future safeRequest<T>(
         else
           errorToast(error);
       }
-      onError?.call(response.error);
+      await onError?.call(response.error);
     }
   } on SocketException catch (e) {
     d2('SocketException-> $e');
@@ -47,10 +47,10 @@ Future safeRequest<T>(
     d2('ErrorResponse-> $e');
     if (showServerErrorMessage) errorToast(e.error);
 
-    onError?.call(e);
+    await onError?.call(e);
   } catch (e) {
     d2('UnknownError-> $e');
-    onUnknownError?.call(e);
+    await onUnknownError?.call(e);
     errorToast(S.of(context)?.server_error ?? 'Server error');
   }
 }

@@ -176,7 +176,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "5.0.3"
+    version: "5.0.6"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
