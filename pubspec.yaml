@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 5.0.5
+version: 5.1.0
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -13,14 +13,14 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.16.0
+  intl: ^0.16.1
   intl_translation: ^0.17.9
-  async: ^2.4.0
+  async: ^2.4.1
 
   stack_trace: ^1.9.3
-  provider: ^4.0.5+1
+  provider: ^4.1.1
   oktoast: ^2.3.2
-  flushbar: ^1.10.0
+  flushbar: ^1.10.2
   shared_preferences: ^0.5.7+1
   image_picker: ^0.6.6+1
   cached_network_image: ^2.2.0+1

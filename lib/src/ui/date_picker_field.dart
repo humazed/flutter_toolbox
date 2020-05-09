@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/i18n.dart';
 import 'package:intl/intl.dart';
 
-import 'date_picker.dart';
-
 class DatePickerField extends StatelessWidget {
   const DatePickerField({
     Key key,
@@ -23,7 +21,7 @@ class DatePickerField extends StatelessWidget {
   final DateTime lastDate;
 
   Future<void> _selectDate(BuildContext context) async {
-    final DateTime picked = await showModDatePicker(
+    final DateTime picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
       firstDate: firstDate ?? DateTime(2015, 8),

@@ -5,7 +5,6 @@ export 'package:flutter_toolbox/src/model/error/error_response.dart';
 export 'package:flutter_toolbox/src/prefs.dart';
 export 'package:flutter_toolbox/src/time.dart';
 export 'package:flutter_toolbox/src/navigation.dart';
-export 'package:flutter_toolbox/src/ui/date_picker.dart';
 export 'package:flutter_toolbox/src/ui/date_picker_field.dart';
 export 'package:flutter_toolbox/src/ui/loading_builder.dart';
 export 'package:flutter_toolbox/src/ui/multi_select_chip.dart';

@@ -1,3 +1,8 @@
+##  5.1.0
+
+* Updated to work with flutter 1.7.0.
+* Removed my mod datePicker.
+
 ##  5.0.5
 
 * In safeRequest await on onSuccess and onError callbacks.
