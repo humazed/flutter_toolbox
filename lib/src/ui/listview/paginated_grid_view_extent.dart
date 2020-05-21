@@ -35,6 +35,7 @@ class PaginatedGridViewExtent<T> extends StatefulWidget {
 
   final Axis scrollDirection;
   final bool shrinkWrap;
+  final ScrollPhysics physics;
 
   const PaginatedGridViewExtent({
     Key key,
@@ -53,6 +54,7 @@ class PaginatedGridViewExtent<T> extends StatefulWidget {
     this.showRefreshIndicator = false,
     this.scrollDirection = Axis.vertical,
     this.shrinkWrap = false,
+    this.physics,
   }) : super(key: key);
 
   @override
@@ -111,6 +113,7 @@ class _PaginatedGridViewExtentState<T>
       pageFuture: mutable ? null : pageFuture,
       scrollDirection: widget.scrollDirection,
       shrinkWrap: widget.shrinkWrap,
+      physics: widget.physics,
     );
   }
 }

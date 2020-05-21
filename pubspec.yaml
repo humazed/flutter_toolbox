@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 5.1.0
+version: 5.1.1
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -18,16 +18,16 @@ dependencies:
   async: ^2.4.1
 
   stack_trace: ^1.9.3
-  provider: ^4.1.1
+  provider: ^4.1.2
   oktoast: ^2.3.2
-  flushbar: ^1.10.2
-  shared_preferences: ^0.5.7+1
-  image_picker: ^0.6.6+1
+  flushbar: ^1.10.4
+  shared_preferences: ^0.5.7+3
+  image_picker: ^0.6.6+4
   cached_network_image: ^2.2.0+1
   flutter_cache_manager: ^1.2.2
   photo_view: ^0.9.2
-  connectivity: ^0.4.8+5
-  url_launcher: ^5.4.5
+  connectivity: ^0.4.8+6
+  url_launcher: ^5.4.10
 
   http: ^0.12.1
   json_annotation: ^3.0.1
@@ -37,7 +37,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.9.0
+  build_runner: ^1.10.0
 
   json_serializable:
     #    path: D:\AS\ASP\Prod\OpenSource\json_serializable\json_serializable

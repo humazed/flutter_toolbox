@@ -1,3 +1,8 @@
+##  5.1.1
+
+* added `ScrollPhysics` to Paginated lists.
+* updated deps.
+
 ##  5.1.0
 
 * Updated to work with flutter 1.7.0.
