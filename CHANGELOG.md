@@ -1,3 +1,7 @@
+##  5.1.2
+
+* Hide keyboard when picking an image.
+
 ##  5.1.1
 
 * added `ScrollPhysics` to Paginated lists.

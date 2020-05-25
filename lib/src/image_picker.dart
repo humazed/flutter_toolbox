@@ -16,6 +16,7 @@ Future<File> picImage(BuildContext context) async {
           children: <Widget>[
             SimpleDialogOption(
               onPressed: () {
+                FocusScope.of(context).unfocus();
                 Navigator.pop(context, ImageSource.camera);
               },
               child: ListTile(
@@ -25,6 +26,7 @@ Future<File> picImage(BuildContext context) async {
             ),
             SimpleDialogOption(
               onPressed: () {
+                FocusScope.of(context).unfocus();
                 Navigator.pop(context, ImageSource.gallery);
               },
               child: ListTile(
