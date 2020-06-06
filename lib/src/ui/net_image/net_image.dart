@@ -193,8 +193,9 @@ class _NetImageState extends State<NetImage> {
 
   @override
   Widget build(BuildContext context) {
-    if (ToolboxConfig.of(context).useWeservResizer != true)
-      return _image(widget.imageUrl);
+    final toolboxConfig = ToolboxConfig.of(context, listen: false);
+
+    if (toolboxConfig.useWeservResizer != true) return _image(widget.imageUrl);
 
     return LayoutBuilder(
       builder: (ctx, constraints) {
@@ -206,7 +207,7 @@ class _NetImageState extends State<NetImage> {
         }
 
         final url = _getFormattedUrl(widget.imageUrl, constraints);
-        print(url);
+        if (toolboxConfig.logLoadedImageUrl) print(url);
         return _image(url);
       },
     );

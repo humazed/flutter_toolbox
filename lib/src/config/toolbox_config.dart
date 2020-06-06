@@ -7,12 +7,14 @@ class ToolboxConfig {
     this.noItemsFoundBuilder,
     this.noItemsFoundWidget,
     this.useWeservResizer = false,
+    this.logLoadedImageUrl = false,
   });
 
   final NoItemsFoundBuilder noItemsFoundBuilder;
   final Widget noItemsFoundWidget;
   final bool useWeservResizer;
+  final bool logLoadedImageUrl;
 
-  static ToolboxConfig of(BuildContext context) =>
-      Provider.of<ToolboxConfig>(context);
+  static ToolboxConfig of(BuildContext context, {bool listen = true}) =>
+      Provider.of<ToolboxConfig>(context, listen: listen);
 }

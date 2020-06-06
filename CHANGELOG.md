@@ -1,3 +1,8 @@
+##  5.1.3
+
+* Added `logLoadedImageUrl`.
+* updated deps.
+
 ##  5.1.2
 
 * Hide keyboard when picking an image.
