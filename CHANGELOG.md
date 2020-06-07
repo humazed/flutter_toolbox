@@ -1,3 +1,7 @@
+##  5.2.1
+
+* show `toDateTimeFromServerFormat` extension.
+
 ##  5.2.0
 
 * Added `toDateTimeFromServerFormat` extension.
