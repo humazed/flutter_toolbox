@@ -1,3 +1,7 @@
+##  5.2.0
+
+* Added `toDateTimeFromServerFormat` extension.
+
 ##  5.1.3
 
 * Added `logLoadedImageUrl`.

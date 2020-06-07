@@ -17,3 +17,7 @@ String serverDateFormat(DateTime date) {
 
   return serverFormatter.format(date);
 }
+
+extension on String {
+  DateTime toDateTimeFromServerFormat() => serverFormatter.parse(this);
+}
