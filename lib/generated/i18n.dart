@@ -21,10 +21,13 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get add_photo => "Add photo";
+  String get camera => "Camera";
   String get could_not_launch_google_maps => "Could not launch google maps";
   String get couldnt_open_the_mail_app => "Couldn't open the mail app";
   String get couldnt_open_the_phone_app => "Couldn't open the phone app";
   String get couldnt_open_this_url => "Couldn't open this url";
+  String get gallery => "Gallery";
   String get please_check_your_connection => "Please check your connection";
   String get please_check_your_internet_connection => "Please check your internet connection";
   String get required_field => "Required Field";
@@ -65,7 +68,13 @@ class $ar extends S {
   @override
   String get required_field => "حقل مطلوب";
   @override
+  String get camera => "كاميرا";
+  @override
   String get please_check_your_connection => "تأكد من وجود انترنت";
+  @override
+  String get add_photo => "إضافة صورة";
+  @override
+  String get gallery => "المعرض";
   @override
   String get couldnt_open_this_url => "لا يمكن فتح هذا الرابط";
 }
@@ -99,7 +108,13 @@ class $ru extends S {
   @override
   String get required_field => "Обязательное поле";
   @override
+  String get camera => "камера";
+  @override
   String get please_check_your_connection => "Пожалуйста, проверьте ваше соединение";
+  @override
+  String get add_photo => "Добавить фото";
+  @override
+  String get gallery => "Галерея";
   @override
   String get couldnt_open_this_url => "Couldn't open this url";
 }
