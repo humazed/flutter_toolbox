@@ -16,18 +16,18 @@ Future<http.MultipartFile> multiFile(File file, String name) async {
   return http.MultipartFile.fromPath(name, file.path);
 }
 
-Future safeRequest<T>(
+Future<dynamic> safeRequest<T>(
   BuildContext context,
   Future<Response<T>> request, {
-  Function(T result) onSuccess,
-  Function(ErrorResponse error) onError,
-  Function(dynamic error) onUnknownError,
+  dynamic Function(T result) onSuccess,
+  dynamic Function(ErrorResponse error) onError,
+  dynamic Function(dynamic error) onUnknownError,
   bool showServerErrorMessage = true,
 }) async {
   try {
     final Response response = await request;
     if (response.isSuccessful) {
-      await onSuccess?.call(response.body);
+      return await onSuccess?.call(response.body);
     } else {
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
@@ -37,7 +37,7 @@ Future safeRequest<T>(
         else
           errorToast(error);
       }
-      await onError?.call(response.error);
+      return await onError?.call(response.error);
     }
   } on SocketException catch (e) {
     d2('SocketException-> $e');
@@ -47,10 +47,10 @@ Future safeRequest<T>(
     d2('ErrorResponse-> $e');
     if (showServerErrorMessage) errorToast(e.error);
 
-    await onError?.call(e);
+    return await onError?.call(e);
   } catch (e) {
     d2('UnknownError-> $e');
-    await onUnknownError?.call(e);
     errorToast(S.of(context)?.server_error ?? 'Server error');
+    return await onUnknownError?.call(e);
   }
 }
