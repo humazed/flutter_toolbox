@@ -444,19 +444,19 @@ packages:
     source: hosted
     version: "1.0.10"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.7"
+    version: "1.6.11"
   path_provider_linux:
     dependency: transitive
     description:
@@ -736,12 +736,12 @@ packages:
     source: hosted
     version: "0.1.0+2"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.4"
+    version: "2.2.0"
   vector_math:
     dependency: transitive
     description:

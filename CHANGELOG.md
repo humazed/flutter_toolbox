@@ -1,3 +1,9 @@
+##  5.4.0
+
+* added fixExifRotation
+* make safeRequest return what the onSuccess, onError and  onUnknownError returns
+* updated deps
+
 ##  5.3.0
 
 * added `ListExtension`.
