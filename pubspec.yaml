@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 5.4.0
+version: 5.5.0
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -33,7 +33,7 @@ dependencies:
   path_provider: ^1.6.11
   path: ^1.6.4
 
-  http: ^0.12.1
+  http: ^0.12.2
   json_annotation: ^3.0.1
   chopper2: ^3.0.4
 
@@ -41,7 +41,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.10.0
+  build_runner: ^1.10.1
 
   json_serializable:
     #    path: D:\AS\ASP\Prod\OpenSource\json_serializable\json_serializable

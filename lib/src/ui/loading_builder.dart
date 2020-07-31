@@ -43,6 +43,8 @@ class LoadingBuilder<T> extends StatefulWidget {
   /// default is false
   ///
   /// set to true if the future will change.
+  ///
+  /// when `mutable` is set to true then false the last data is returned.
   final bool mutable;
 
   /// set only if loadingWidget if null
@@ -107,6 +109,8 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   /// default is true
   ///
   /// set to false if the future will change.
+  ///
+  /// when `mutable` is set to true then false the last data is returned.
   final bool mutable;
 
   /// set only if loadingWidget if null
@@ -126,18 +130,20 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
 }
 
 class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
-  Future<T> future;
+  Future<T> cashedFuture;
 
   @override
   void initState() {
     super.initState();
-    future = widget.future;
+    cashedFuture = widget.future;
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.mutable) cashedFuture = widget.future;
+
     return FutureBuilder<T>(
-      future: widget.mutable ? widget.future : future,
+      future: cashedFuture,
       initialData: widget.initialData,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         switch (snapshot.connectionState) {
@@ -162,7 +168,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
                   ),
                 );
               } else {
-                d2('Unknow error: $error');
+                d2('Unknown error: $error');
                 return Center(
                     child: Text(S.of(context)?.server_error ?? 'Server error'));
               }

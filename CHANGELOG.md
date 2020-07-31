@@ -1,3 +1,9 @@
+##  5.5.0
+
+* chance the behavior of `mutable` in `LoadingBuilder` 
+  when `mutable` is set to true then false the last data is returned, as before is was the fist data was being returned.
+  which lead to outdated data when calling setState after changing the mutable field.   
+
 ##  5.4.0
 
 * added fixExifRotation
