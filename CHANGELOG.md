@@ -1,3 +1,7 @@
+##  5.6.1
+
+* Handel null in `containsIgnoreCase`.    
+
 ##  5.6.0
 
 * Added `secondsSinceEpoch` inside `date_time_extensions`   
