@@ -1,3 +1,7 @@
+##  5.6.0
+
+* Added `secondsSinceEpoch` inside `date_time_extensions`   
+
 ##  5.5.0
 
 * chance the behavior of `mutable` in `LoadingBuilder` 
