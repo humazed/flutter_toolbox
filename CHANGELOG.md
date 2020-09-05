@@ -1,3 +1,7 @@
+##  5.6.2
+
+* updated deps
+
 ##  5.6.1
 
 * Handel null in `containsIgnoreCase`.    
