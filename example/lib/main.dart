@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
-import 'package:flutter_toolbox/generated/i18n.dart' as toolbox;
+import 'package:flutter_toolbox/generated/l10n.dart' as toolbox;
 
 import 'paginated_list_view_example.dart';
 

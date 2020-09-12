@@ -1,4 +1,5 @@
 {
+  "@@locale": "ar",
   "required_field": "حقل مطلوب",
   "please_check_your_connection": "تأكد من وجود انترنت",
   "server_error": "خطأ من الخادم حاول مرة اخري",

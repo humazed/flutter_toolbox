@@ -1,4 +1,5 @@
 {
+  "@@locale": "ru",
   "required_field": "Обязательное поле",
   "please_check_your_connection": "Пожалуйста, проверьте ваше соединение",
   "server_error": "Ошибка сервера",
@@ -15,5 +16,4 @@
   "add_photo": "Добавить фото",
   "camera": "камера",
   "gallery": "Галерея"
-
 }

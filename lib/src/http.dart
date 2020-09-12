@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:chopper2/chopper2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:flutter_toolbox/src/log.dart';
 import 'package:flutter_toolbox/src/ui/toast.dart';
 import 'package:http/http.dart' as http;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_toolbox/generated/l10n.dart';
 
 class SearchItemPicker<T> extends StatefulWidget {
   SearchItemPicker({

@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "required_field": "Required Field",
   "please_check_your_connection": "Please check your connection",
   "server_error": "Server error",

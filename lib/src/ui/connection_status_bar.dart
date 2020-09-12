@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_toolbox/generated/l10n.dart';
 
 class ConnectionStatusBar extends StatefulWidget {
   final Widget title;

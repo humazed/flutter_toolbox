@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:chopper2/chopper2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:flutter_toolbox/src/model/error/error_response.dart';
 
 import '../../flutter_toolbox.dart';

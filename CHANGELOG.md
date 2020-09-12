@@ -1,3 +1,8 @@
+##  5.7.0
+
+* Changed to flutter_intl.
+* updated deps
+
 ##  5.6.2
 
 * updated deps

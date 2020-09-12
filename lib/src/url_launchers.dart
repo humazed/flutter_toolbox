@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_toolbox/generated/i18n.dart';
+import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../flutter_toolbox.dart';
