@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:chopper2/chopper2.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:flutter_toolbox/src/log.dart';
 import 'package:flutter_toolbox/src/ui/toast.dart';
@@ -17,7 +15,6 @@ Future<http.MultipartFile> multiFile(File file, String name) async {
 }
 
 Future<dynamic> safeRequest<T>(
-  BuildContext context,
   Future<Response<T>> request, {
   dynamic Function(T result) onSuccess,
   dynamic Function(ErrorResponse error) onError,
@@ -32,7 +29,7 @@ Future<dynamic> safeRequest<T>(
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
         if (error == 'Unauthorized access' || error == 'Unauthorized')
-          errorToast(S.of(context)?.the_email_address_or_password_is_wrong ??
+          errorToast(S.current?.the_email_address_or_password_is_wrong ??
               'The email address or password is wrong');
         else
           errorToast(error);
@@ -41,7 +38,7 @@ Future<dynamic> safeRequest<T>(
     }
   } on SocketException catch (e) {
     d2('SocketException-> $e');
-    errorToast(S.of(context)?.please_check_your_connection ??
+    errorToast(S.current?.please_check_your_connection ??
         'Please check your connection');
   } on ErrorResponse catch (e) {
     d2('ErrorResponse-> $e');
@@ -50,7 +47,7 @@ Future<dynamic> safeRequest<T>(
     return await onError?.call(e);
   } catch (e) {
     d2('UnknownError-> $e');
-    errorToast(S.of(context)?.server_error ?? 'Server error');
+    errorToast(S.current?.server_error ?? 'Server error');
     return await onUnknownError?.call(e);
   }
 }

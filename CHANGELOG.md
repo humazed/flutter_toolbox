@@ -1,3 +1,15 @@
+##  6.0.0
+
+* Removed `Context` from `safeRequest`.
+
+##  5.8.0
+
+* Make `Context` optional in `safeRequest`.
+
+##  5.7.0-1.2.22
+
+* Updated to be compatible with flutter 1.2.22.
+
 ##  5.7.0
 
 * Changed to flutter_intl.
