@@ -21,20 +21,20 @@ dependencies:
   oktoast: ^2.3.2
   flushbar: ^1.10.4
   shared_preferences: ^0.5.12+4
-  image_picker: ^0.6.7+12
+  image_picker: ^0.6.7+14
   flutter_image_compress: ^0.7.0
   cached_network_image: ^2.3.3
   flutter_cache_manager: ^2.0.0
-  photo_view: ^0.10.2
-  connectivity: ^2.0.1
+  photo_view: ^0.10.3
+  connectivity: ^2.0.2
   url_launcher: ^5.7.10
   uuid: ^2.2.2
   path_provider: ^1.6.24
   path: ^1.7.0
 
   http: ^0.12.2
-  json_annotation: ^3.1.0
-  chopper2: ^3.0.6
+  json_annotation: ^3.1.1
+  chopper2: ^3.0.7
 
 
 dev_dependencies:

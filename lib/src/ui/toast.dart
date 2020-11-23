@@ -9,7 +9,7 @@ errorToast(String msg) {
     msg,
     duration: LONG_DURATION,
     backgroundColor: Colors.red,
-    textStyle: TextStyle(color: Colors.white),
+    textStyle: TextStyle(color: Colors.white, fontSize: 15),
   );
 }
 
@@ -18,7 +18,7 @@ successToast(String msg) {
     msg,
     duration: LONG_DURATION,
     backgroundColor: Colors.green,
-    textStyle: TextStyle(color: Colors.white),
+    textStyle: TextStyle(color: Colors.white, fontSize: 15),
   );
 }
 

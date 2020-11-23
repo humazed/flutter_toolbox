@@ -45,7 +45,10 @@ Future<File> picImage(BuildContext context) async {
 
   if (source == null) return null;
 
-  File image = File((await ImagePicker().getImage(source: source)).path);
+  final pickedFile = await ImagePicker().getImage(source: source);
+  if (pickedFile == null) return null;
+
+  File image = File((pickedFile).path);
   return fixExifRotation(image);
 }
 

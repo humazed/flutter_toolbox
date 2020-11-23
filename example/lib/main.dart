@@ -126,15 +126,15 @@ class HomePageState extends State<HomePage> {
               Row(
                 children: <Widget>[
                   MaterialButton(
-                    child: Text('Error taost'),
+                    child: Text('Error toast'),
                     onPressed: () => errorToast('Error'),
                   ),
                   MaterialButton(
-                    child: Text('Success taost'),
+                    child: Text('Success toast'),
                     onPressed: () => successToast('Success'),
                   ),
                   MaterialButton(
-                    child: Text('taost'),
+                    child: Text('toast'),
                     onPressed: () => toast('أهلا بكم'),
                   ),
                 ],
