@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:flutter_toolbox/generated/l10n.dart' as toolbox;
+import 'package:flutter_toolbox_example/auth_navigation.dart';
+import 'package:provider/provider.dart';
 
+import 'auth_provider.dart';
 import 'paginated_list_view_example.dart';
 
 void main() => runApp(MyApp());
@@ -15,32 +18,56 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ToolboxApp(
-      toolboxConfig: ToolboxConfig(
-        useWeservResizer: true,
-        noItemsFoundWidget: Icon(Icons.subject),
-      ),
-      child: MaterialApp(
-        localizationsDelegates: const [
-          toolbox.S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const <Locale>[
-          Locale("en", ""),
-          Locale("ar", ""),
-        ],
-        theme: ThemeData(
-          tabBarTheme: TabBarTheme(
-            indicator: TabRoundedLineIndicator(
-              context,
-              indicatorSize: TabRoundedLineIndicatorSize.normal,
-              indicatorHeight: 3,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ],
+      child: Consumer<AuthProvider>(
+        builder: (context, value, child) {
+          return ToolboxApp(
+            toolboxConfig: ToolboxConfig(
+              useWeservResizer: true,
+              noItemsFoundWidget: Icon(Icons.subject),
+              unAuthenticatedPages: const [
+                LoginPage,
+                AuthNavHomePage,
+                NoAuthPage,
+              ],
+              isAuthenticated: () {
+                final isLoggedIn = value.getUserCashed() != null;
+                d("isLoggedIn = $isLoggedIn");
+
+                return isLoggedIn;
+              },
+              onAuthorizedNavigation: (BuildContext context, Type pageType) {
+                d("onAuthorizedNavigation#pageType = $pageType");
+                return push(context, LoginPage());
+              },
             ),
-          ),
-        ),
-        home: HomePage(),
+            child: MaterialApp(
+              localizationsDelegates: const [
+                toolbox.S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const <Locale>[
+                Locale("en", ""),
+                Locale("ar", ""),
+              ],
+              theme: ThemeData(
+                tabBarTheme: TabBarTheme(
+                  indicator: TabRoundedLineIndicator(
+                    context,
+                    indicatorSize: TabRoundedLineIndicatorSize.normal,
+                    indicatorHeight: 3,
+                  ),
+                ),
+              ),
+              home: HomePage(),
+            ),
+          );
+        },
       ),
     );
   }
@@ -138,6 +165,10 @@ class HomePageState extends State<HomePage> {
                     onPressed: () => toast('أهلا بكم'),
                   ),
                 ],
+              ),
+              MaterialButton(
+                child: Text('Auth navigation'),
+                onPressed: () => push(context, AuthNavHomePage()),
               ),
             ],
           );
