@@ -1,3 +1,10 @@
+##  6.1.0
+
+* fixed image picker crash when not choosing file from gallery
+* fixed toast cut in arabic
+* updated deps
+* added optional authorized navigation.
+
 ##  6.0.0
 
 * Removed `Context` from `safeRequest`.
