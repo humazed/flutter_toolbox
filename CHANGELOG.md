@@ -1,3 +1,7 @@
+##  6.1.2
+
+* fixed `launchMaps`.
+
 ##  6.1.1
 
 * added `launchMaps`.

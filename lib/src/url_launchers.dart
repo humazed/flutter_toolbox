@@ -11,9 +11,9 @@ Future<void> launchMaps(double latitude, double longitude) async {
     if (await canLaunch(appleMapsUrl)) {
       await launch(appleMapsUrl);
       return;
-    } else {
-      launchGoogleMaps(latitude, longitude);
     }
+  } else {
+    await launchGoogleMaps(latitude, longitude);
   }
 }
 
