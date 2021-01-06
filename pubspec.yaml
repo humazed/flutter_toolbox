@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 6.1.0
+version: 6.1.1
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -17,14 +17,14 @@ dependencies:
   intl: ^0.16.1
 
   stack_trace: ^1.9.6
-  provider: ^4.3.2+2
+  provider: ^4.3.2+3
   oktoast: ^2.3.2
   flushbar: ^1.10.4
   shared_preferences: ^0.5.12+4
-  image_picker: ^0.6.7+14
+  image_picker: ^0.6.7+17
   flutter_image_compress: ^0.7.0
-  cached_network_image: ^2.3.3
-  flutter_cache_manager: ^2.0.0
+  cached_network_image: ^2.5.0
+  flutter_cache_manager: ^2.1.0
   photo_view: ^0.10.3
   connectivity: ^2.0.2
   url_launcher: ^5.7.10

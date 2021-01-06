@@ -3,6 +3,19 @@ import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../flutter_toolbox.dart';
+import 'dart:io' show Platform;
+
+Future<void> launchMaps(double latitude, double longitude) async {
+  if (Platform.isIOS) {
+    String appleMapsUrl = 'https://maps.apple.com/?q=$latitude,$longitude';
+    if (await canLaunch(appleMapsUrl)) {
+      await launch(appleMapsUrl);
+      return;
+    } else {
+      launchGoogleMaps(latitude, longitude);
+    }
+  }
+}
 
 Future<void> launchGoogleMaps(double latitude, double longitude) async {
   String googleUrl =

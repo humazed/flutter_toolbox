@@ -1,3 +1,8 @@
+##  6.1.1
+
+* added `launchMaps`.
+* updated deps
+
 ##  6.1.0
 
 * fixed image picker crash when not choosing file from gallery
