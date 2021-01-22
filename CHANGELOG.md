@@ -1,3 +1,7 @@
+##  6.1.3
+
+* added isInRange, toInt and toTimeOfDay to `time`.
+
 ##  6.1.2
 
 * fixed `launchMaps`.

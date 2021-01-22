@@ -18,6 +18,18 @@ String serverDateFormat(DateTime date) {
   return serverFormatter.format(date);
 }
 
+
+bool isInRange(int time, int startTime, int endTime) =>
+    time >= startTime && time <= endTime;
+
 extension TimeStringExtentions on String {
   DateTime toDateTimeFromServerFormat() => serverFormatter.parse(this);
+}
+
+extension on TimeOfDay {
+  int toInt() => minute + (hour * 60);
+}
+
+extension on DateTime {
+  TimeOfDay toTimeOfDay() => TimeOfDay.fromDateTime(this);
 }
