@@ -1,3 +1,7 @@
+##  6.1.4
+
+* added `TimeOfDayExtentions` and `DateTimeExtentions`.
+
 ##  6.1.3
 
 * added isInRange, toInt and toTimeOfDay to `time`.
