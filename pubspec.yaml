@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 6.1.7
+version: 6.1.8
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -32,7 +32,7 @@ dependencies:
   path_provider: ^1.6.27
   path: ^1.7.0
 
-  http: ^0.12.2
+  http: '>=0.12.2 <=0.13.0-nullsafety.0'
   json_annotation: ^3.1.1
   chopper2: ^3.0.7
 
