@@ -1,3 +1,7 @@
+##  6.1.6
+
+* updated `intl` so support nullsafety.
+
 ##  6.1.5
 
 * update deps.
