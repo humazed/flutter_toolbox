@@ -1,13 +1,13 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 6.1.6
+version: 6.1.7
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
 # flutter pub pub publish --dry-run
 environment:
   sdk: ">=2.6.0 <3.0.0"
-  flutter: ">=1.20.0 <2.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:

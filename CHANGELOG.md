@@ -1,3 +1,7 @@
+##  6.1.7
+
+* remove the upper bound for flutter
+
 ##  6.1.6
 
 * updated `intl` so support nullsafety.
