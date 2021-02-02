@@ -1,3 +1,7 @@
+##  6.1.9
+
+* removed  `flutter_localizations'` because it was not used and was causing problems with nullsafety.
+
 ##  6.1.8
 
 * use  `http: '>=0.12.2 <=0.13.0-nullsafety.0'`
