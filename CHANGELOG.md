@@ -1,3 +1,7 @@
+##  6.2.0
+
+* use `connectivity_plus` to support the web.
+
 ##  6.1.9
 
 * removed  `flutter_localizations'` because it was not used and was causing problems with nullsafety.
