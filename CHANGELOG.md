@@ -1,3 +1,7 @@
+##  6.2.1
+
+* Disable `ConnectionStatusBar.init` in the web.
+
 ##  6.2.0
 
 * use `connectivity_plus` to support the web.

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
@@ -15,6 +16,8 @@ class ConnectionStatusBar extends StatefulWidget {
   _ConnectionStatusBarState createState() => _ConnectionStatusBarState();
 
   static void init(BuildContext context) async {
+    if (kIsWeb) return;
+
     final overlayEntry = OverlayEntry(
       builder: (BuildContext context) => IgnorePointer(
         child: Stack(
