@@ -1,3 +1,7 @@
+##  6.3.1
+
+* improved `mapIndexed` added `forEachIndexed`
+* 
 ##  6.3.0
 
 * Added `iterable_extensions`.
