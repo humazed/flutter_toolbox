@@ -26,4 +26,5 @@ export 'package:flutter_toolbox/src/config/toolbox_config.dart';
 export 'package:flutter_toolbox/src/extensions/string_extensions.dart';
 export 'package:flutter_toolbox/src/extensions/list_extensions.dart';
 export 'package:flutter_toolbox/src/extensions/future_extensions.dart';
+export 'package:flutter_toolbox/src/extensions/iterable_extensions.dart';
 export 'package:flutter_toolbox/src/extensions/date_time_extensions.dart';

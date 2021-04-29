@@ -1,3 +1,7 @@
+##  6.3.0
+
+* Added `iterable_extensions`.
+
 ##  6.2.1
 
 * Disable `ConnectionStatusBar.init` in the web.
