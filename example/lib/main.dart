@@ -123,7 +123,7 @@ class HomePageState extends State<HomePage> {
             ],
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               onPressed: () => push(context, PaginatedListViewPage()),
               child: Text('PaginatedList page'),
             )

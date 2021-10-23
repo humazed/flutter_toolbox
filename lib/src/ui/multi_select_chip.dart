@@ -13,10 +13,10 @@ class MultiSelectChip<T> extends StatefulWidget {
 
 class _MultiSelectChipState<T> extends State<MultiSelectChip<T>> {
   // String selectedChoice = "";
-  List<T> selectedChoices = List();
+  List<T> selectedChoices = [];
 
   _buildChoiceList() {
-    List<Widget> choices = List();
+    List<Widget> choices = [];
 
     widget.items.forEach((item) {
       choices.add(

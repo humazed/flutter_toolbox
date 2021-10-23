@@ -45,7 +45,8 @@ class PaginatedListViewExample extends StatefulWidget {
   static const int PAGE_SIZE = 10;
 
   @override
-  _PaginatedListViewExampleState createState() => _PaginatedListViewExampleState();
+  _PaginatedListViewExampleState createState() =>
+      _PaginatedListViewExampleState();
 }
 
 class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
@@ -54,6 +55,7 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
     super.initState();
     d('_PaginatedListViewExampleState.initState');
   }
+
   @override
   Widget build(BuildContext context) {
     return PaginatedListView(
@@ -63,7 +65,9 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
       noItemsFoundWidget: Icon(Icons.hourglass_empty),
       itemBuilder: this._itemBuilder,
       pageFuture: (pageIndex) {
-        return BackendService.getPosts(pageIndex * PaginatedListViewExample.PAGE_SIZE, PaginatedListViewExample.PAGE_SIZE);
+        return BackendService.getPosts(
+            pageIndex * PaginatedListViewExample.PAGE_SIZE,
+            PaginatedListViewExample.PAGE_SIZE);
       },
     );
   }
@@ -84,6 +88,7 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
     );
   }
 }
+
 class PaginatedListViewEmptyExample extends StatelessWidget {
   static const int PAGE_SIZE = 0;
 
@@ -157,8 +162,8 @@ class PagewiseSliverListExample extends StatelessWidget {
 
 class BackendService {
   static Future<List<PostModel>> getPosts(offset, limit) async {
-    final responseBody = (await http.get(
-            'http://jsonplaceholder.typicode.com/posts?_start=$offset&_limit=$limit'))
+    final responseBody = (await http.get(Uri.parse(
+            'http://jsonplaceholder.typicode.com/posts?_start=$offset&_limit=$limit')))
         .body;
 
     // The response body is an array of items
@@ -166,8 +171,8 @@ class BackendService {
   }
 
   static Future<List<ImageModel>> getImages(offset, limit) async {
-    final responseBody = (await http.get(
-            'http://jsonplaceholder.typicode.com/photos?_start=$offset&_limit=$limit'))
+    final responseBody = (await http.get(Uri.parse(
+            'http://jsonplaceholder.typicode.com/photos?_start=$offset&_limit=$limit')))
         .body;
 
     // The response body is an array of items.

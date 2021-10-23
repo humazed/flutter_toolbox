@@ -1,3 +1,7 @@
+##  7.0.0
+
+* Update deps to work with flutter 2.5.0
+
 ##  6.3.2
 
 * Fix netImage full screen not working because in a bug in push auth check.
