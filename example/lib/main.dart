@@ -32,6 +32,10 @@ class _MyAppState extends State<MyApp> {
                 LoginPage,
                 AuthNavHomePage,
                 NoAuthPage,
+                PaginatedListViewPage,
+                PaginatedListViewExample,
+                PaginatedListViewEmptyExample,
+                PagewiseSliverListExample,
               ],
               isAuthenticated: () {
                 final isLoggedIn = value.getUserCashed() != null;

@@ -170,7 +170,7 @@ class NetImage extends StatefulWidget {
 
 class _NetImageState extends State<NetImage> {
   Future _openFullScreen(BuildContext context) {
-    return push(context, FullScreenImage(widget.imageUrl));
+    return push(context, FullScreenImage(widget.imageUrl), authCheck: false);
   }
 
   String _getFormattedUrl(String originalImageUrl, BoxConstraints constraints) {

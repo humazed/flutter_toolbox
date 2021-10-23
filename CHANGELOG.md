@@ -1,7 +1,11 @@
+##  6.3.2
+
+* Fix netImage full screen not working because in a bug in push auth check.
+
 ##  6.3.1
 
 * improved `mapIndexed` added `forEachIndexed`
-* 
+
 ##  6.3.0
 
 * Added `iterable_extensions`.
