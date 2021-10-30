@@ -1,3 +1,7 @@
+##  7.0.2
+
+* Update `chopper2: ^4.0.1`
+
 ##  7.0.1
 
 * Update `provider: ^6.0.1`
