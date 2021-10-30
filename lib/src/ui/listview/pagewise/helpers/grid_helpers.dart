@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 
 class SliverGridDelegateWithFixedCrossAxisCountAndLoading
@@ -6,8 +5,8 @@ class SliverGridDelegateWithFixedCrossAxisCountAndLoading
   final int itemCount;
 
   const SliverGridDelegateWithFixedCrossAxisCountAndLoading({
-    @required crossAxisCount,
-    @required this.itemCount,
+    required crossAxisCount,
+    required this.itemCount,
     mainAxisSpacing = 0.0,
     crossAxisSpacing = 0.0,
     childAspectRatio = 1.0,
@@ -41,8 +40,8 @@ class SliverGridDelegateWithMaxCrossAxisExtentAndLoading
   final int itemCount;
 
   const SliverGridDelegateWithMaxCrossAxisExtentAndLoading({
-    @required maxCrossAxisExtent,
-    @required this.itemCount,
+    required maxCrossAxisExtent,
+    required this.itemCount,
     mainAxisSpacing = 0.0,
     crossAxisSpacing = 0.0,
     childAspectRatio = 1.0,
@@ -80,14 +79,14 @@ class SliverGridRegularTileLayoutAndLoading
   final double fullCrossAccessExtent;
 
   const SliverGridRegularTileLayoutAndLoading(
-      {@required crossAxisCount,
-      @required mainAxisStride,
-      @required crossAxisStride,
-      @required childMainAxisExtent,
-      @required childCrossAxisExtent,
-      @required reverseCrossAxis,
-      @required this.fullCrossAccessExtent,
-      @required this.itemCount})
+      {required crossAxisCount,
+      required mainAxisStride,
+      required crossAxisStride,
+      required childMainAxisExtent,
+      required childCrossAxisExtent,
+      required reverseCrossAxis,
+      required this.fullCrossAccessExtent,
+      required this.itemCount})
       : super(
             crossAxisCount: crossAxisCount,
             mainAxisStride: mainAxisStride,

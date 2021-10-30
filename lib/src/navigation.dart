@@ -43,7 +43,7 @@ Future pushAndRemoveUntil(
       return Navigator.pushAndRemoveUntil(
         context,
         materialRoute(widget),
-        (Route<dynamic> route) => route.settings.name == untilPage?.toString(),
+        (Route<dynamic> route) => route.settings.name == untilPage.toString(),
       );
     },
     authCheck: authCheck,
@@ -70,10 +70,10 @@ Future _safeNav(
       config.unAuthenticatedPages?.contains(widget.runtimeType) ?? true;
 
   if (isUnAuthenticatedPage ||
-      config.isAuthenticated() != false ||
+      config.isAuthenticated!() != false ||
       authCheck == false) {
     return onCanNavigate();
   } else {
-    return config.onAuthorizedNavigation(context, widget.runtimeType);
+    return config.onAuthorizedNavigation!(context, widget.runtimeType);
   }
 }

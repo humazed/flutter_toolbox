@@ -1,12 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
 
 class SearchItemPicker<T> extends StatefulWidget {
   SearchItemPicker({
-    Key key,
-    @required this.items,
-    @required this.onChanged,
-    @required this.hint,
+    Key? key,
+    required this.items,
+    required this.onChanged,
+    required this.hint,
     this.initialValue,
     this.disabledHint,
     this.prefixIcon,
@@ -15,8 +17,7 @@ class SearchItemPicker<T> extends StatefulWidget {
     this.elevation = 0,
     this.borderRadius = 0,
     this.color = Colors.white,
-  })  : assert(items == null ||
-            items.isEmpty ||
+  })  : assert(items.isEmpty ||
             initialValue == null ||
             items
                     .where((ListItem<T> item) => item.value == initialValue)
@@ -35,7 +36,7 @@ class SearchItemPicker<T> extends StatefulWidget {
   /// The value of the currently selected [ListItem], or null if no
   /// item has been selected. If `value` is null then the menu is popped up as
   /// if the first item were selected.
-  final T initialValue;
+  final T? initialValue;
 
   /// Displayed if [initialValue] is null.
   final String hint;
@@ -43,7 +44,7 @@ class SearchItemPicker<T> extends StatefulWidget {
   /// A message to show when the dropdown is disabled.
   ///
   /// Displayed if [items] or [onChanged] is null.
-  final Widget disabledHint;
+  final Widget? disabledHint;
 
   /// Called when the user selects an item.
   ///
@@ -53,9 +54,9 @@ class SearchItemPicker<T> extends StatefulWidget {
   /// will display the [disabledHint] widget if it is non-null.
   final ValueChanged<T> onChanged;
 
-  final Widget prefixIcon;
+  final Widget? prefixIcon;
 
-  final Widget suffixIcon;
+  final Widget? suffixIcon;
 
   final double elevation;
 
@@ -63,13 +64,13 @@ class SearchItemPicker<T> extends StatefulWidget {
 
   final Color color;
 
-  final InputBorder border;
+  final InputBorder? border;
 
   @override
   SearchItemPickerState<T> createState() => SearchItemPickerState<T>();
 }
 
-class SearchItemPickerState<T> extends State<SearchItemPicker<T>> {
+class SearchItemPickerState<T> extends State<SearchItemPicker<T?>> {
   final itemController = TextEditingController();
 
   @override
@@ -90,8 +91,9 @@ class SearchItemPickerState<T> extends State<SearchItemPicker<T>> {
       color: widget.color,
       child: InkWell(
         onTap: () async {
-          ListItem<T> pickedItem =
-              await ItemsList.pickItem(context, widget.items, widget.hint);
+          ListItem<T?> pickedItem =
+              await (ItemsList.pickItem(context, widget.items, widget.hint)
+                  as FutureOr<ListItem<T?>>);
           itemController.text = pickedItem.text;
 
           widget.onChanged(pickedItem.value);
@@ -110,16 +112,16 @@ class SearchItemPickerState<T> extends State<SearchItemPicker<T>> {
 
 class ItemsList<T> extends StatefulWidget {
   ItemsList({
-    Key key,
-    @required List<ListItem<T>> items,
-    @required this.hint,
-  })  : items = items.where((item) => item.text?.isNotEmpty == true).toList(),
+    Key? key,
+    required List<ListItem<T>> items,
+    required this.hint,
+  })  : items = items.where((item) => item.text.isNotEmpty == true).toList(),
         super(key: key);
 
   final List<ListItem<T>> items;
   final String hint;
 
-  static Future<ListItem<T>> pickItem<T>(
+  static Future<ListItem<T>?> pickItem<T>(
     BuildContext context,
     List<ListItem<T>> items,
     String hint,
@@ -147,15 +149,15 @@ class ItemsList<T> extends StatefulWidget {
 }
 
 class ItemsListState<T> extends State<ItemsList> {
-  List<ListItem<T>> items;
+  late List<ListItem<T>> items;
 
   TextEditingController controller = TextEditingController();
-  String filter;
+  String? filter;
 
   @override
   void initState() {
     super.initState();
-    items = widget.items;
+    items = widget.items as List<ListItem<T>>;
     //fill items with objects
     controller.addListener(() {
       setState(() {
@@ -194,7 +196,7 @@ class ItemsListState<T> extends State<ItemsList> {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                     ),
-                    hintText: S.of(context)?.search ?? 'Search...',
+                    hintText: S.of(context).search,
                   ),
                   controller: controller,
                 )),
@@ -221,7 +223,7 @@ class ItemsListState<T> extends State<ItemsList> {
             child: items[index],
           );
         } else {
-          if (items[index].text.toLowerCase().contains(filter.toLowerCase())) {
+          if (items[index].text.toLowerCase().contains(filter!.toLowerCase())) {
             return InkWell(
               onTap: () =>
                   Navigator.of(context).pop({'pickedItem': items[index]}),
@@ -245,9 +247,9 @@ class ListItem<T> extends StatelessWidget {
   ///
   /// The [text] argument is required.
   const ListItem({
-    Key key,
+    Key? key,
     this.value,
-    @required this.text,
+    required this.text,
   }) : super(key: key);
 
   /// The widget below this widget in the tree.
@@ -258,7 +260,7 @@ class ListItem<T> extends StatelessWidget {
   /// The value to return if the user selects this menu item.
   ///
   /// Eventually returned in a call to [DropdownButton.onChanged].
-  final T value;
+  final T? value;
 
   @override
   Widget build(BuildContext context) {
@@ -267,13 +269,13 @@ class ListItem<T> extends StatelessWidget {
 }
 
 class ItemTextField extends StatelessWidget {
-  final String hint;
-  final TextEditingController controller;
-  final Widget prefixIcon;
-  final Widget suffixIcon;
+  final String? hint;
+  final TextEditingController? controller;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final int maxLines;
-  final String initialValue;
-  final InputBorder border;
+  final String? initialValue;
+  final InputBorder? border;
 
   ItemTextField({
     this.hint,

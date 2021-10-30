@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io' show Platform;
+
 import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../flutter_toolbox.dart';
-import 'dart:io' show Platform;
 
 Future<void> launchMaps(double latitude, double longitude) async {
   if (Platform.isIOS) {
@@ -23,8 +23,7 @@ Future<void> launchGoogleMaps(double latitude, double longitude) async {
   if (await canLaunch(googleUrl)) {
     await launch(googleUrl);
   } else {
-    errorToast(S.current?.could_not_launch_google_maps ??
-        'Could not launch google maps');
+    errorToast(S.current.could_not_launch_google_maps);
   }
 }
 
@@ -32,12 +31,12 @@ Future<void> safeLaunch(String urlString) async {
   if (await canLaunch(urlString)) {
     await launch(urlString);
   } else {
-    errorToast(S.current?.couldnt_open_this_url ?? "Couldn't open this url");
+    errorToast(S.current.couldnt_open_this_url);
   }
 }
 
 Future<void> sendMail({
-  @required String email,
+  required String email,
   String subject = '',
   String body = '',
 }) async {
@@ -45,8 +44,7 @@ Future<void> sendMail({
   if (await canLaunch(url)) {
     await launch(url);
   } else {
-    errorToast(
-        S.current?.couldnt_open_the_mail_app ?? "Couldn't open the mail app");
+    errorToast(S.current.couldnt_open_the_mail_app);
   }
 }
 
@@ -55,7 +53,6 @@ Future<void> call(String phone) async {
   if (await canLaunch(url)) {
     await launch(url);
   } else {
-    errorToast(
-        S.current?.couldnt_open_the_phone_app ?? "Couldn't open the phone app");
+    errorToast(S.current.couldnt_open_the_phone_app);
   }
 }

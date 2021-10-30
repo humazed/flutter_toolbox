@@ -8,10 +8,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
 
 class ConnectionStatusBar extends StatefulWidget {
-  final Widget title;
-  final Color color;
+  final Widget? title;
+  final Color? color;
 
-  ConnectionStatusBar({this.title, this.color, Key key}) : super(key: key);
+  ConnectionStatusBar({this.title, this.color, Key? key}) : super(key: key);
 
   _ConnectionStatusBarState createState() => _ConnectionStatusBarState();
 
@@ -37,18 +37,18 @@ class ConnectionStatusBar extends StatefulWidget {
         ),
       ),
     );
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      Overlay.of(context).insert(overlayEntry);
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
+      Overlay.of(context)!.insert(overlayEntry);
     });
   }
 }
 
 class _ConnectionStatusBarState extends State<ConnectionStatusBar>
     with SingleTickerProviderStateMixin {
-  StreamSubscription _connectionChangeStream;
+  late StreamSubscription _connectionChangeStream;
   bool _hasConnection = true;
-  AnimationController controller;
-  Animation<Offset> offset;
+  late AnimationController controller;
+  late Animation<Offset> offset;
 
   @override
   void initState() {
@@ -86,8 +86,7 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
               child: widget.title != null
                   ? widget.title
                   : Text(
-                      S.of(context)?.please_check_your_internet_connection ??
-                          'Please check your internet connection',
+                      S.of(context).please_check_your_internet_connection,
                       style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
             ),

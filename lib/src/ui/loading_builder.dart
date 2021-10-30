@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chopper2/chopper2.dart';
+import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:flutter_toolbox/src/model/error/error_response.dart';
@@ -12,15 +12,14 @@ typedef LoadingWidgetBuilder<T> = Widget Function(BuildContext context);
 
 class LoadingBuilder<T> extends StatefulWidget {
   const LoadingBuilder({
-    Key key,
-    @required this.future,
-    @required this.builder,
+    Key? key,
+    required this.future,
+    required this.builder,
     this.initialData,
     this.mutable = false,
     this.loadingBuilder,
     this.loadingWidget,
-  })  : assert(builder != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// The asynchronous computation to which this builder is currently connected,
   /// possibly null.
@@ -38,7 +37,7 @@ class LoadingBuilder<T> extends StatefulWidget {
   /// provided to the [builder] will become null, regardless of [initialData].
   /// (The error itself will be available in [AsyncSnapshot.error], and
   /// [AsyncSnapshot.hasError] will be true.)
-  final T initialData;
+  final T? initialData;
 
   /// default is false
   ///
@@ -48,19 +47,19 @@ class LoadingBuilder<T> extends StatefulWidget {
   final bool mutable;
 
   /// set only if loadingWidget if null
-  final LoadingWidgetBuilder loadingBuilder;
+  final LoadingWidgetBuilder? loadingBuilder;
 
   /// set only if loadingBuilder if null
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
 
   @override
   _LoadingBuilderState<T> createState() => _LoadingBuilderState<T>();
 }
 
-class _LoadingBuilderState<T> extends State<LoadingBuilder<T>> {
+class _LoadingBuilderState<T> extends State<LoadingBuilder<T?>> {
   @override
   Widget build(BuildContext context) {
-    return FutureLoadingBuilder<Response<T>>(
+    return FutureLoadingBuilder<Response<T?>>(
       future: widget.future,
       //        initialData: widget.initialData,
       mutable: widget.mutable,
@@ -75,15 +74,14 @@ class _LoadingBuilderState<T> extends State<LoadingBuilder<T>> {
 
 class FutureLoadingBuilder<T> extends StatefulWidget {
   const FutureLoadingBuilder({
-    Key key,
-    @required this.future,
-    @required this.builder,
+    Key? key,
+    required this.future,
+    required this.builder,
     this.loadingBuilder,
     this.loadingWidget,
     this.initialData,
     this.mutable = false,
-  })  : assert(builder != null),
-        assert((loadingBuilder == null && loadingWidget == null) ||
+  })  : assert((loadingBuilder == null && loadingWidget == null) ||
             (loadingBuilder != null && loadingWidget == null) ||
             loadingBuilder == null && loadingWidget != null),
         super(key: key);
@@ -104,7 +102,7 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   /// provided to the [builder] will become null, regardless of [initialData].
   /// (The error itself will be available in [AsyncSnapshot.error], and
   /// [AsyncSnapshot.hasError] will be true.)
-  final T initialData;
+  final T? initialData;
 
   /// default is true
   ///
@@ -114,23 +112,23 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   final bool mutable;
 
   /// set only if loadingWidget if null
-  final LoadingWidgetBuilder loadingBuilder;
+  final LoadingWidgetBuilder? loadingBuilder;
 
   /// set only if loadingBuilder if null
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
 
   @override
   _FutureLoadingBuilderState<T> createState() =>
       _FutureLoadingBuilderState<T>();
 
   static bool atMostOneIsSet(List<Object> list) {
-    int trueSum = list.where((item) => item != null).length;
+    int trueSum = list.length;
     return trueSum <= 1;
   }
 }
 
-class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
-  Future<T> cashedFuture;
+class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T?>> {
+  Future<T?>? cashedFuture;
 
   @override
   void initState() {
@@ -142,7 +140,7 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
   Widget build(BuildContext context) {
     if (widget.mutable) cashedFuture = widget.future;
 
-    return FutureBuilder<T>(
+    return FutureBuilder<T?>(
       future: cashedFuture,
       initialData: widget.initialData,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -150,39 +148,35 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
           case ConnectionState.none:
           case ConnectionState.active:
           case ConnectionState.waiting:
-            return buildLoading();
+            return buildLoading()!;
 
           case ConnectionState.done:
             if (snapshot.hasError) {
               var error = snapshot.error;
               if (error is Response<ErrorResponse>) {
                 d2('error.body: ${error.body}');
-                return Center(child: Text('Error: ${error.body.error[0]}'));
+                return Center(child: Text('Error: ${error.body!.error![0]}'));
               } else if (error is SocketException) {
                 d2('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
-                    S.of(context)?.please_check_your_connection ??
-                        'Please check your connection',
+                    S.of(context).please_check_your_connection,
                     overflow: TextOverflow.fade,
                   ),
                 );
               } else {
                 d2('Unknown error: $error');
-                return Center(
-                    child: Text(S.of(context)?.server_error ?? 'Server error'));
+                return Center(child: Text(S.of(context).server_error));
               }
             }
-
             return widget.builder(context, snapshot.data);
         }
-        return widget.builder(context, snapshot.data);
       },
     );
   }
 
-  Widget buildLoading() {
-    if (widget.loadingBuilder != null) return widget.loadingBuilder(context);
+  Widget? buildLoading() {
+    if (widget.loadingBuilder != null) return widget.loadingBuilder!(context);
     if (widget.loadingWidget != null) return widget.loadingWidget;
     return Center(child: CircularProgressIndicator());
   }

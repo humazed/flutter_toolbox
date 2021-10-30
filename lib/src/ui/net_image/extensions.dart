@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 extension ImageUtil on String {
-  String getSizedFormattedUrl(BuildContext context, {int width, int height}) {
+  String getSizedFormattedUrl(BuildContext context, {int? width, int? height}) {
     // this doesn't work in init state and using it inside the build method causes rebuilds.
     // so setting the ratio to 1 for now.
     var devicePixelRatio = MediaQuery.of(context).devicePixelRatio;

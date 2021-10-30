@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -12,8 +13,8 @@ import 'package:uuid/uuid.dart';
 
 import 'http.dart';
 
-Future<File> picImage(BuildContext context) async {
-  ImageSource source = await showDialog<ImageSource>(
+Future<File?> picImage(BuildContext context) async {
+  ImageSource? source = await showDialog<ImageSource>(
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(
@@ -45,14 +46,14 @@ Future<File> picImage(BuildContext context) async {
 
   if (source == null) return null;
 
-  final pickedFile = await ImagePicker().getImage(source: source);
+  final pickedFile = await ImagePicker().pickImage(source: source);
   if (pickedFile == null) return null;
 
   File image = File((pickedFile).path);
   return fixExifRotation(image);
 }
 
-Future<MultipartFile> picImageMultiFile(
+Future<MultipartFile?> picImageMultiFile(
     BuildContext context, String name) async {
   var image = await picImage(context);
   if (image == null) return null;
@@ -63,7 +64,7 @@ Future<File> fixExifRotation(File image, {deleteOriginal: false}) async {
   List<int> imageBytes = await image.readAsBytes();
 
   List<int> result = await FlutterImageCompress.compressWithList(
-    imageBytes,
+    Uint8List.fromList(imageBytes),
     quality: 100,
     rotate: 0,
   );

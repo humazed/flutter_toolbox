@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class MultiSelectChip<T> extends StatefulWidget {
   final List<T> items;
-  final Function(List<T>) onSelectionChanged;
-  final String Function(T) mapLabels;
+  final Function(List<T>)? onSelectionChanged;
+  final String Function(T)? mapLabels;
 
   MultiSelectChip(this.items, {this.onSelectionChanged, this.mapLabels});
 
@@ -23,7 +23,7 @@ class _MultiSelectChipState<T> extends State<MultiSelectChip<T>> {
         Container(
           padding: const EdgeInsets.all(2),
           child: ChoiceChip(
-            label: Text(widget.mapLabels(item)),
+            label: Text(widget.mapLabels!(item)),
             selected: selectedChoices.contains(item),
             onSelected: (selected) {
               setState(() {
@@ -31,7 +31,7 @@ class _MultiSelectChipState<T> extends State<MultiSelectChip<T>> {
                     ? selectedChoices.remove(item)
                     : selectedChoices.add(item);
 
-                widget.onSelectionChanged(selectedChoices);
+                widget.onSelectionChanged!(selectedChoices);
               });
             },
           ),

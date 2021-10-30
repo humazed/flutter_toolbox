@@ -2,26 +2,22 @@ import 'package:flutter/material.dart';
 
 class WrapDropdownButton<T> extends StatelessWidget {
   WrapDropdownButton({
-    Key key,
-    @required this.items,
+    Key? key,
+    required this.items,
     this.value,
     this.hint,
     this.disabledHint,
-    @required this.onChanged,
+    required this.onChanged,
     this.elevation = 8,
     this.style,
     this.iconSize = 24.0,
     this.isDense = false,
-  })  : assert(items == null ||
-            items.isEmpty ||
+  })  : assert(items.isEmpty ||
             value == null ||
             items
                     .where((DropdownMenuItem<T> item) => item.value == value)
                     .length ==
                 1),
-        assert(elevation != null),
-        assert(iconSize != null),
-        assert(isDense != null),
         super(key: key);
 
   /// The list of items the user can select.
@@ -35,15 +31,15 @@ class WrapDropdownButton<T> extends StatelessWidget {
   /// The value of the currently selected [DropdownMenuItem], or null if no
   /// item has been selected. If `value` is null then the menu is popped up as
   /// if the first item were selected.
-  final T value;
+  final T? value;
 
   /// Displayed if [value] is null.
-  final Widget hint;
+  final Widget? hint;
 
   /// A message to show when the dropdown is disabled.
   ///
   /// Displayed if [items] or [onChanged] is null.
-  final Widget disabledHint;
+  final Widget? disabledHint;
 
   /// Called when the user selects an item.
   ///
@@ -51,7 +47,7 @@ class WrapDropdownButton<T> extends StatelessWidget {
   /// then the dropdown button will be disabled, i.e. its arrow will be
   /// displayed in grey and it will not respond to input. A disabled button
   /// will display the [disabledHint] widget if it is non-null.
-  final ValueChanged<T> onChanged;
+  final ValueChanged<T?> onChanged;
 
   /// The z-coordinate at which to place the menu when open.
   ///
@@ -66,7 +62,7 @@ class WrapDropdownButton<T> extends StatelessWidget {
   ///
   /// Defaults to the [TextTheme.subhead] value of the current
   /// [ThemeData.textTheme] of the current [Theme].
-  final TextStyle style;
+  final TextStyle? style;
 
   /// The size to use for the drop-down button's down arrow icon button.
   ///

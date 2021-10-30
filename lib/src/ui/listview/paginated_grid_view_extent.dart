@@ -18,10 +18,10 @@ class PaginatedGridViewExtent<T> extends StatefulWidget {
   final double mainAxisSpacing;
 
   final int pageSize;
-  final EdgeInsetsGeometry padding;
-  final NoItemsFoundBuilder noItemsFoundBuilder;
-  final Widget noItemsFoundWidget;
-  final PagewiseLoadController<T> pageLoadController;
+  final EdgeInsetsGeometry? padding;
+  final NoItemsFoundBuilder? noItemsFoundBuilder;
+  final Widget? noItemsFoundWidget;
+  final PagewiseLoadController<T>? pageLoadController;
 
   /// default is false
   ///
@@ -35,13 +35,13 @@ class PaginatedGridViewExtent<T> extends StatefulWidget {
 
   final Axis scrollDirection;
   final bool shrinkWrap;
-  final ScrollPhysics physics;
+  final ScrollPhysics? physics;
 
   const PaginatedGridViewExtent({
-    Key key,
-    @required this.itemBuilder,
-    @required this.pageFuture,
-    @required this.maxCrossAxisExtent,
+    Key? key,
+    required this.itemBuilder,
+    required this.pageFuture,
+    required this.maxCrossAxisExtent,
     this.childAspectRatio = 1.0,
     this.crossAxisSpacing = 0.0,
     this.mainAxisSpacing = 0.0,
@@ -88,7 +88,7 @@ class _PaginatedGridViewExtentState<T>
     _reload = false;
 
     final PageFuture<T> pageFuture =
-        (int pageIndex) => widget.pageFuture(pageIndex + 1);
+        (int? pageIndex) => widget.pageFuture(pageIndex! + 1);
 
     final pageLoadController = widget.pageLoadController ??
         PagewiseLoadController(

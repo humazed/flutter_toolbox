@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InkWellStacked extends StatelessWidget {
   const InkWellStacked({
-    Key key,
+    Key? key,
     this.child,
     this.onTap,
     this.onTapDown,
@@ -27,34 +27,28 @@ class InkWellStacked extends StatelessWidget {
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
-  })  : assert(containedInkWell != null),
-        assert(highlightShape != null),
-        assert(enableFeedback != null),
-        assert(excludeFromSemantics != null),
-        assert(autofocus != null),
-        assert(canRequestFocus != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// The widget below this widget in the tree.
   ///
   /// {@macro flutter.widgets.child}
-  final Widget child;
+  final Widget? child;
 
   /// Called when the user taps this part of the material.
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   /// Called when the user taps down this part of the material.
-  final GestureTapDownCallback onTapDown;
+  final GestureTapDownCallback? onTapDown;
 
   /// Called when the user cancels a tap that was started on this part of the
   /// material.
-  final GestureTapCallback onTapCancel;
+  final GestureTapCallback? onTapCancel;
 
   /// Called when the user double taps this part of the material.
-  final GestureTapCallback onDoubleTap;
+  final GestureTapCallback? onDoubleTap;
 
   /// Called when the user long-presses on this part of the material.
-  final GestureLongPressCallback onLongPress;
+  final GestureLongPressCallback? onLongPress;
 
   /// Called when this part of the material either becomes highlighted or stops
   /// being highlighted.
@@ -68,14 +62,14 @@ class InkWellStacked extends StatelessWidget {
   /// [onHighlightChanged] will be fired with the value false _during the
   /// build_. This means, for instance, that in that scenario [State.setState]
   /// cannot be called.
-  final ValueChanged<bool> onHighlightChanged;
+  final ValueChanged<bool>? onHighlightChanged;
 
   /// Called when a pointer enters or exits the ink response area.
   ///
   /// The value passed to the callback is true if a pointer has entered this
   /// part of the material and false if a pointer has exited this part of the
   /// material.
-  final ValueChanged<bool> onHover;
+  final ValueChanged<bool>? onHover;
 
   /// Whether this ink response should be clipped its bounds.
   ///
@@ -124,16 +118,16 @@ class InkWellStacked extends StatelessWidget {
   ///
   ///  * [splashColor], the color of the splash.
   ///  * [splashFactory], which defines the appearance of the splash.
-  final double radius;
+  final double? radius;
 
   /// The clipping radius of the containing rect. This is effective only if
   /// [customBorder] is null.
   ///
   /// If this is null, it is interpreted as [BorderRadius.zero].
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// The custom clip border which overrides [borderRadius].
-  final ShapeBorder customBorder;
+  final ShapeBorder? customBorder;
 
   /// The color of the ink response when the parent widget is focused. If this
   /// property is null then the focus color of the theme,
@@ -146,7 +140,7 @@ class InkWellStacked extends StatelessWidget {
   ///  * [hoverColor], the color of the hover highlight.
   ///  * [splashColor], the color of the splash.
   ///  * [splashFactory], which defines the appearance of the splash.
-  final Color focusColor;
+  final Color? focusColor;
 
   /// The color of the ink response when a pointer is hovering over it. If this
   /// property is null then the hover color of the theme,
@@ -160,7 +154,7 @@ class InkWellStacked extends StatelessWidget {
   ///  * [focusColor], the color of the focus highlight.
   ///  * [splashColor], the color of the splash.
   ///  * [splashFactory], which defines the appearance of the splash.
-  final Color hoverColor;
+  final Color? hoverColor;
 
   /// The highlight color of the ink response when pressed. If this property is
   /// null then the highlight color of the theme, [ThemeData.highlightColor],
@@ -174,7 +168,7 @@ class InkWellStacked extends StatelessWidget {
   ///    highlights.
   ///  * [splashColor], the color of the splash.
   ///  * [splashFactory], which defines the appearance of the splash.
-  final Color highlightColor;
+  final Color? highlightColor;
 
   /// The splash color of the ink response. If this property is null then the
   /// splash color of the theme, [ThemeData.splashColor], will be used.
@@ -184,7 +178,7 @@ class InkWellStacked extends StatelessWidget {
   ///  * [splashFactory], which defines the appearance of the splash.
   ///  * [radius], the (maximum) size of the ink splash.
   ///  * [highlightColor], the color of the highlight.
-  final Color splashColor;
+  final Color? splashColor;
 
   /// Defines the appearance of the splash.
   ///
@@ -198,7 +192,7 @@ class InkWellStacked extends StatelessWidget {
   ///  * [InkSplash.splashFactory], which defines the default splash.
   ///  * [InkRipple.splashFactory], which defines a splash that spreads out
   ///    more aggressively than the default.
-  final InteractiveInkFeatureFactory splashFactory;
+  final InteractiveInkFeatureFactory? splashFactory;
 
   /// Whether detected gestures should provide acoustic and/or haptic feedback.
   ///
@@ -223,13 +217,13 @@ class InkWellStacked extends StatelessWidget {
   ///
   /// Called with true if this widget's node gains focus, and false if it loses
   /// focus.
-  final ValueChanged<bool> onFocusChange;
+  final ValueChanged<bool>? onFocusChange;
 
   /// {@macro flutter.widgets.Focus.autofocus}
   final bool autofocus;
 
   /// {@macro flutter.widgets.Focus.focusNode}
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
 
   /// {@template flutter.widgets.Focus.canRequestFocus}
   final bool canRequestFocus;
@@ -238,7 +232,7 @@ class InkWellStacked extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        child,
+        child!,
         Positioned.fill(
           child: Material(
             type: MaterialType.transparency,
@@ -259,12 +253,12 @@ class InkWellStacked extends StatelessWidget {
               radius: radius,
               borderRadius: borderRadius,
               customBorder: customBorder,
-              enableFeedback: enableFeedback ?? true,
-              excludeFromSemantics: excludeFromSemantics ?? false,
+              enableFeedback: enableFeedback,
+              excludeFromSemantics: excludeFromSemantics,
               focusNode: focusNode,
-              canRequestFocus: canRequestFocus ?? true,
+              canRequestFocus: canRequestFocus,
               onFocusChange: onFocusChange,
-              autofocus: autofocus ?? false,
+              autofocus: autofocus,
             ),
           ),
         ),

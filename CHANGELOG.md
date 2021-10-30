@@ -1,3 +1,7 @@
+##  8.0.0.
+
+* Added null-safty support
+
 ##  7.0.2
 
 * Update `chopper2: ^4.0.1`

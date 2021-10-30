@@ -5,33 +5,33 @@ import 'package:flutter_toolbox/generated/l10n.dart';
 
 class TimePickerField extends StatelessWidget {
   const TimePickerField({
-    Key key,
+    Key? key,
     this.labelText,
     this.selectedTime,
     this.onTimeSelected,
   }) : super(key: key);
 
-  final String labelText;
-  final TimeOfDay selectedTime;
-  final ValueChanged<TimeOfDay> onTimeSelected;
+  final String? labelText;
+  final TimeOfDay? selectedTime;
+  final ValueChanged<TimeOfDay>? onTimeSelected;
 
   Future<void> _selectDate(BuildContext context) async {
-    final TimeOfDay picked = await showTimePicker(
+    final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: selectedTime ?? TimeOfDay.now(),
     );
-    if (picked != null && picked != selectedTime) onTimeSelected(picked);
+    if (picked != null && picked != selectedTime) onTimeSelected!(picked);
   }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle valueStyle = Theme.of(context).textTheme.headline6;
+    final TextStyle? valueStyle = Theme.of(context).textTheme.headline6;
 
     return _InputDropdown(
       labelText: labelText,
       valueText: selectedTime == null
-          ? S.of(context)?.select_time ?? 'Select time'
-          : selectedTime.format(context),
+          ? S.of(context).select_time
+          : selectedTime!.format(context),
       valueStyle: valueStyle,
       onPressed: () => _selectDate(context),
     );
@@ -40,7 +40,7 @@ class TimePickerField extends StatelessWidget {
 
 class _InputDropdown extends StatelessWidget {
   const _InputDropdown({
-    Key key,
+    Key? key,
     this.child,
     this.labelText,
     this.valueText,
@@ -48,11 +48,11 @@ class _InputDropdown extends StatelessWidget {
     this.onPressed,
   }) : super(key: key);
 
-  final String labelText;
-  final String valueText;
-  final TextStyle valueStyle;
-  final VoidCallback onPressed;
-  final Widget child;
+  final String? labelText;
+  final String? valueText;
+  final TextStyle? valueStyle;
+  final VoidCallback? onPressed;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class _InputDropdown extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(valueText, style: valueStyle),
+            Text(valueText!, style: valueStyle),
             Icon(
               Icons.arrow_drop_down,
               color: Theme.of(context).brightness == Brightness.light

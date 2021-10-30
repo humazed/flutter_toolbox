@@ -9,15 +9,15 @@ LinkedHashMap<_ToolboxAppState, BuildContext> contextMap = LinkedHashMap();
 
 class ToolboxApp extends StatefulWidget {
   const ToolboxApp({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.toolboxConfig,
   }) : super(key: key);
 
   /// Usually should be [MaterialApp] or [CupertinoApp].
   final Widget child;
 
-  final ToolboxConfig toolboxConfig;
+  final ToolboxConfig? toolboxConfig;
 
   @override
   _ToolboxAppState createState() => _ToolboxAppState();

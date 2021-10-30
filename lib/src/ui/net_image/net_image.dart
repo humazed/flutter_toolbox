@@ -12,7 +12,7 @@ const imageResizerUl = 'https://images.weserv.nl/?url=';
 class NetImage extends StatefulWidget {
   const NetImage(
     this.imageUrl, {
-    Key key,
+    Key? key,
     this.imageBuilder,
     this.placeholder,
     this.errorWidget,
@@ -38,19 +38,19 @@ class NetImage extends StatefulWidget {
   });
 
   /// Option to use cachemanager with other settings
-  final BaseCacheManager cacheManager;
+  final BaseCacheManager? cacheManager;
 
   /// The target image that is displayed.
   final String imageUrl;
 
   /// Optional builder to further customize the display of the image.
-  final ImageWidgetBuilder imageBuilder;
+  final ImageWidgetBuilder? imageBuilder;
 
   /// Widget displayed while the target [imageUrl] is loading.
-  final PlaceholderWidgetBuilder placeholder;
+  final PlaceholderWidgetBuilder? placeholder;
 
   /// Widget displayed while the target [imageUrl] failed loading.
-  final LoadingErrorWidgetBuilder errorWidget;
+  final LoadingErrorWidgetBuilder? errorWidget;
 
   /// The duration of the fade-out animation for the [placeholder].
   final Duration fadeOutDuration;
@@ -70,7 +70,7 @@ class NetImage extends StatefulWidget {
   /// aspect ratio. This may result in a sudden change if the size of the
   /// placeholder widget does not match that of the target image. The size is
   /// also affected by the scale factor.
-  final double width;
+  final double? width;
 
   /// If non-null, require the image to have this height.
   ///
@@ -78,13 +78,13 @@ class NetImage extends StatefulWidget {
   /// aspect ratio. This may result in a sudden change if the size of the
   /// placeholder widget does not match that of the target image. The size is
   /// also affected by the scale factor.
-  final double height;
+  final double? height;
 
   /// How to inscribe the image into the space allocated during layout.
   ///
   /// The default varies based on the other fields. See the discussion at
   /// [paintImage].
-  final BoxFit fit;
+  final BoxFit? fit;
 
   /// How to align the image within its bounds.
   ///
@@ -131,14 +131,14 @@ class NetImage extends StatefulWidget {
   final bool matchTextDirection;
 
   // Optional headers for the http request of the image url
-  final Map<String, String> httpHeaders;
+  final Map<String, String>? httpHeaders;
 
   /// When set to true it will animate from the old image to the new image
   /// if the url changes.
   final bool useOldImageOnUrlChange;
 
   /// If non-null, this color is blended with each image pixel using [colorBlendMode].
-  final Color color;
+  final Color? color;
 
   /// Used to combine [color] with this image.
   ///
@@ -148,7 +148,7 @@ class NetImage extends StatefulWidget {
   /// See also:
   ///
   ///  * [BlendMode], which includes an illustration of the effect of each blend mode.
-  final BlendMode colorBlendMode;
+  final BlendMode? colorBlendMode;
 
   /// default false.
   final bool fullScreen;
@@ -159,10 +159,10 @@ class NetImage extends StatefulWidget {
   final bool hero;
 
   /// defaults to 0
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   /// Called when the user taps this part of the image.
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   @override
   _NetImageState createState() => _NetImageState();
@@ -174,21 +174,19 @@ class _NetImageState extends State<NetImage> {
   }
 
   String _getFormattedUrl(String originalImageUrl, BoxConstraints constraints) {
-    if (originalImageUrl?.isNotEmpty != true) return '';
+    if (originalImageUrl.isNotEmpty != true) return '';
 
     final imageUrl = '$imageResizerUl$originalImageUrl';
 
-    int width;
-    int height;
+    int? width;
+    int? height;
     if (constraints.maxWidth != double.infinity) {
       width = constraints.maxWidth.toInt();
     }
     if (constraints.maxHeight != double.infinity) {
       height = constraints.maxHeight.toInt();
     }
-    return imageUrl?.getSizedFormattedUrl(context,
-            width: width, height: height) ??
-        "";
+    return imageUrl.getSizedFormattedUrl(context, width: width, height: height);
   }
 
   @override
@@ -249,7 +247,7 @@ class _NetImageState extends State<NetImage> {
     final _errorWidget =
         widget.errorWidget ?? (_, __, ___) => Icon(Icons.image);
 
-    if (imageUrl?.isNotEmpty != true) return _errorWidget(context, '', null);
+    if (imageUrl.isNotEmpty != true) return _errorWidget(context, '', null);
 
     return CachedNetworkImage(
       imageUrl: imageUrl,
@@ -264,7 +262,7 @@ class _NetImageState extends State<NetImage> {
       width: widget.width,
       height: widget.height,
       fit: widget.fit,
-      alignment: widget.alignment,
+      alignment: widget.alignment as Alignment,
       repeat: widget.repeat,
       matchTextDirection: widget.matchTextDirection,
       httpHeaders: widget.httpHeaders,

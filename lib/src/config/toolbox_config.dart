@@ -13,14 +13,14 @@ class ToolboxConfig {
     this.onAuthorizedNavigation,
   });
 
-  final NoItemsFoundBuilder noItemsFoundBuilder;
-  final Widget noItemsFoundWidget;
+  final NoItemsFoundBuilder? noItemsFoundBuilder;
+  final Widget? noItemsFoundWidget;
   final bool useWeservResizer;
   final bool logLoadedImageUrl;
 
-  final List<Type> unAuthenticatedPages;
-  final bool Function() isAuthenticated;
-  final Future Function(BuildContext context, Type pageType)
+  final List<Type>? unAuthenticatedPages;
+  final bool Function()? isAuthenticated;
+  final Future Function(BuildContext context, Type pageType)?
       onAuthorizedNavigation;
 
   static ToolboxConfig of(BuildContext context, {bool listen = true}) =>

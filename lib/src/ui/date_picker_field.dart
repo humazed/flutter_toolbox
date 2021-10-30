@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 
 class DatePickerField extends StatelessWidget {
   const DatePickerField({
-    Key key,
+    Key? key,
     this.labelText,
     this.selectedDate,
     this.onDateSelected,
@@ -14,30 +14,30 @@ class DatePickerField extends StatelessWidget {
     this.lastDate,
   }) : super(key: key);
 
-  final String labelText;
-  final DateTime selectedDate;
-  final ValueChanged<DateTime> onDateSelected;
-  final DateTime firstDate;
-  final DateTime lastDate;
+  final String? labelText;
+  final DateTime? selectedDate;
+  final ValueChanged<DateTime>? onDateSelected;
+  final DateTime? firstDate;
+  final DateTime? lastDate;
 
   Future<void> _selectDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
       firstDate: firstDate ?? DateTime(2015, 8),
       lastDate: lastDate ?? DateTime(2101),
     );
-    if (picked != null && picked != selectedDate) onDateSelected(picked);
+    if (picked != null && picked != selectedDate) onDateSelected!(picked);
   }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle valueStyle = Theme.of(context).textTheme.headline6;
+    final TextStyle? valueStyle = Theme.of(context).textTheme.headline6;
     return _InputDropdown(
       labelText: labelText,
       valueText: selectedDate == null
-          ? S.of(context)?.select_date ?? 'Select date'
-          : DateFormat.yMMMd().format(selectedDate),
+          ? S.of(context).select_date
+          : DateFormat.yMMMd().format(selectedDate!),
       valueStyle: valueStyle,
       onPressed: () => _selectDate(context),
     );
@@ -46,7 +46,7 @@ class DatePickerField extends StatelessWidget {
 
 class _InputDropdown extends StatelessWidget {
   const _InputDropdown({
-    Key key,
+    Key? key,
     this.child,
     this.labelText,
     this.valueText,
@@ -54,11 +54,11 @@ class _InputDropdown extends StatelessWidget {
     this.onPressed,
   }) : super(key: key);
 
-  final String labelText;
-  final String valueText;
-  final TextStyle valueStyle;
-  final VoidCallback onPressed;
-  final Widget child;
+  final String? labelText;
+  final String? valueText;
+  final TextStyle? valueStyle;
+  final VoidCallback? onPressed;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,7 @@ class _InputDropdown extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(valueText, style: valueStyle),
+            Text(valueText!, style: valueStyle),
             Icon(
               Icons.arrow_drop_down,
               color: Theme.of(context).brightness == Brightness.light

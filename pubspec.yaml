@@ -1,12 +1,12 @@
 name: flutter_toolbox
 description: Common flutter widgets and helper methods.
-version: 7.0.2
+version: 8.0.0
 homepage: https://github.com/humazed/flutter_toolbox
 
 # flutter packages pub run build_runner watch --delete-conflicting-outputs
 # flutter pub pub publish --dry-run
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   flutter: ">=1.20.0"
 
 dependencies:
@@ -31,7 +31,7 @@ dependencies:
 
   http: '>=0.12.2 <=0.13.4'
   json_annotation: ^4.3.0
-  chopper2: ^4.0.1
+  chopper: ^4.0.1
 
 
 dev_dependencies:
@@ -97,5 +97,5 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
-#flutter_intl:
-#  enabled: true
+flutter_intl:
+  enabled: true
