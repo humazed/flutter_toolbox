@@ -1,3 +1,7 @@
+##  7.0.1
+
+* Update `provider: ^6.0.1`
+
 ##  7.0.0
 
 * Update deps to work with flutter 2.5.0
