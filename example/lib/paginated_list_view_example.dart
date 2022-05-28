@@ -64,7 +64,7 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
       showRefreshIndicator: true,
       noItemsFoundWidget: Icon(Icons.hourglass_empty),
       itemBuilder: this._itemBuilder,
-      pageFuture: (pageIndex) {
+      pageFuture: (int pageIndex) {
         return BackendService.getPosts(
             pageIndex * PaginatedListViewExample.PAGE_SIZE,
             PaginatedListViewExample.PAGE_SIZE);
@@ -80,8 +80,8 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
             Icons.person,
             color: Colors.brown[200],
           ),
-          title: Text(entry.title),
-          subtitle: Text(entry.body),
+          title: Text(entry.title!),
+          subtitle: Text(entry.body!),
         ),
         Divider()
       ],
@@ -100,8 +100,8 @@ class PaginatedListViewEmptyExample extends StatelessWidget {
       showRefreshIndicator: true,
 //      noItemsFoundWidget: Icon(Icons.hourglass_empty),
       itemBuilder: this._itemBuilder,
-      pageFuture: (pageIndex) =>
-          BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
+      pageFuture: ((pageIndex) =>
+          BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE)),
     );
   }
 
@@ -113,8 +113,8 @@ class PaginatedListViewEmptyExample extends StatelessWidget {
             Icons.person,
             color: Colors.brown[200],
           ),
-          title: Text(entry.title),
-          subtitle: Text(entry.body),
+          title: Text(entry.title!),
+          subtitle: Text(entry.body!),
         ),
         Divider()
       ],
@@ -137,8 +137,8 @@ class PagewiseSliverListExample extends StatelessWidget {
         pageSize: PAGE_SIZE,
         itemBuilder: _itemBuilder,
         noItemsFoundWidget: Icon(Icons.hourglass_empty),
-        pageFuture: (pageIndex) =>
-            BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE),
+        pageFuture: ((pageIndex) =>
+            BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE)),
       ),
     ]);
   }
@@ -151,8 +151,8 @@ class PagewiseSliverListExample extends StatelessWidget {
             Icons.person,
             color: Colors.brown[200],
           ),
-          title: Text(entry.title),
-          subtitle: Text(entry.body),
+          title: Text(entry.title!),
+          subtitle: Text(entry.body!),
         ),
         Divider()
       ],
@@ -163,41 +163,41 @@ class PagewiseSliverListExample extends StatelessWidget {
 class BackendService {
   static Future<List<PostModel>> getPosts(offset, limit) async {
     final responseBody = (await http.get(Uri.parse(
-            'http://jsonplaceholder.typicode.com/posts?_start=$offset&_limit=$limit')))
+            'https://jsonplaceholder.typicode.com/posts?_start=$offset&_limit=$limit')))
         .body;
 
     // The response body is an array of items
-    return PostModel.fromJsonList(json.decode(responseBody));
+    return PostModel.fromJsonList(json.decode(responseBody)) ?? [];
   }
 
   static Future<List<ImageModel>> getImages(offset, limit) async {
     final responseBody = (await http.get(Uri.parse(
-            'http://jsonplaceholder.typicode.com/photos?_start=$offset&_limit=$limit')))
+            'https://jsonplaceholder.typicode.com/photos?_start=$offset&_limit=$limit')))
         .body;
 
     // The response body is an array of items.
-    return ImageModel.fromJsonList(json.decode(responseBody));
+    return ImageModel.fromJsonList(json.decode(responseBody)) ?? [];
   }
 }
 
 class PostModel {
-  String title;
-  String body;
+  String? title;
+  String? body;
 
   PostModel.fromJson(obj) {
     this.title = obj['title'];
     this.body = obj['body'];
   }
 
-  static List<PostModel> fromJsonList(jsonList) {
+  static List<PostModel>? fromJsonList(jsonList) {
     return jsonList.map<PostModel>((obj) => PostModel.fromJson(obj)).toList();
   }
 }
 
 class ImageModel {
-  String title;
-  String id;
-  String thumbnailUrl;
+  String? title;
+  String? id;
+  String? thumbnailUrl;
 
   ImageModel.fromJson(obj) {
     this.title = obj['title'];
@@ -205,7 +205,7 @@ class ImageModel {
     this.thumbnailUrl = obj['thumbnailUrl'];
   }
 
-  static List<ImageModel> fromJsonList(jsonList) {
+  static List<ImageModel>? fromJsonList(jsonList) {
     return jsonList.map<ImageModel>((obj) => ImageModel.fromJson(obj)).toList();
   }
 }

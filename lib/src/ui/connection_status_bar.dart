@@ -37,7 +37,7 @@ class ConnectionStatusBar extends StatefulWidget {
         ),
       ),
     );
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
       Overlay.of(context)!.insert(overlayEntry);
     });
   }
@@ -86,7 +86,8 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
               child: widget.title != null
                   ? widget.title
                   : Text(
-                      S.of(context).please_check_your_internet_connection,
+                      S.of(context)?.please_check_your_internet_connection ??
+                          'Please check your internet connection',
                       style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
             ),

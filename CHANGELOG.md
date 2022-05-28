@@ -1,4 +1,9 @@
-##  8.0.0.
+##  8.0.1
+
+* Updated all deps.
+* Improverd null-safty support.
+
+##  8.0.0
 
 * Added null-safty support
 

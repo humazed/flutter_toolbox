@@ -150,7 +150,7 @@ class HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(8),
               ),
               NetImage(
-                null,
+                "",
                 width: 50,
                 borderRadius: BorderRadius.circular(8),
               ),

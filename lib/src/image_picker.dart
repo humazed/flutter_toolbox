@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
 import 'package:http/http.dart';
@@ -18,7 +17,7 @@ Future<File?> picImage(BuildContext context) async {
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(
-          title: Text(S.of(context).add_photo),
+          title: Text(S.of(context)?.add_photo ?? 'Add photo'),
           children: <Widget>[
             SimpleDialogOption(
               onPressed: () {
@@ -27,7 +26,7 @@ Future<File?> picImage(BuildContext context) async {
               },
               child: ListTile(
                 leading: Icon(Icons.camera_alt),
-                title: Text(S.of(context).camera),
+                title: Text(S.of(context)?.camera??'Camera'),
               ),
             ),
             SimpleDialogOption(
@@ -37,7 +36,7 @@ Future<File?> picImage(BuildContext context) async {
               },
               child: ListTile(
                 leading: Icon(Icons.image),
-                title: Text(S.of(context).gallery),
+                title: Text(S.of(context)?.gallery??'Gallery'),
               ),
             ),
           ],

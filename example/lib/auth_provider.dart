@@ -5,9 +5,9 @@ class AuthProvider extends ChangeNotifier {
   static AuthProvider of(BuildContext context, {bool listen = true}) =>
       Provider.of<AuthProvider>(context, listen: listen);
 
-  User _user;
+  User? _user;
 
-  User getUserCashed() => _user;
+  User? getUserCashed() => _user;
 
   void login() {
     _user = User();

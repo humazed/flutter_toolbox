@@ -196,7 +196,7 @@ class ItemsListState<T> extends State<ItemsList> {
                         FocusScope.of(context).requestFocus(FocusNode());
                       },
                     ),
-                    hintText: S.of(context).search,
+                    hintText: S.of(context)?.search ?? 'Search...',
                   ),
                   controller: controller,
                 )),

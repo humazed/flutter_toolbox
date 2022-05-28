@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
-import 'package:flutter_toolbox/src/model/error/error_response.dart';
 
 import '../../flutter_toolbox.dart';
 
@@ -160,13 +159,13 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T?>> {
                 d2('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
-                    S.of(context).please_check_your_connection,
+                    S.of(context)?.please_check_your_connection??'Please check your connection',
                     overflow: TextOverflow.fade,
                   ),
                 );
               } else {
                 d2('Unknown error: $error');
-                return Center(child: Text(S.of(context).server_error));
+                return Center(child: Text(S.of(context)?.server_error??'Server error'));
               }
             }
             return widget.builder(context, snapshot.data);

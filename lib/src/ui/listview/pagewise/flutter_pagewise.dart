@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'helpers/grid_helpers.dart';
 
 typedef Widget ItemBuilder<T>(BuildContext context, T entry, int index);
-typedef Future<List<T>> PageFuture<T>(int? pageIndex);
+typedef Future<List<T>> PageFuture<T>(int pageIndex);
 typedef Widget ErrorBuilder(BuildContext context, Object? error);
 typedef Widget LoadingBuilder(BuildContext context);
 typedef Widget NoItemsFoundBuilder(BuildContext context);
