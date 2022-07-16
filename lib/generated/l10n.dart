@@ -39,11 +39,11 @@ class S {
     });
   }
 
-  static S? of(BuildContext context) {
+  static S of(BuildContext context) {
     final instance = S.maybeOf(context);
     assert(instance != null,
         'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
-    return instance;
+    return instance!;
   }
 
   static S? maybeOf(BuildContext context) {

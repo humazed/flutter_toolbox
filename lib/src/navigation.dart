@@ -33,7 +33,7 @@ Future pushReplacement(
 Future pushAndRemoveUntil(
   BuildContext context,
   Widget widget,
-  Widget untilPage, {
+  Widget? untilPage, {
   bool authCheck = true,
 }) {
   return _safeNav(

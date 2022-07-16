@@ -1,7 +1,11 @@
+##  8.0.2
+
+* Fix `pushAndRemoveUntil` not supporting null-safety
+
 ##  8.0.1
 
 * Updated all deps.
-* Improverd null-safty support.
+* Improved null-safety support.
 
 ##  8.0.0
 
