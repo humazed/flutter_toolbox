@@ -1,3 +1,7 @@
+##  8.0.3
+
+* Fixed I0n null-safety
+
 ##  8.0.2
 
 * Fix `pushAndRemoveUntil` not supporting null-safety
