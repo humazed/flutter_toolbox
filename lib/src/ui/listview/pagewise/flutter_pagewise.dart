@@ -309,13 +309,15 @@ class PagewiseState<T> extends State<Pagewise<T>> {
   }
 
   Widget _getRetryWidget() {
-    var defaultRetryButton = FlatButton(
+    var defaultRetryButton = TextButton(
       child: Icon(
         Icons.refresh,
         color: Colors.white,
       ),
-      color: Colors.grey[300],
-      shape: CircleBorder(),
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.grey[300],
+        shape: CircleBorder(),
+      ),
       onPressed: this._effectiveController!.retry,
     );
 

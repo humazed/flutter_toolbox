@@ -1,3 +1,7 @@
+## 9.0.0
+
+* Updated to support flutter 3.3.0
+
 ##  8.0.3
 
 * Fixed I0n null-safety
