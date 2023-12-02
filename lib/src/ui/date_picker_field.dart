@@ -6,13 +6,13 @@ import 'package:intl/intl.dart';
 
 class DatePickerField extends StatelessWidget {
   const DatePickerField({
-    Key? key,
+    super.key,
     this.labelText,
     this.selectedDate,
     this.onDateSelected,
     this.firstDate,
     this.lastDate,
-  }) : super(key: key);
+  });
 
   final String? labelText;
   final DateTime? selectedDate;
@@ -46,13 +46,13 @@ class DatePickerField extends StatelessWidget {
 
 class _InputDropdown extends StatelessWidget {
   const _InputDropdown({
-    Key? key,
+    super.key,
     this.child,
     this.labelText,
     this.valueText,
     this.valueStyle,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final String? labelText;
   final String? valueText;

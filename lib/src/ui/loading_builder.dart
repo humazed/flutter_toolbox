@@ -11,14 +11,14 @@ typedef LoadingWidgetBuilder<T> = Widget Function(BuildContext context);
 
 class LoadingBuilder<T> extends StatefulWidget {
   const LoadingBuilder({
-    Key? key,
+    super.key,
     required this.future,
     required this.builder,
     this.initialData,
     this.mutable = false,
     this.loadingBuilder,
     this.loadingWidget,
-  }) : super(key: key);
+  });
 
   /// The asynchronous computation to which this builder is currently connected,
   /// possibly null.
@@ -73,7 +73,7 @@ class _LoadingBuilderState<T> extends State<LoadingBuilder<T?>> {
 
 class FutureLoadingBuilder<T> extends StatefulWidget {
   const FutureLoadingBuilder({
-    Key? key,
+    super.key,
     required this.future,
     required this.builder,
     this.loadingBuilder,
@@ -82,8 +82,7 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
     this.mutable = false,
   })  : assert((loadingBuilder == null && loadingWidget == null) ||
             (loadingBuilder != null && loadingWidget == null) ||
-            loadingBuilder == null && loadingWidget != null),
-        super(key: key);
+            loadingBuilder == null && loadingWidget != null);
 
   /// The asynchronous computation to which this builder is currently connected,
   /// possibly null.

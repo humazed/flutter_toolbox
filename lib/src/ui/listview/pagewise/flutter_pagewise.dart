@@ -154,7 +154,7 @@ abstract class Pagewise<T> extends StatefulWidget {
   const Pagewise(
       {this.pageSize,
       this.pageFuture,
-      Key? key,
+      super.key,
       this.pageLoadController,
       this.loadingBuilder,
       this.retryBuilder,
@@ -172,8 +172,7 @@ abstract class Pagewise<T> extends StatefulWidget {
         assert(showRetry == false || errorBuilder == null,
             'Cannot specify showRetry and errorBuilder at the same time'),
         assert(showRetry == true || retryBuilder == null,
-            "Cannot specify retryBuilder when showRetry is set to false"),
-        super(key: key);
+            "Cannot specify retryBuilder when showRetry is set to false");
 
   @override
   PagewiseState<T> createState() => PagewiseState<T>();
@@ -513,14 +512,14 @@ class PagewiseListView<T> extends Pagewise<T> {
   /// All the properties are either those documented for normal [ListViews](https://docs.flutter.io/flutter/widgets/ListView-class.html),
   /// or those inherited from [Pagewise]
   PagewiseListView(
-      {Key? key,
+      {super.key,
       EdgeInsetsGeometry? padding,
       bool? primary,
       bool addSemanticIndexes = true,
       int? semanticChildCount,
       bool shrinkWrap = false,
       ScrollController? controller,
-      PagewiseLoadController<T>? pageLoadController,
+      super.pageLoadController,
       double? itemExtent,
       bool addAutomaticKeepAlives = true,
       Axis scrollDirection = Axis.vertical,
@@ -528,25 +527,15 @@ class PagewiseListView<T> extends Pagewise<T> {
       double? cacheExtent,
       ScrollPhysics? physics,
       bool reverse = false,
-      int? pageSize,
-      PageFuture<T>? pageFuture,
-      LoadingBuilder? loadingBuilder,
-      RetryBuilder? retryBuilder,
-      NoItemsFoundBuilder? noItemsFoundBuilder,
-      bool showRetry = true,
-      required ItemBuilder<T> itemBuilder,
-      ErrorBuilder? errorBuilder})
+      super.pageSize,
+      super.pageFuture,
+      super.loadingBuilder,
+      super.retryBuilder,
+      super.noItemsFoundBuilder,
+      super.showRetry,
+      required super.itemBuilder,
+      super.errorBuilder})
       : super(
-            pageSize: pageSize,
-            pageFuture: pageFuture,
-            pageLoadController: pageLoadController,
-            key: key,
-            loadingBuilder: loadingBuilder,
-            retryBuilder: retryBuilder,
-            showRetry: showRetry,
-            itemBuilder: itemBuilder,
-            errorBuilder: errorBuilder,
-            noItemsFoundBuilder: noItemsFoundBuilder,
             builder: (PagewiseState<T> state) {
               return ListView.builder(
                   itemExtent: itemExtent,
@@ -573,7 +562,7 @@ class PagewiseGridView<T> extends Pagewise<T> {
   /// All the properties are either those documented for normal [GridViews](https://docs.flutter.io/flutter/widgets/GridView-class.html)
   /// or those inherited from [Pagewise]
   PagewiseGridView.count(
-      {Key? key,
+      {super.key,
       EdgeInsetsGeometry? padding,
       required int crossAxisCount,
       double childAspectRatio = 1.0,
@@ -584,32 +573,22 @@ class PagewiseGridView<T> extends Pagewise<T> {
       bool? primary,
       bool shrinkWrap = false,
       ScrollController? controller,
-      PagewiseLoadController<T>? pageLoadController,
+      super.pageLoadController,
       bool addAutomaticKeepAlives = true,
       Axis scrollDirection = Axis.vertical,
       bool addRepaintBoundaries = true,
       double? cacheExtent,
       ScrollPhysics? physics,
       bool reverse = false,
-      int? pageSize,
-      PageFuture<T>? pageFuture,
-      LoadingBuilder? loadingBuilder,
-      RetryBuilder? retryBuilder,
-      NoItemsFoundBuilder? noItemsFoundBuilder,
-      bool showRetry = true,
-      required ItemBuilder<T> itemBuilder,
-      ErrorBuilder? errorBuilder})
+      super.pageSize,
+      super.pageFuture,
+      super.loadingBuilder,
+      super.retryBuilder,
+      super.noItemsFoundBuilder,
+      super.showRetry,
+      required super.itemBuilder,
+      super.errorBuilder})
       : super(
-            pageSize: pageSize,
-            pageFuture: pageFuture,
-            pageLoadController: pageLoadController,
-            key: key,
-            loadingBuilder: loadingBuilder,
-            retryBuilder: retryBuilder,
-            showRetry: showRetry,
-            itemBuilder: itemBuilder,
-            errorBuilder: errorBuilder,
-            noItemsFoundBuilder: noItemsFoundBuilder,
             builder: (PagewiseState<T> state) {
               return GridView.builder(
                   reverse: reverse,
@@ -640,7 +619,7 @@ class PagewiseGridView<T> extends Pagewise<T> {
   /// All the properties are either those documented for normal [GridViews](https://docs.flutter.io/flutter/widgets/GridView-class.html)
   /// or those inherited from [Pagewise]
   PagewiseGridView.extent(
-      {Key? key,
+      {super.key,
       EdgeInsetsGeometry? padding,
       required double maxCrossAxisExtent,
       double childAspectRatio = 1.0,
@@ -651,32 +630,22 @@ class PagewiseGridView<T> extends Pagewise<T> {
       bool? primary,
       bool shrinkWrap = false,
       ScrollController? controller,
-      PagewiseLoadController<T>? pageLoadController,
+      super.pageLoadController,
       bool addAutomaticKeepAlives = true,
       Axis scrollDirection = Axis.vertical,
       bool addRepaintBoundaries = true,
       double? cacheExtent,
       ScrollPhysics? physics,
       bool reverse = false,
-      int? pageSize,
-      PageFuture<T>? pageFuture,
-      LoadingBuilder? loadingBuilder,
-      RetryBuilder? retryBuilder,
-      NoItemsFoundBuilder? noItemsFoundBuilder,
-      bool showRetry = true,
-      required ItemBuilder<T> itemBuilder,
-      ErrorBuilder? errorBuilder})
+      super.pageSize,
+      super.pageFuture,
+      super.loadingBuilder,
+      super.retryBuilder,
+      super.noItemsFoundBuilder,
+      super.showRetry,
+      required super.itemBuilder,
+      super.errorBuilder})
       : super(
-            pageSize: pageSize,
-            pageFuture: pageFuture,
-            pageLoadController: pageLoadController,
-            key: key,
-            loadingBuilder: loadingBuilder,
-            retryBuilder: retryBuilder,
-            showRetry: showRetry,
-            itemBuilder: itemBuilder,
-            errorBuilder: errorBuilder,
-            noItemsFoundBuilder: noItemsFoundBuilder,
             builder: (PagewiseState<T> state) {
               return GridView.builder(
                   reverse: reverse,
@@ -711,33 +680,23 @@ class PagewiseSliverList<T> extends Pagewise<T> {
   /// All the properties are either those documented for normal [SliverList](https://docs.flutter.io/flutter/widgets/SliverList-class.html)
   /// or those inherited from [Pagewise]
   PagewiseSliverList(
-      {Key? key,
+      {super.key,
       bool addSemanticIndexes = true,
       bool addAutomaticKeepAlives = true,
       bool addRepaintBoundaries = true,
       SemanticIndexCallback semanticIndexCallback =
           _kDefaultSemanticIndexCallback,
       int semanticIndexOffset = 0,
-      PagewiseLoadController<T>? pageLoadController,
-      int? pageSize,
-      PageFuture<T>? pageFuture,
-      LoadingBuilder? loadingBuilder,
-      RetryBuilder? retryBuilder,
-      NoItemsFoundBuilder? noItemsFoundBuilder,
-      bool showRetry = true,
-      required ItemBuilder<T> itemBuilder,
-      ErrorBuilder? errorBuilder})
+      super.pageLoadController,
+      super.pageSize,
+      super.pageFuture,
+      super.loadingBuilder,
+      super.retryBuilder,
+      super.noItemsFoundBuilder,
+      super.showRetry,
+      required super.itemBuilder,
+      super.errorBuilder})
       : super(
-            pageSize: pageSize,
-            pageFuture: pageFuture,
-            pageLoadController: pageLoadController,
-            key: key,
-            loadingBuilder: loadingBuilder,
-            retryBuilder: retryBuilder,
-            showRetry: showRetry,
-            itemBuilder: itemBuilder,
-            errorBuilder: errorBuilder,
-            noItemsFoundBuilder: noItemsFoundBuilder,
             builder: (PagewiseState<T> state) {
               return SliverList(
                 delegate: SliverChildBuilderDelegate(state._itemBuilder,
@@ -757,7 +716,7 @@ class PagewiseSliverGrid<T> extends Pagewise<T> {
   /// All the properties are either those documented for normal [SliverGrid](https://docs.flutter.io/flutter/widgets/SliverGrid-class.html)
   /// or those inherited from [Pagewise]
   PagewiseSliverGrid.count(
-      {Key? key,
+      {super.key,
       bool addSemanticIndexes = true,
       bool addAutomaticKeepAlives = true,
       bool addRepaintBoundaries = true,
@@ -768,26 +727,16 @@ class PagewiseSliverGrid<T> extends Pagewise<T> {
       double childAspectRatio = 1.0,
       double crossAxisSpacing = 0.0,
       double mainAxisSpacing = 0.0,
-      PagewiseLoadController<T>? pageLoadController,
-      int? pageSize,
-      PageFuture<T>? pageFuture,
-      LoadingBuilder? loadingBuilder,
-      RetryBuilder? retryBuilder,
-      NoItemsFoundBuilder? noItemsFoundBuilder,
-      bool showRetry = true,
-      required ItemBuilder<T> itemBuilder,
-      ErrorBuilder? errorBuilder})
+      super.pageLoadController,
+      super.pageSize,
+      super.pageFuture,
+      super.loadingBuilder,
+      super.retryBuilder,
+      super.noItemsFoundBuilder,
+      super.showRetry,
+      required super.itemBuilder,
+      super.errorBuilder})
       : super(
-            pageSize: pageSize,
-            pageFuture: pageFuture,
-            pageLoadController: pageLoadController,
-            key: key,
-            loadingBuilder: loadingBuilder,
-            retryBuilder: retryBuilder,
-            showRetry: showRetry,
-            itemBuilder: itemBuilder,
-            errorBuilder: errorBuilder,
-            noItemsFoundBuilder: noItemsFoundBuilder,
             builder: (PagewiseState<T> state) {
               return SliverGrid(
                 delegate: SliverChildBuilderDelegate(state._itemBuilder,
@@ -812,7 +761,7 @@ class PagewiseSliverGrid<T> extends Pagewise<T> {
   /// All the properties are either those documented for normal [SliverGrid](https://docs.flutter.io/flutter/widgets/SliverGrid-class.html)
   /// or those inherited from [Pagewise]
   PagewiseSliverGrid.extent(
-      {Key? key,
+      {super.key,
       bool addSemanticIndexes = true,
       bool addAutomaticKeepAlives = true,
       bool addRepaintBoundaries = true,
@@ -823,26 +772,16 @@ class PagewiseSliverGrid<T> extends Pagewise<T> {
       double childAspectRatio = 1.0,
       double crossAxisSpacing = 0.0,
       double mainAxisSpacing = 0.0,
-      PagewiseLoadController<T>? pageLoadController,
-      int? pageSize,
-      PageFuture<T>? pageFuture,
-      LoadingBuilder? loadingBuilder,
-      RetryBuilder? retryBuilder,
-      NoItemsFoundBuilder? noItemsFoundBuilder,
-      bool showRetry = true,
-      required ItemBuilder<T> itemBuilder,
-      ErrorBuilder? errorBuilder})
+      super.pageLoadController,
+      super.pageSize,
+      super.pageFuture,
+      super.loadingBuilder,
+      super.retryBuilder,
+      super.noItemsFoundBuilder,
+      super.showRetry,
+      required super.itemBuilder,
+      super.errorBuilder})
       : super(
-            pageSize: pageSize,
-            pageFuture: pageFuture,
-            pageLoadController: pageLoadController,
-            key: key,
-            loadingBuilder: loadingBuilder,
-            noItemsFoundBuilder: noItemsFoundBuilder,
-            retryBuilder: retryBuilder,
-            showRetry: showRetry,
-            itemBuilder: itemBuilder,
-            errorBuilder: errorBuilder,
             builder: (PagewiseState<T> state) {
               return SliverGrid(
                 delegate: SliverChildBuilderDelegate(state._itemBuilder,

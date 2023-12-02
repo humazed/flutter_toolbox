@@ -5,7 +5,7 @@ class MultiSelectChip<T> extends StatefulWidget {
   final Function(List<T>)? onSelectionChanged;
   final String Function(T)? mapLabels;
 
-  const MultiSelectChip(this.items, {this.onSelectionChanged, this.mapLabels});
+  const MultiSelectChip(this.items, {super.key, this.onSelectionChanged, this.mapLabels});
 
   @override
   _MultiSelectChipState createState() => _MultiSelectChipState<T>();

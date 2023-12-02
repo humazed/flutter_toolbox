@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class WrapDropdownButton<T> extends StatelessWidget {
   WrapDropdownButton({
-    Key? key,
+    super.key,
     required this.items,
     this.value,
     this.hint,
@@ -12,13 +12,12 @@ class WrapDropdownButton<T> extends StatelessWidget {
     this.style,
     this.iconSize = 24.0,
     this.isDense = false,
-  })  : assert(items.isEmpty ||
+  }) : assert(items.isEmpty ||
             value == null ||
             items
                     .where((DropdownMenuItem<T> item) => item.value == value)
                     .length ==
-                1),
-        super(key: key);
+                1);
 
   /// The list of items the user can select.
   ///

@@ -5,11 +5,11 @@ import 'package:flutter_toolbox/generated/l10n.dart';
 
 class TimePickerField extends StatelessWidget {
   const TimePickerField({
-    Key? key,
+    super.key,
     this.labelText,
     this.selectedTime,
     this.onTimeSelected,
-  }) : super(key: key);
+  });
 
   final String? labelText;
   final TimeOfDay? selectedTime;
@@ -40,13 +40,13 @@ class TimePickerField extends StatelessWidget {
 
 class _InputDropdown extends StatelessWidget {
   const _InputDropdown({
-    Key? key,
+    super.key,
     this.child,
     this.labelText,
     this.valueText,
     this.valueStyle,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final String? labelText;
   final String? valueText;

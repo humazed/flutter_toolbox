@@ -37,7 +37,7 @@ class PaginatedGridViewCount<T> extends StatefulWidget {
   final ScrollPhysics? physics;
 
   const PaginatedGridViewCount({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     required this.pageFuture,
     required this.crossAxisCount,
@@ -54,7 +54,7 @@ class PaginatedGridViewCount<T> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.shrinkWrap = false,
     this.physics,
-  }) : super(key: key);
+  });
 
   @override
   _PaginatedGridViewCountState<T> createState() =>

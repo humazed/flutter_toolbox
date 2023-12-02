@@ -1,3 +1,8 @@
+## 10.0.1
+
+* Update flutter_lints to 3.0.1
+* Applied some automatic fixes from flutter_lints.
+
 ## 10.0.0
 
 * Updated to support flutter  3.16.1

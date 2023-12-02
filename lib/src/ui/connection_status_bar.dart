@@ -11,7 +11,7 @@ class ConnectionStatusBar extends StatefulWidget {
   final Widget? title;
   final Color? color;
 
-  const ConnectionStatusBar({this.title, this.color, Key? key}) : super(key: key);
+  const ConnectionStatusBar({this.title, this.color, super.key});
 
   @override
   _ConnectionStatusBarState createState() => _ConnectionStatusBarState();

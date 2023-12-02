@@ -37,7 +37,7 @@ class PaginatedGridViewExtent<T> extends StatefulWidget {
   final ScrollPhysics? physics;
 
   const PaginatedGridViewExtent({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     required this.pageFuture,
     required this.maxCrossAxisExtent,
@@ -54,7 +54,7 @@ class PaginatedGridViewExtent<T> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.shrinkWrap = false,
     this.physics,
-  }) : super(key: key);
+  });
 
   @override
   _PaginatedGridViewExtentState<T> createState() =>
@@ -86,8 +86,7 @@ class _PaginatedGridViewExtentState<T>
 
     _reload = false;
 
-    final PageFuture<T> pageFuture =
-        (int? pageIndex) => widget.pageFuture(pageIndex! + 1);
+    pageFuture(int? pageIndex) => widget.pageFuture(pageIndex! + 1);
 
     final pageLoadController = widget.pageLoadController ??
         PagewiseLoadController(

@@ -5,7 +5,7 @@ import 'package:flutter_toolbox/generated/l10n.dart';
 
 class SearchItemPicker<T> extends StatefulWidget {
   SearchItemPicker({
-    Key? key,
+    super.key,
     required this.items,
     required this.onChanged,
     required this.hint,
@@ -22,8 +22,7 @@ class SearchItemPicker<T> extends StatefulWidget {
             items
                     .where((ListItem<T> item) => item.value == initialValue)
                     .length ==
-                1),
-        super(key: key);
+                1);
 
   /// The list of items the user can select.
   ///
@@ -112,11 +111,10 @@ class SearchItemPickerState<T> extends State<SearchItemPicker<T?>> {
 
 class ItemsList<T> extends StatefulWidget {
   ItemsList({
-    Key? key,
+    super.key,
     required List<ListItem<T>> items,
     required this.hint,
-  })  : items = items.where((item) => item.text.isNotEmpty == true).toList(),
-        super(key: key);
+  })  : items = items.where((item) => item.text.isNotEmpty == true).toList();
 
   final List<ListItem<T>> items;
   final String hint;
@@ -247,10 +245,10 @@ class ListItem<T> extends StatelessWidget {
   ///
   /// The [text] argument is required.
   const ListItem({
-    Key? key,
+    super.key,
     this.value,
     required this.text,
-  }) : super(key: key);
+  });
 
   /// The widget below this widget in the tree.
   ///

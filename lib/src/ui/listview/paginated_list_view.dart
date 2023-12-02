@@ -27,7 +27,7 @@ class PaginatedListView<T> extends StatefulWidget {
   final ScrollPhysics? physics;
 
   const PaginatedListView({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     required this.pageFuture,
     this.pageSize = 10,
@@ -40,7 +40,7 @@ class PaginatedListView<T> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.shrinkWrap = false,
     this.physics,
-  }) : super(key: key);
+  });
 
   @override
   _PaginatedListViewState<T> createState() => _PaginatedListViewState<T>();

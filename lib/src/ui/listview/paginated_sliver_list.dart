@@ -17,7 +17,7 @@ class PaginatedSliverList<T> extends StatefulWidget {
   final bool mutable;
 
   const PaginatedSliverList({
-    Key? key,
+    super.key,
     required this.itemBuilder,
     required this.pageFuture,
     this.pageSize = 10,
@@ -25,7 +25,7 @@ class PaginatedSliverList<T> extends StatefulWidget {
     this.noItemsFoundWidget,
     this.pageLoadController,
     this.mutable = false,
-  }) : super(key: key);
+  });
 
   @override
   _PaginatedSliverListState<T> createState() => _PaginatedSliverListState<T>();
@@ -43,8 +43,7 @@ class _PaginatedSliverListState<T> extends State<PaginatedSliverList<T>> {
     final mutable =
         widget.mutable || _reload || widget.pageLoadController != null;
 
-    final PageFuture<T> pageFuture =
-        (int? pageIndex) => widget.pageFuture(pageIndex! + 1);
+    pageFuture(int? pageIndex) => widget.pageFuture(pageIndex! + 1);
 
     final pageLoadController = widget.pageLoadController ??
         PagewiseLoadController(

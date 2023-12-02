@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InkWellStacked extends StatelessWidget {
   const InkWellStacked({
-    Key? key,
+    super.key,
     this.child,
     this.onTap,
     this.onTapDown,
@@ -27,7 +27,7 @@ class InkWellStacked extends StatelessWidget {
     this.canRequestFocus = true,
     this.onFocusChange,
     this.autofocus = false,
-  }) : super(key: key);
+  });
 
   /// The widget below this widget in the tree.
   ///
