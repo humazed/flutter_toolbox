@@ -21,6 +21,6 @@ extension ImageUtil on String {
       heightPram = '&h=$height';
     }
 
-    return '${this}$widthPram$heightPram';
+    return '$this$widthPram$heightPram';
   }
 }

@@ -26,10 +26,11 @@ Future<dynamic> safeRequest<T>(
     } else {
       final error = (response.error as ErrorResponse).error;
       if (showServerErrorMessage) {
-        if (error == 'Unauthorized access' || error == 'Unauthorized')
+        if (error == 'Unauthorized access' || error == 'Unauthorized') {
           errorToast(S.current.the_email_address_or_password_is_wrong);
-        else
+        } else {
           errorToast(error!);
+        }
       }
       return await onError?.call(response.error as ErrorResponse?);
     }

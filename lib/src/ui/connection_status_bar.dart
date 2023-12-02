@@ -11,8 +11,9 @@ class ConnectionStatusBar extends StatefulWidget {
   final Widget? title;
   final Color? color;
 
-  ConnectionStatusBar({this.title, this.color, Key? key}) : super(key: key);
+  const ConnectionStatusBar({this.title, this.color, Key? key}) : super(key: key);
 
+  @override
   _ConnectionStatusBarState createState() => _ConnectionStatusBarState();
 
   static void init(BuildContext context) async {
@@ -29,7 +30,7 @@ class ConnectionStatusBar extends StatefulWidget {
                 child: Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width,
-                  child: ConnectionStatusBar(),
+                  child: const ConnectionStatusBar(),
                 ),
               ),
             ),
@@ -38,7 +39,7 @@ class ConnectionStatusBar extends StatefulWidget {
       ),
     );
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      Overlay.of(context)!.insert(overlayEntry);
+      Overlay.of(context).insert(overlayEntry);
     });
   }
 }
@@ -58,9 +59,9 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
     _connectionChangeStream =
         connectionStatus.connectionChange.listen(_connectionChanged);
     controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 200));
+        AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
 
-    offset = Tween<Offset>(begin: Offset(0.0, -1.0), end: Offset(0.0, 0.0))
+    offset = Tween<Offset>(begin: const Offset(0.0, -1.0), end: const Offset(0.0, 0.0))
         .animate(controller);
     super.initState();
   }
@@ -75,22 +76,18 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
   Widget build(BuildContext context) {
     return SlideTransition(
       position: offset,
-      child: Container(
-        child: SafeArea(
-          bottom: false,
-          child: Container(
-            color: widget.color != null ? widget.color : Colors.redAccent,
-            width: double.maxFinite,
-            height: 25,
-            child: Center(
-              child: widget.title != null
-                  ? widget.title
-                  : Text(
-                      S.of(context)?.please_check_your_internet_connection ??
-                          'Please check your internet connection',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
-                    ),
-            ),
+      child: SafeArea(
+        bottom: false,
+        child: Container(
+          color: widget.color ?? Colors.redAccent,
+          width: double.maxFinite,
+          height: 25,
+          child: Center(
+            child: widget.title ?? Text(
+                    S.of(context)?.please_check_your_internet_connection ??
+                        'Please check your internet connection',
+                    style: const TextStyle(color: Colors.white, fontSize: 14),
+                  ),
           ),
         ),
       ),

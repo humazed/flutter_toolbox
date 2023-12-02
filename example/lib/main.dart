@@ -8,9 +8,11 @@ import 'package:provider/provider.dart';
 import 'auth_provider.dart';
 import 'paginated_list_view_example.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -27,7 +29,7 @@ class _MyAppState extends State<MyApp> {
           return ToolboxApp(
             toolboxConfig: ToolboxConfig(
               useWeservResizer: true,
-              noItemsFoundWidget: Icon(Icons.subject),
+              noItemsFoundWidget: const Icon(Icons.subject),
               unAuthenticatedPages: const [
                 LoginPage,
                 AuthNavHomePage,
@@ -45,7 +47,7 @@ class _MyAppState extends State<MyApp> {
               },
               onAuthorizedNavigation: (BuildContext context, Type pageType) {
                 d("onAuthorizedNavigation#pageType = $pageType");
-                return push(context, LoginPage());
+                return push(context, const LoginPage());
               },
             ),
             child: MaterialApp(
@@ -68,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-              home: HomePage(),
+              home: const HomePage(),
             ),
           );
         },
@@ -78,6 +80,8 @@ class _MyAppState extends State<MyApp> {
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   HomePageState createState() => HomePageState();
 }
@@ -99,16 +103,16 @@ class HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Plugin example app',
             style: TextStyle(color: Colors.black87),
           ),
           backgroundColor: Colors.white,
           bottom: TabBar(
-            labelStyle: TextStyle(fontWeight: FontWeight.w700),
+            labelStyle: const TextStyle(fontWeight: FontWeight.w700),
             indicatorSize: TabBarIndicatorSize.label,
             labelColor: themeData.primaryColor,
-            unselectedLabelColor: Color(0xff5f6368),
+            unselectedLabelColor: const Color(0xff5f6368),
             isScrollable: true,
             indicator: TabRoundedLineIndicator(
               context,
@@ -116,7 +120,7 @@ class HomePageState extends State<HomePage> {
               indicatorHeight: 3,
               indicatorColor: Theme.of(context).primaryColor,
             ),
-            tabs: <Widget>[
+            tabs: const <Widget>[
               Tab(text: "Home"),
               Tab(text: "Personal info"),
               Tab(text: "Data & personalization"),
@@ -124,8 +128,8 @@ class HomePageState extends State<HomePage> {
           ),
           actions: <Widget>[
             TextButton(
-              onPressed: () => push(context, PaginatedListViewPage()),
-              child: Text('PaginatedList page'),
+              onPressed: () => push(context, const PaginatedListViewPage()),
+              child: const Text('PaginatedList page'),
             )
           ],
         ),
@@ -134,12 +138,12 @@ class HomePageState extends State<HomePage> {
             children: <Widget>[
               Text(toolbox.S.of(context)?.please_check_your_connection ??
                   'Please check your connection'),
-              NetImage(
+              const NetImage(
                 'https://via.placeholder.com/300',
                 width: 300,
                 fullScreen: true,
               ),
-              NetImage(
+              const NetImage(
                 'https://via.placeholder.com/50',
                 fullScreen: true,
                 width: 50,
@@ -157,22 +161,22 @@ class HomePageState extends State<HomePage> {
               Row(
                 children: <Widget>[
                   MaterialButton(
-                    child: Text('Error toast'),
+                    child: const Text('Error toast'),
                     onPressed: () => errorToast('Error'),
                   ),
                   MaterialButton(
-                    child: Text('Success toast'),
+                    child: const Text('Success toast'),
                     onPressed: () => successToast('Success'),
                   ),
                   MaterialButton(
-                    child: Text('toast'),
+                    child: const Text('toast'),
                     onPressed: () => toast('أهلا بكم'),
                   ),
                 ],
               ),
               MaterialButton(
-                child: Text('Auth navigation'),
-                onPressed: () => push(context, AuthNavHomePage()),
+                child: const Text('Auth navigation'),
+                onPressed: () => push(context, const AuthNavHomePage()),
               ),
             ],
           );

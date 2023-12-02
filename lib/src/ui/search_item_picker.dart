@@ -184,13 +184,13 @@ class ItemsListState<T> extends State<ItemsList> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-                padding: EdgeInsets.only(top: 8, left: 16, right: 16),
+                padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
                 child: TextField(
-                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  style: const TextStyle(fontSize: 18, color: Colors.black),
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     suffixIcon: IconButton(
-                      icon: Icon(Icons.close),
+                      icon: const Icon(Icons.close),
                       onPressed: () {
                         controller.clear();
                         FocusScope.of(context).requestFocus(FocusNode());
@@ -202,7 +202,7 @@ class ItemsListState<T> extends State<ItemsList> {
                 )),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(top: 8),
+                padding: const EdgeInsets.only(top: 8),
                 child: _buildListView(),
               ),
             )
@@ -277,7 +277,8 @@ class ItemTextField extends StatelessWidget {
   final String? initialValue;
   final InputBorder? border;
 
-  ItemTextField({
+  const ItemTextField({
+    super.key,
     this.hint,
     this.controller,
     this.prefixIcon,

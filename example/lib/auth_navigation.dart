@@ -3,35 +3,37 @@ import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:flutter_toolbox_example/auth_provider.dart';
 
 class AuthNavHomePage extends StatelessWidget {
+  const AuthNavHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final authProvider = AuthProvider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('AuthNavHomePage'),
+        title: const Text('AuthNavHomePage'),
       ),
       body: Column(
         children: [
           Row(
             children: <Widget>[
               MaterialButton(
-                child: Text('NeedsAuthPage'),
-                onPressed: () => push(context, NeedsAuthPage()),
+                child: const Text('NeedsAuthPage'),
+                onPressed: () => push(context, const NeedsAuthPage()),
               ),
               MaterialButton(
-                child: Text('NoAuthPage'),
-                onPressed: () => push(context, NoAuthPage()),
+                child: const Text('NoAuthPage'),
+                onPressed: () => push(context, const NoAuthPage()),
               ),
             ],
           ),
           Row(
             children: <Widget>[
               MaterialButton(
-                child: Text('Login'),
+                child: const Text('Login'),
                 onPressed: () => authProvider.login(),
               ),
               MaterialButton(
-                child: Text('Logout'),
+                child: const Text('Logout'),
                 onPressed: () => authProvider.logout(),
               ),
             ],
@@ -43,33 +45,39 @@ class AuthNavHomePage extends StatelessWidget {
 }
 
 class NeedsAuthPage extends StatelessWidget {
+  const NeedsAuthPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NeedsAuthPage'),
+        title: const Text('NeedsAuthPage'),
       ),
     );
   }
 }
 
 class NoAuthPage extends StatelessWidget {
+  const NoAuthPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NoAuthPage'),
+        title: const Text('NoAuthPage'),
       ),
     );
   }
 }
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('LoginPage'),
+        title: const Text('LoginPage'),
       ),
     );
   }

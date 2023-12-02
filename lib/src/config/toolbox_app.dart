@@ -40,7 +40,7 @@ class _ToolboxAppState extends State<ToolboxApp> {
     contextMap[this] = context;
 
     return OKToast(
-      textPadding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      textPadding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       position: ToastPosition.bottom,
       radius: 50,
       child: Provider.value(

@@ -13,7 +13,7 @@ class TabRoundedLineIndicator extends Decoration {
   final Color? indicatorColor;
   final TabRoundedLineIndicatorSize indicatorSize;
 
-  TabRoundedLineIndicator(
+  const TabRoundedLineIndicator(
     this.context, {
     this.indicatorColor,
     this.indicatorHeight = 4,
@@ -58,8 +58,8 @@ class _RoundedLinePainter extends BoxPainter {
     canvas.drawRRect(
       RRect.fromRectAndCorners(
         rect,
-        topRight: Radius.circular(8),
-        topLeft: Radius.circular(8),
+        topRight: const Radius.circular(8),
+        topLeft: const Radius.circular(8),
       ),
       paint,
     );

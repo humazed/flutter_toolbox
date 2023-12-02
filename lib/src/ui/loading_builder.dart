@@ -177,6 +177,6 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T?>> {
   Widget? buildLoading() {
     if (widget.loadingBuilder != null) return widget.loadingBuilder!(context);
     if (widget.loadingWidget != null) return widget.loadingWidget;
-    return Center(child: CircularProgressIndicator());
+    return const Center(child: CircularProgressIndicator());
   }
 }

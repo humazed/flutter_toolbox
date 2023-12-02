@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:http/http.dart' as http;
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Pagewise Demo',
       home: PaginatedListViewPage(),
     );
@@ -17,20 +19,22 @@ class MyApp extends StatelessWidget {
 }
 
 class PaginatedListViewPage extends StatelessWidget {
+  const PaginatedListViewPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
           appBar: AppBar(
-            title: Text('Pagewise'),
-            bottom: TabBar(tabs: [
+            title: const Text('Pagewise'),
+            bottom: const TabBar(tabs: [
               Tab(text: 'List'),
               Tab(text: 'Empty List'),
               Tab(text: 'SliverList'),
             ]),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               PaginatedListViewExample(),
               PaginatedListViewEmptyExample(),
@@ -43,6 +47,8 @@ class PaginatedListViewPage extends StatelessWidget {
 
 class PaginatedListViewExample extends StatefulWidget {
   static const int PAGE_SIZE = 10;
+
+  const PaginatedListViewExample({super.key});
 
   @override
   _PaginatedListViewExampleState createState() =>
@@ -62,8 +68,8 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
       pageSize: PaginatedListViewExample.PAGE_SIZE,
 //      mutable: true,
       showRefreshIndicator: true,
-      noItemsFoundWidget: Icon(Icons.hourglass_empty),
-      itemBuilder: this._itemBuilder,
+      noItemsFoundWidget: const Icon(Icons.hourglass_empty),
+      itemBuilder: _itemBuilder,
       pageFuture: (int pageIndex) {
         return BackendService.getPosts(
             pageIndex * PaginatedListViewExample.PAGE_SIZE,
@@ -83,7 +89,7 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
           title: Text(entry.title!),
           subtitle: Text(entry.body!),
         ),
-        Divider()
+        const Divider()
       ],
     );
   }
@@ -92,6 +98,8 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
 class PaginatedListViewEmptyExample extends StatelessWidget {
   static const int PAGE_SIZE = 0;
 
+  const PaginatedListViewEmptyExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return PaginatedListView(
@@ -99,7 +107,7 @@ class PaginatedListViewEmptyExample extends StatelessWidget {
 //      mutable: true,
       showRefreshIndicator: true,
 //      noItemsFoundWidget: Icon(Icons.hourglass_empty),
-      itemBuilder: this._itemBuilder,
+      itemBuilder: _itemBuilder,
       pageFuture: ((pageIndex) =>
           BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE)),
     );
@@ -116,7 +124,7 @@ class PaginatedListViewEmptyExample extends StatelessWidget {
           title: Text(entry.title!),
           subtitle: Text(entry.body!),
         ),
-        Divider()
+        const Divider()
       ],
     );
   }
@@ -125,10 +133,12 @@ class PaginatedListViewEmptyExample extends StatelessWidget {
 class PagewiseSliverListExample extends StatelessWidget {
   static const int PAGE_SIZE = 6;
 
+  const PagewiseSliverListExample({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(slivers: [
-      SliverAppBar(
+      const SliverAppBar(
         title: Text('This is a sliver app bar'),
         snap: true,
         floating: true,
@@ -136,7 +146,7 @@ class PagewiseSliverListExample extends StatelessWidget {
       PaginatedSliverList(
         pageSize: PAGE_SIZE,
         itemBuilder: _itemBuilder,
-        noItemsFoundWidget: Icon(Icons.hourglass_empty),
+        noItemsFoundWidget: const Icon(Icons.hourglass_empty),
         pageFuture: ((pageIndex) =>
             BackendService.getPosts(pageIndex * PAGE_SIZE, PAGE_SIZE)),
       ),
@@ -154,7 +164,7 @@ class PagewiseSliverListExample extends StatelessWidget {
           title: Text(entry.title!),
           subtitle: Text(entry.body!),
         ),
-        Divider()
+        const Divider()
       ],
     );
   }
@@ -185,8 +195,8 @@ class PostModel {
   String? body;
 
   PostModel.fromJson(obj) {
-    this.title = obj['title'];
-    this.body = obj['body'];
+    title = obj['title'];
+    body = obj['body'];
   }
 
   static List<PostModel>? fromJsonList(jsonList) {
@@ -200,9 +210,9 @@ class ImageModel {
   String? thumbnailUrl;
 
   ImageModel.fromJson(obj) {
-    this.title = obj['title'];
-    this.id = obj['id'].toString();
-    this.thumbnailUrl = obj['thumbnailUrl'];
+    title = obj['title'];
+    id = obj['id'].toString();
+    thumbnailUrl = obj['thumbnailUrl'];
   }
 
   static List<ImageModel>? fromJsonList(jsonList) {

@@ -25,7 +25,7 @@ Future<File?> picImage(BuildContext context) async {
                 Navigator.pop(context, ImageSource.camera);
               },
               child: ListTile(
-                leading: Icon(Icons.camera_alt),
+                leading: const Icon(Icons.camera_alt),
                 title: Text(S.of(context)?.camera??'Camera'),
               ),
             ),
@@ -35,7 +35,7 @@ Future<File?> picImage(BuildContext context) async {
                 Navigator.pop(context, ImageSource.gallery);
               },
               child: ListTile(
-                leading: Icon(Icons.image),
+                leading: const Icon(Icons.image),
                 title: Text(S.of(context)?.gallery??'Gallery'),
               ),
             ),
@@ -59,7 +59,7 @@ Future<MultipartFile?> picImageMultiFile(
   return await multiFile(image, name);
 }
 
-Future<File> fixExifRotation(File image, {deleteOriginal: false}) async {
+Future<File> fixExifRotation(File image, {deleteOriginal = false}) async {
   List<int> imageBytes = await image.readAsBytes();
 
   List<int> result = await FlutterImageCompress.compressWithList(
@@ -68,7 +68,7 @@ Future<File> fixExifRotation(File image, {deleteOriginal: false}) async {
     rotate: 0,
   );
 
-  final String processedImageUuid = Uuid().v4();
+  final String processedImageUuid = const Uuid().v4();
   String imageExtension = p.basename(image.path);
 
   final String tempPath = (await getTemporaryDirectory()).path;

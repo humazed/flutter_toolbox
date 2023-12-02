@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
@@ -12,19 +12,19 @@ const imageResizerUl = 'https://images.weserv.nl/?url=';
 class NetImage extends StatefulWidget {
   const NetImage(
     this.imageUrl, {
-    Key? key,
+    super.key,
     this.imageBuilder,
     this.placeholder,
     this.errorWidget,
-    this.fadeOutDuration: const Duration(milliseconds: 300),
-    this.fadeOutCurve: Curves.easeOut,
-    this.fadeInDuration: const Duration(milliseconds: 700),
-    this.fadeInCurve: Curves.easeIn,
+    this.fadeOutDuration = const Duration(milliseconds: 300),
+    this.fadeOutCurve = Curves.easeOut,
+    this.fadeInDuration = const Duration(milliseconds: 700),
+    this.fadeInCurve = Curves.easeIn,
     this.width,
     this.height,
     this.fit,
-    this.alignment: Alignment.center,
-    this.repeat: ImageRepeat.noRepeat,
+    this.alignment = Alignment.center,
+    this.repeat = ImageRepeat.noRepeat,
     this.matchTextDirection = false,
     this.httpHeaders,
     this.cacheManager,
@@ -229,11 +229,9 @@ class _NetImageState extends State<NetImage> {
               child: Material(
                 type: MaterialType.transparency,
                 child: InkWell(
-                  onTap: widget.onTap != null
-                      ? widget.onTap
-                      : widget.fullScreen
+                  onTap: widget.onTap ?? (widget.fullScreen
                           ? () => _openFullScreen(context)
-                          : null,
+                          : null),
                 ),
               ),
             ),
@@ -244,16 +242,16 @@ class _NetImageState extends State<NetImage> {
   }
 
   Widget _cachedNetworkImage(String imageUrl) {
-    final _errorWidget =
-        widget.errorWidget ?? (_, __, ___) => Icon(Icons.image);
+    final errorWidget =
+        widget.errorWidget ?? (_, __, ___) => const Icon(Icons.image);
 
-    if (imageUrl.isNotEmpty != true) return _errorWidget(context, '', null);
+    if (imageUrl.isNotEmpty != true) return errorWidget(context, '', null);
 
     return CachedNetworkImage(
       imageUrl: imageUrl,
       placeholder: widget.placeholder ??
-          (_, __) => Center(child: CircularProgressIndicator()),
-      errorWidget: _errorWidget,
+          (_, __) => const Center(child: CircularProgressIndicator()),
+      errorWidget: errorWidget,
       imageBuilder: widget.imageBuilder,
       fadeOutDuration: widget.fadeOutDuration,
       fadeOutCurve: widget.fadeOutCurve,
@@ -276,7 +274,7 @@ class _NetImageState extends State<NetImage> {
 }
 
 class FullScreenImage extends StatelessWidget {
-  FullScreenImage(this.imageUrl);
+  const FullScreenImage(this.imageUrl, {super.key});
 
   final String imageUrl;
 
@@ -292,7 +290,7 @@ class FullScreenImage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.black,
-            leading: CloseButton(),
+            leading: const CloseButton(),
           ),
           backgroundColor: Colors.black,
           body: PhotoView(

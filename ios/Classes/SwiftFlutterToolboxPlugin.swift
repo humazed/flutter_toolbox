@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 
-public class SwiftFlutterToolboxPlugin: NSObject, FlutterPlugin {
+public class Plug002Plugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_toolbox", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterToolboxPlugin()
@@ -9,6 +9,11 @@ public class SwiftFlutterToolboxPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+    switch call.method {
+    case "getPlatformVersion":
+      result("iOS " + UIDevice.current.systemVersion)
+    default:
+      result(FlutterMethodNotImplemented)
+    }
   }
 }

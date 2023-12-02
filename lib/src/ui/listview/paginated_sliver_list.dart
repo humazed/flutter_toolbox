@@ -32,7 +32,7 @@ class PaginatedSliverList<T> extends StatefulWidget {
 }
 
 class _PaginatedSliverListState<T> extends State<PaginatedSliverList<T>> {
-  bool _reload = false;
+  final bool _reload = false;
 
   @override
   Widget build(BuildContext context) {

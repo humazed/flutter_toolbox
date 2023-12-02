@@ -1,3 +1,8 @@
+## 10.0.0
+
+* Updated to support flutter  3.16.1
+* Updated all deps.
+
 ## 9.0.0
 
 * Updated to support flutter 3.3.0

@@ -23,15 +23,15 @@ class SliverGridDelegateWithFixedCrossAxisCountAndLoading
     final double childCrossAxisExtent = usableCrossAxisExtent / crossAxisCount;
     final double childMainAxisExtent = childCrossAxisExtent / childAspectRatio;
     return SliverGridRegularTileLayoutAndLoading(
-        crossAxisCount: crossAxisCount,
-        mainAxisStride: childMainAxisExtent + mainAxisSpacing,
-        crossAxisStride: childCrossAxisExtent + crossAxisSpacing,
-        childMainAxisExtent: childMainAxisExtent,
-        childCrossAxisExtent: childCrossAxisExtent,
-        reverseCrossAxis:
-            axisDirectionIsReversed(constraints.crossAxisDirection),
-        fullCrossAccessExtent: usableCrossAxisExtent,
-        itemCount: this.itemCount);
+      crossAxisCount: crossAxisCount,
+      mainAxisStride: childMainAxisExtent + mainAxisSpacing,
+      crossAxisStride: childCrossAxisExtent + crossAxisSpacing,
+      childMainAxisExtent: childMainAxisExtent,
+      childCrossAxisExtent: childCrossAxisExtent,
+      reverseCrossAxis: axisDirectionIsReversed(constraints.crossAxisDirection),
+      fullCrossAccessExtent: usableCrossAxisExtent,
+      itemCount: itemCount,
+    );
   }
 }
 
@@ -61,7 +61,7 @@ class SliverGridDelegateWithMaxCrossAxisExtentAndLoading
     final double childCrossAxisExtent = usableCrossAxisExtent / crossAxisCount;
     final double childMainAxisExtent = childCrossAxisExtent / childAspectRatio;
     return SliverGridRegularTileLayoutAndLoading(
-      itemCount: this.itemCount,
+      itemCount: itemCount,
       fullCrossAccessExtent: usableCrossAxisExtent,
       crossAxisCount: crossAxisCount,
       mainAxisStride: childMainAxisExtent + mainAxisSpacing,
@@ -97,12 +97,12 @@ class SliverGridRegularTileLayoutAndLoading
 
   @override
   SliverGridGeometry getGeometryForChildIndex(int index) {
-    if (index == this.itemCount - 1) {
+    if (index == itemCount - 1) {
       return SliverGridGeometry(
-          scrollOffset: (index ~/ this.crossAxisCount) * this.mainAxisStride,
+          scrollOffset: (index ~/ crossAxisCount) * mainAxisStride,
           crossAxisOffset: 0.0,
-          mainAxisExtent: this.childMainAxisExtent,
-          crossAxisExtent: this.fullCrossAccessExtent);
+          mainAxisExtent: childMainAxisExtent,
+          crossAxisExtent: fullCrossAccessExtent);
     }
 
     return super.getGeometryForChildIndex(index);

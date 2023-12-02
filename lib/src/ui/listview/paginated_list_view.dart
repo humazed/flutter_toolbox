@@ -70,8 +70,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
 
     _reload = false;
 
-    final PageFuture<T> pageFuture =
-        (int? pageIndex) => widget.pageFuture(pageIndex! + 1);
+    pageFuture(int? pageIndex) => widget.pageFuture(pageIndex! + 1);
 
     final pageLoadController = widget.pageLoadController ??
         PagewiseLoadController(
