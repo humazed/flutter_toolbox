@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: "Common flutter widgets and helper methods."
-version: 10.0.1
+version: 10.0.2
 homepage: https://github.com/humazed/flutter_toolbox
 
 # fvm flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  intl: '>=0.15.3 <=0.18.1'
+  intl: '>=0.15.3 <=0.19.0'
 
   plugin_platform_interface: ^2.1.7
 

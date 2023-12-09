@@ -1,3 +1,7 @@
+## 10.0.2
+
+* Update intl to 1.19.0
+
 ## 10.0.1
 
 * Update flutter_lints to 3.0.1
