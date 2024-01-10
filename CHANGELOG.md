@@ -1,3 +1,8 @@
+## 10.0.3
+
+* Update NetImage to fix breaking change after updating cached_network_image: ^3.3.1
+* Updated all deps.
+
 ## 10.0.2
 
 * Update intl to 1.19.0

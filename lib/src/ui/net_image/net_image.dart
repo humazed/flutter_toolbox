@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
@@ -245,7 +244,7 @@ class _NetImageState extends State<NetImage> {
     final errorWidget =
         widget.errorWidget ?? (_, __, ___) => const Icon(Icons.image);
 
-    if (imageUrl.isNotEmpty != true) return errorWidget(context, '', null);
+    if (imageUrl.isEmpty) return errorWidget(context, imageUrl, Object());
 
     return CachedNetworkImage(
       imageUrl: imageUrl,
