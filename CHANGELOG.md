@@ -1,3 +1,8 @@
+## 11.0.0
+
+* Updated all deps.
+* Tested with flutter 3.22.1
+
 ## 10.0.3
 
 * Update NetImage to fix breaking change after updating cached_network_image: ^3.3.1
