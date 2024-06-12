@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
-
-import '../../flutter_toolbox.dart';
 
 typedef WidgetBuilder<T> = Widget Function(BuildContext context, T snapshot);
 typedef LoadingWidgetBuilder<T> = Widget Function(BuildContext context);
@@ -27,7 +26,7 @@ class LoadingBuilder<T> extends StatefulWidget {
   /// null, the data provided to the [builder] will be set to [initialData].
   final Future<Response<T>> future;
 
-  final WidgetBuilder<T> builder;
+  final WidgetBuilder<T?> builder;
 
   /// The data that will be used to create the snapshots provided until a
   /// non-null [future] has completed.
@@ -55,7 +54,7 @@ class LoadingBuilder<T> extends StatefulWidget {
   _LoadingBuilderState<T> createState() => _LoadingBuilderState<T>();
 }
 
-class _LoadingBuilderState<T> extends State<LoadingBuilder<T?>> {
+class _LoadingBuilderState<T> extends State<LoadingBuilder<T>> {
   @override
   Widget build(BuildContext context) {
     return FutureLoadingBuilder<Response<T?>>(
@@ -80,7 +79,7 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
     this.loadingWidget,
     this.initialData,
     this.mutable = false,
-  })  : assert((loadingBuilder == null && loadingWidget == null) ||
+  }) : assert((loadingBuilder == null && loadingWidget == null) ||
             (loadingBuilder != null && loadingWidget == null) ||
             loadingBuilder == null && loadingWidget != null);
 
@@ -125,8 +124,8 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   }
 }
 
-class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T?>> {
-  Future<T?>? cashedFuture;
+class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T>> {
+  late Future<T> cashedFuture;
 
   @override
   void initState() {
@@ -158,13 +157,15 @@ class _FutureLoadingBuilderState<T> extends State<FutureLoadingBuilder<T?>> {
                 d2('SocketException-> ${error.message}');
                 return Center(
                   child: Text(
-                    S.of(context)?.please_check_your_connection??'Please check your connection',
+                    S.of(context)?.please_check_your_connection ??
+                        'Please check your connection',
                     overflow: TextOverflow.fade,
                   ),
                 );
               } else {
                 d2('Unknown error: $error');
-                return Center(child: Text(S.of(context)?.server_error??'Server error'));
+                return Center(
+                    child: Text(S.of(context)?.server_error ?? 'Server error'));
               }
             }
             return widget.builder(context, snapshot.data);

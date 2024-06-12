@@ -1,3 +1,8 @@
+## 11.0.1
+
+* Updated all deps.
+* Fixed null issue in loading_builder
+
 ## 11.0.0
 
 * Updated all deps.
