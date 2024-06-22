@@ -1,3 +1,7 @@
+## 11.1.0
+
+* Added `dl()` to help with printing long string, and shwoing them in the logcat.
+
 ## 11.0.1
 
 * Updated all deps.
