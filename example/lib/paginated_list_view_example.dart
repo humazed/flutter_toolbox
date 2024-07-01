@@ -70,6 +70,7 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
       showRefreshIndicator: true,
       noItemsFoundWidget: const Icon(Icons.hourglass_empty),
       itemBuilder: _itemBuilder,
+      loadingBuilder: (_) => const Icon(Icons.hourglass_full),
       pageFuture: (int pageIndex) {
         return BackendService.getPosts(
             pageIndex * PaginatedListViewExample.PAGE_SIZE,

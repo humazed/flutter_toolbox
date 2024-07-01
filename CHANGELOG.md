@@ -1,3 +1,7 @@
+## 11.2.0
+
+* Added loadingBuilder to PaginatedListView.
+
 ## 11.1.0
 
 * Added `dl()` to help with printing long string, and shwoing them in the logcat.

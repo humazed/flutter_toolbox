@@ -22,6 +22,19 @@ class PaginatedListView<T> extends StatefulWidget {
   /// set to true if the future will change.
   final bool showRefreshIndicator;
 
+  /// Called when loading each page.
+  ///
+  /// It is expected to return a widget to display while the page is loading.
+  /// For example:
+  /// ```dart
+  /// (BuildContext context) {
+  ///   return Text('Loading...');
+  /// }
+  /// ```
+  ///
+  /// If not specified, a [CircularProgressIndicator](https://docs.flutter.io/flutter/material/CircularProgressIndicator-class.html) will be shown
+  final LoadingBuilder? loadingBuilder;
+
   final Axis scrollDirection;
   final bool shrinkWrap;
   final ScrollPhysics? physics;
@@ -37,6 +50,7 @@ class PaginatedListView<T> extends StatefulWidget {
     this.pageLoadController,
     this.mutable = false,
     this.showRefreshIndicator = false,
+    this.loadingBuilder,
     this.scrollDirection = Axis.vertical,
     this.shrinkWrap = false,
     this.physics,
@@ -92,6 +106,7 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
       scrollDirection: widget.scrollDirection,
       shrinkWrap: widget.shrinkWrap,
       physics: widget.physics,
+      loadingBuilder: widget.loadingBuilder,
     );
   }
 }
