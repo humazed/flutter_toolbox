@@ -1,3 +1,7 @@
+## 11.2.1
+
+* Updated all deps.
+ 
 ## 11.2.0
 
 * Added loadingBuilder to PaginatedListView.
