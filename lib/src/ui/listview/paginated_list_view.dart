@@ -39,6 +39,9 @@ class PaginatedListView<T> extends StatefulWidget {
   final bool shrinkWrap;
   final ScrollPhysics? physics;
 
+  final Color? refreshIndicatorBackgroundColor;
+  final Color? refreshIndicatorColor;
+
   const PaginatedListView({
     super.key,
     required this.itemBuilder,
@@ -54,10 +57,12 @@ class PaginatedListView<T> extends StatefulWidget {
     this.scrollDirection = Axis.vertical,
     this.shrinkWrap = false,
     this.physics,
+    this.refreshIndicatorBackgroundColor,
+    this.refreshIndicatorColor,
   });
 
   @override
-  _PaginatedListViewState<T> createState() => _PaginatedListViewState<T>();
+  State<PaginatedListView<T>> createState() => _PaginatedListViewState<T>();
 }
 
 class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
@@ -67,6 +72,8 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>> {
   Widget build(BuildContext context) {
     return widget.showRefreshIndicator
         ? RefreshIndicator(
+            backgroundColor: widget.refreshIndicatorBackgroundColor,
+            color: widget.refreshIndicatorColor,
             onRefresh: () async {
               await widget.pageFuture(1);
               setState(() => _reload = true);

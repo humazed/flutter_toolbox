@@ -66,6 +66,8 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
   Widget build(BuildContext context) {
     return PaginatedListView(
       pageSize: PaginatedListViewExample.PAGE_SIZE,
+      refreshIndicatorBackgroundColor: Colors.white,
+      refreshIndicatorColor: Colors.blue,
 //      mutable: true,
       showRefreshIndicator: true,
       noItemsFoundWidget: const Icon(Icons.hourglass_empty),
