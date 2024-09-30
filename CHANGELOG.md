@@ -1,3 +1,7 @@
+## 11.4.0
+
+* Updated all deps.
+
 ## 11.3.0
 
 * Added `refreshIndicatorBackgroundColor` and `refreshIndicatorColor` to `PaginatedListView`.
