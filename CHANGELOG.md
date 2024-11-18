@@ -1,3 +1,7 @@
+## 11.4.1
+
+* Updated all deps.
+
 ## 11.4.0
 
 * Updated all deps.
