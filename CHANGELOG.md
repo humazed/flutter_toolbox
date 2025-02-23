@@ -1,3 +1,16 @@
+## 11.4.5
+
+* Updated all deps.
+* Updated android gradle and sample apps.
+
+## 11.4.4
+
+* Updated all deps.
+
+## 11.4.3
+
+* Updated all deps.
+
 ## 11.4.2
 
 * Updated all deps.
