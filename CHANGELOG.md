@@ -1,3 +1,7 @@
+## 11.4.6
+
+* Update http dep contains.
+
 ## 11.4.5
 
 * Updated all deps.
