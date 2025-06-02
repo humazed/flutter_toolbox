@@ -31,7 +31,7 @@ dependencies:
   path_provider: ^2.1.5
   path: ^1.9.1
 
-  http: '>=0.12.2 <=1.3.0'
+  http: '>=0.12.2 <=1.4.0'
   json_annotation: ^4.9.0
   chopper: ^8.1.0
 

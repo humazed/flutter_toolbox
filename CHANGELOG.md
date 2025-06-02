@@ -1,3 +1,7 @@
+## 11.5.1
+
+* Update http dep contains.
+
 ## 11.5.0
 
 * Use widget.runtimeType.toString() instead of runtimeType.toString() so it work in web in prod mode 
