@@ -43,7 +43,8 @@ Future pushAndRemoveUntil(
       return Navigator.pushAndRemoveUntil(
         context,
         materialRoute(widget),
-        (Route<dynamic> route) => route.settings.name == untilPage.toString(),
+        (Route<dynamic> route) =>
+            route.settings.name == untilPage.runtimeType.toString(),
       );
     },
     authCheck: authCheck,
@@ -53,7 +54,8 @@ Future pushAndRemoveUntil(
 MaterialPageRoute materialRoute(Widget widget, {bool setName = true}) =>
     MaterialPageRoute(
       builder: (context) => widget,
-      settings: setName ? RouteSettings(name: widget.toString()) : null,
+      settings:
+          setName ? RouteSettings(name: widget.runtimeType.toString()) : null,
     );
 
 // only navigate if the page in [isUnAuthenticatedPage] or the user [isAuthenticated]
