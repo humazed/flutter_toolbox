@@ -1,3 +1,8 @@
+## 11.6.0
+
+* Added `updatePrefs` to `prefs.dart`
+* Update deps.
+
 ## 11.5.1
 
 * Update http dep contains.
