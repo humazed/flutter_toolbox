@@ -139,17 +139,17 @@ class HomePageState extends State<HomePage> {
               Text(toolbox.S.of(context)?.please_check_your_connection ??
                   'Please check your connection'),
               const NetImage(
-                'https://via.placeholder.com/300',
+                'https://placehold.co/300',
                 width: 300,
                 fullScreen: true,
               ),
               const NetImage(
-                'https://via.placeholder.com/50',
+                'https://placehold.co/50',
                 fullScreen: true,
                 width: 50,
               ),
               NetImage(
-                'https://via.placeholder.com/50',
+                'https://placehold.co/50',
                 width: 50,
                 borderRadius: BorderRadius.circular(8),
               ),
