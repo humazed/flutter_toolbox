@@ -1,3 +1,8 @@
+## 12.0.0
+
+* `ConnectionStatusBar` now supports web, by making real http requests.
+* Update deps.
+
 ## 11.6.0
 
 * Added `updatePrefs` to `prefs.dart`
