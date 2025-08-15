@@ -14,10 +14,10 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
                 Locale("ar", ""),
               ],
               theme: ThemeData(
-                tabBarTheme: TabBarTheme(
+                tabBarTheme: TabBarThemeData(
                   indicator: TabRoundedLineIndicator(
                     context,
                     indicatorSize: TabRoundedLineIndicatorSize.normal,

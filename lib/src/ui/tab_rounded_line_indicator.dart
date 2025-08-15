@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 enum TabRoundedLineIndicatorSize {
   tiny,
@@ -21,15 +20,15 @@ class TabRoundedLineIndicator extends Decoration {
   });
 
   @override
-  _RoundedLinePainter createBoxPainter([VoidCallback? onChanged]) {
-    return _RoundedLinePainter(this, onChanged);
+  RoundedLinePainter createBoxPainter([VoidCallback? onChanged]) {
+    return RoundedLinePainter(this, onChanged);
   }
 }
 
-class _RoundedLinePainter extends BoxPainter {
+class RoundedLinePainter extends BoxPainter {
   final TabRoundedLineIndicator decoration;
 
-  _RoundedLinePainter(this.decoration, VoidCallback? onChanged)
+  RoundedLinePainter(this.decoration, VoidCallback? onChanged)
       : super(onChanged);
 
   @override

@@ -226,6 +226,7 @@ class InkWellStacked extends StatelessWidget {
   final FocusNode? focusNode;
 
   /// {@template flutter.widgets.Focus.canRequestFocus}
+  /// {@endtemplate}
   final bool canRequestFocus;
 
   @override

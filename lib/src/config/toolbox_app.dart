@@ -5,7 +5,7 @@ import 'package:flutter_toolbox/src/config/toolbox_config.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
-LinkedHashMap<_ToolboxAppState, BuildContext> contextMap = LinkedHashMap();
+LinkedHashMap<_ToolboxAppState, BuildContext> _contextMap = LinkedHashMap();
 
 class ToolboxApp extends StatefulWidget {
   const ToolboxApp({
@@ -20,7 +20,7 @@ class ToolboxApp extends StatefulWidget {
   final ToolboxConfig? toolboxConfig;
 
   @override
-  _ToolboxAppState createState() => _ToolboxAppState();
+  createState() => _ToolboxAppState();
 }
 
 class _ToolboxAppState extends State<ToolboxApp> {
@@ -31,13 +31,13 @@ class _ToolboxAppState extends State<ToolboxApp> {
 
   @override
   void dispose() {
-    contextMap.remove(this);
+    _contextMap.remove(this);
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    contextMap[this] = context;
+    _contextMap[this] = context;
 
     return OKToast(
       textPadding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),

@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:oktoast/oktoast.dart';
 
-const int LONG_DELAY = 3500;
-const LONG_DURATION = Duration(milliseconds: LONG_DELAY);
+const int longDelay = 3500;
+const Duration longDuration = Duration(milliseconds: longDelay);
 
-errorToast(String msg) {
+void errorToast(String msg) {
   showToast(
     msg,
-    duration: LONG_DURATION,
+    duration: longDuration,
     backgroundColor: Colors.red,
     textStyle: const TextStyle(color: Colors.white, fontSize: 15),
   );
 }
 
-successToast(String msg) {
+void successToast(String msg) {
   showToast(
     msg,
-    duration: LONG_DURATION,
+    duration: longDuration,
     backgroundColor: Colors.green,
     textStyle: const TextStyle(color: Colors.white, fontSize: 15),
   );
 }
 
-toast(String msg) {
+void toast(String msg) {
   showToast(
     msg,
-    duration: LONG_DURATION,
+    duration: longDuration,
   );
 }

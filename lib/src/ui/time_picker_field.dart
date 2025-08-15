@@ -40,8 +40,6 @@ class TimePickerField extends StatelessWidget {
 
 class _InputDropdown extends StatelessWidget {
   const _InputDropdown({
-    super.key,
-    this.child,
     this.labelText,
     this.valueText,
     this.valueStyle,
@@ -52,7 +50,6 @@ class _InputDropdown extends StatelessWidget {
   final String? valueText;
   final TextStyle? valueStyle;
   final VoidCallback? onPressed;
-  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

@@ -51,7 +51,7 @@ class LoadingBuilder<T> extends StatefulWidget {
   final Widget? loadingWidget;
 
   @override
-  _LoadingBuilderState<T> createState() => _LoadingBuilderState<T>();
+  State<LoadingBuilder<T>> createState() => _LoadingBuilderState<T>();
 }
 
 class _LoadingBuilderState<T> extends State<LoadingBuilder<T>> {
@@ -115,7 +115,7 @@ class FutureLoadingBuilder<T> extends StatefulWidget {
   final Widget? loadingWidget;
 
   @override
-  _FutureLoadingBuilderState<T> createState() =>
+  State<FutureLoadingBuilder<T>> createState() =>
       _FutureLoadingBuilderState<T>();
 
   static bool atMostOneIsSet(List<Object> list) {
