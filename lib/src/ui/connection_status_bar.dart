@@ -6,19 +6,30 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_toolbox/generated/l10n.dart';
+import 'package:http/http.dart' as http;
 
 class ConnectionStatusBar extends StatefulWidget {
   final Widget? title;
   final Color? color;
+  final bool periodicCheck;
+  final Duration periodicCheckInterval;
 
-  const ConnectionStatusBar({this.title, this.color, super.key});
+  const ConnectionStatusBar({
+    this.title,
+    this.color,
+    required this.periodicCheck,
+    required this.periodicCheckInterval,
+    super.key,
+  });
 
   @override
-  _ConnectionStatusBarState createState() => _ConnectionStatusBarState();
+  State<ConnectionStatusBar> createState() => _ConnectionStatusBarState();
 
-  static void init(BuildContext context) async {
-    if (kIsWeb) return;
-
+  static void init(
+    BuildContext context, {
+    bool periodicCheck = true,
+    Duration periodicCheckInterval = const Duration(seconds: 10),
+  }) async {
     final overlayEntry = OverlayEntry(
       builder: (BuildContext context) => IgnorePointer(
         child: Stack(
@@ -30,7 +41,10 @@ class ConnectionStatusBar extends StatefulWidget {
                 child: Container(
                   alignment: Alignment.center,
                   width: MediaQuery.of(context).size.width,
-                  child: const ConnectionStatusBar(),
+                  child: ConnectionStatusBar(
+                    periodicCheck: periodicCheck,
+                    periodicCheckInterval: periodicCheckInterval,
+                  ),
                 ),
               ),
             ),
@@ -55,13 +69,17 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
   void initState() {
     _ConnectionStatusSingleton connectionStatus =
         _ConnectionStatusSingleton.getInstance();
-    connectionStatus.initialize();
+    connectionStatus.initialize(
+      enablePeriodicCheck: widget.periodicCheck,
+      periodicCheckInterval: widget.periodicCheckInterval,
+    );
     _connectionChangeStream =
         connectionStatus.connectionChange.listen(_connectionChanged);
-    controller =
-        AnimationController(vsync: this, duration: const Duration(milliseconds: 200));
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
 
-    offset = Tween<Offset>(begin: const Offset(0.0, -1.0), end: const Offset(0.0, 0.0))
+    offset = Tween<Offset>(
+            begin: const Offset(0.0, -1.0), end: const Offset(0.0, 0.0))
         .animate(controller);
     super.initState();
   }
@@ -83,11 +101,12 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
           width: double.maxFinite,
           height: 25,
           child: Center(
-            child: widget.title ?? Text(
-                    S.of(context)?.please_check_your_internet_connection ??
-                        'Please check your internet connection',
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
-                  ),
+            child: widget.title ??
+                Text(
+                  S.of(context)?.please_check_your_internet_connection ??
+                      'Please check your internet connection',
+                  style: const TextStyle(color: Colors.white, fontSize: 14),
+                ),
           ),
         ),
       ),
@@ -111,21 +130,34 @@ class _ConnectionStatusSingleton {
   static _ConnectionStatusSingleton getInstance() => _singleton;
 
   bool hasConnection = true;
+  Timer? _periodicTimer;
 
   StreamController<bool> connectionChangeController =
       StreamController.broadcast();
 
   final Connectivity _connectivity = Connectivity();
 
-  void initialize() {
+  void initialize({
+    required bool enablePeriodicCheck,
+    required Duration periodicCheckInterval,
+  }) {
     _connectivity.onConnectivityChanged.listen(_connectionChange);
     checkConnection();
+
+    // Setup periodic check if enabled
+    if (enablePeriodicCheck) {
+      _periodicTimer = Timer.periodic(
+        periodicCheckInterval,
+        (_) => checkConnection(),
+      );
+    }
   }
 
   Stream<bool> get connectionChange => connectionChangeController.stream;
 
   void dispose() {
     connectionChangeController.close();
+    _periodicTimer?.cancel();
   }
 
   void _connectionChange(List result) {
@@ -136,13 +168,15 @@ class _ConnectionStatusSingleton {
     bool previousConnection = hasConnection;
 
     try {
-      final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        hasConnection = true;
+      if (kIsWeb) {
+        // For web platform, use real HTTP requests to CORS-enabled endpoints
+        hasConnection = await _performRealNetworkCheck();
       } else {
-        hasConnection = false;
+        // For mobile platforms, use InternetAddress lookup
+        final result = await InternetAddress.lookup('google.com');
+        hasConnection = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
       }
-    } on SocketException catch (_) {
+    } catch (e) {
       hasConnection = false;
     }
 
@@ -151,5 +185,55 @@ class _ConnectionStatusSingleton {
     }
 
     return hasConnection;
+  }
+
+  /// Performs a real network connectivity check using CORS-enabled endpoints
+  /// This provides actual internet connectivity verification, not just network interface status
+  Future<bool> _performRealNetworkCheck() async {
+    // First, check basic network connectivity - no point in HTTP requests without network
+    try {
+      final connectivityResult = await _connectivity.checkConnectivity();
+      if (connectivityResult.contains(ConnectivityResult.none)) {
+        return false; // No network interface available
+      }
+    } catch (e) {
+      return false; // Connectivity check failed
+    }
+
+    // Now that we have network connectivity, test actual internet access
+    final List<String> testEndpoints = [
+      // Google DNS over HTTPS - supports CORS with "access-control-allow-origin: *"
+      'https://dns.google/resolve?name=google.com&type=A',
+
+      // JSONPlaceholder - popular CORS-enabled testing API
+      'https://jsonplaceholder.typicode.com/posts/1',
+
+      // httpbin.org - CORS-enabled HTTP testing service
+      'https://httpbin.org/status/200',
+    ];
+
+    for (final endpoint in testEndpoints) {
+      try {
+        final response = await http.get(
+          Uri.parse(endpoint),
+          headers: {
+            'Accept': 'application/json',
+            'User-Agent': 'Flutter-Web-App',
+          },
+        ).timeout(const Duration(seconds: 8));
+
+        // Check for successful response
+        if (response.statusCode >= 200 && response.statusCode < 300) {
+          return true;
+        }
+      } catch (e) {
+        // Continue to next endpoint on error
+        continue;
+      }
+    }
+
+    // All HTTP requests failed - we have network but no internet access
+    // (e.g., connected to WiFi but no internet, captive portal, etc.)
+    return false;
   }
 }
