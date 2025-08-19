@@ -121,7 +121,7 @@ class _ConnectionStatusBarState extends State<ConnectionStatusBar>
   }
 }
 
-class _ConnectionStatusSingleton {
+class _ConnectionStatusSingleton with WidgetsBindingObserver {
   static final _ConnectionStatusSingleton _singleton =
       _ConnectionStatusSingleton._internal();
 
@@ -129,7 +129,8 @@ class _ConnectionStatusSingleton {
 
   static _ConnectionStatusSingleton getInstance() => _singleton;
 
-  bool hasConnection = true;
+  bool _hasConnection = true;
+  bool _isAppInForeground = true;
   Timer? _periodicTimer;
 
   StreamController<bool> connectionChangeController =
@@ -141,10 +142,11 @@ class _ConnectionStatusSingleton {
     required bool enablePeriodicCheck,
     required Duration periodicCheckInterval,
   }) {
+    WidgetsBinding.instance.addObserver(this);
+
     _connectivity.onConnectivityChanged.listen(_connectionChange);
     checkConnection();
 
-    // Setup periodic check if enabled
     if (enablePeriodicCheck) {
       _periodicTimer = Timer.periodic(
         periodicCheckInterval,
@@ -153,9 +155,31 @@ class _ConnectionStatusSingleton {
     }
   }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    switch (state) {
+      case AppLifecycleState.resumed:
+        _isAppInForeground = true;
+        // Immediately check connection when app resumes from background
+        checkConnection();
+        break;
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+        _isAppInForeground = false;
+        break;
+      case AppLifecycleState.hidden:
+        _isAppInForeground = false;
+        break;
+    }
+  }
+
   Stream<bool> get connectionChange => connectionChangeController.stream;
 
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     connectionChangeController.close();
     _periodicTimer?.cancel();
   }
@@ -165,26 +189,31 @@ class _ConnectionStatusSingleton {
   }
 
   Future<bool> checkConnection() async {
-    bool previousConnection = hasConnection;
+    // Skip network checks when app is in background.
+    if (!_isAppInForeground) {
+      return _hasConnection;
+    }
+
+    bool previousConnection = _hasConnection;
 
     try {
       if (kIsWeb) {
         // For web platform, use real HTTP requests to CORS-enabled endpoints
-        hasConnection = await _performRealNetworkCheck();
+        _hasConnection = await _performRealNetworkCheck();
       } else {
         // For mobile platforms, use InternetAddress lookup
         final result = await InternetAddress.lookup('google.com');
-        hasConnection = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+        _hasConnection = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
       }
     } catch (e) {
-      hasConnection = false;
+      _hasConnection = false;
     }
 
-    if (previousConnection != hasConnection) {
-      connectionChangeController.add(hasConnection);
+    if (previousConnection != _hasConnection) {
+      connectionChangeController.add(_hasConnection);
     }
 
-    return hasConnection;
+    return _hasConnection;
   }
 
   /// Performs a real network connectivity check using CORS-enabled endpoints
