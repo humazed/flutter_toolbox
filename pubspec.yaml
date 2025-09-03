@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: "Common flutter widgets and helper methods."
-version: 12.0.1
+version: 12.0.2
 homepage: https://github.com/humazed/flutter_toolbox
 
 # fvm flutter packages pub run build_runner watch --delete-conflicting-outputs
@@ -39,7 +39,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  build_runner: ^2.7.0
+  build_runner: ^2.7.2
 
 #  json_serializable:
 #    #    path: D:\AS\ASP\Prod\OpenSource\json_serializable\json_serializable

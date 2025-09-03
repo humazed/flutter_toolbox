@@ -1,8 +1,11 @@
+## 12.0.2
+
+* Update deps.
+
 ## 12.0.1
 
 * make `ConnectionStatusBar` Life cycle aware so it doesn't make checks while the app is in the background to prevent a stale state and reduce battery.
 * Update deps.
-
 
 ## 12.0.0
 
