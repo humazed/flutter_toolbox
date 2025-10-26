@@ -1,6 +1,6 @@
 name: flutter_toolbox
 description: "Common flutter widgets and helper methods."
-version: 12.1.0
+version: 12.1.1
 homepage: https://github.com/humazed/flutter_toolbox
 
 # fvm flutter packages pub run build_runner watch --delete-conflicting-outputs

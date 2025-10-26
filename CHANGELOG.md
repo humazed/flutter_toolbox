@@ -1,3 +1,8 @@
+## 12.1.1
+
+* Added optional `routeName` parameter to `push`, `pushReplacement`, and `pushAndRemoveUntil` for
+    third-party widgets.
+
 ## 12.1.0
 
 * added RouteNameProvider so the names work fine on flutter web

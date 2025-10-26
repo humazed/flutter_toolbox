@@ -27,8 +27,20 @@ import 'package:flutter_toolbox/flutter_toolbox.dart';
 /// }
 /// ```
 ///
-/// If a widget doesn't implement this mixin, the navigation helpers will fall back
-/// to using `runtimeType.toString()`, which will be minified in release builds.
+/// Alternatively, for third-party widgets or screens you don't control, you can
+/// pass an explicit route name to the navigation functions:
+/// ```dart
+/// push(context, ThirdPartyWidget(), routeName: 'ThirdPartyScreen');
+/// ```
+///
+/// Priority order for route names:
+/// 1. Explicit `routeName` parameter (if provided)
+/// 2. `RouteNameProvider.routeName` (if widget implements this mixin)
+/// 3. `runtimeType.toString()` (fallback - will be minified in release builds)
+///
+/// If a widget doesn't implement this mixin and no explicit name is provided,
+/// the navigation helpers will fall back to using `runtimeType.toString()`,
+/// which will be minified in release builds.
 mixin RouteNameProvider on Widget {
   String get routeName;
 }
@@ -36,6 +48,7 @@ mixin RouteNameProvider on Widget {
 Future push(
   BuildContext context,
   Widget widget, {
+  String? routeName,
   bool setName = true,
   bool authCheck = true,
 }) =>
@@ -44,7 +57,7 @@ Future push(
       widget,
       () => Navigator.push(
         context,
-        materialRoute(widget, setName: setName),
+        materialRoute(widget, routeName: routeName, setName: setName),
       ),
       authCheck: authCheck,
     );
@@ -52,12 +65,16 @@ Future push(
 Future pushReplacement(
   BuildContext context,
   Widget widget, {
+  String? routeName,
   bool authCheck = true,
 }) =>
     _safeNav(
       context,
       widget,
-      () => Navigator.pushReplacement(context, materialRoute(widget)),
+      () => Navigator.pushReplacement(
+        context,
+        materialRoute(widget, routeName: routeName),
+      ),
       authCheck: authCheck,
     );
 
@@ -66,6 +83,8 @@ Future pushAndRemoveUntil(
   BuildContext context,
   Widget widget,
   Widget? untilPage, {
+  String? routeName,
+  String? untilRouteName,
   bool authCheck = true,
 }) {
   return _safeNav(
@@ -74,10 +93,10 @@ Future pushAndRemoveUntil(
     () {
       return Navigator.pushAndRemoveUntil(
         context,
-        materialRoute(widget),
+        materialRoute(widget, routeName: routeName),
         (Route<dynamic> route) {
           if (untilPage == null) return false;
-          return route.settings.name == _resolveName(untilPage);
+          return route.settings.name == _resolveName(untilPage, untilRouteName);
         },
       );
     },
@@ -85,13 +104,21 @@ Future pushAndRemoveUntil(
   );
 }
 
-MaterialPageRoute materialRoute(Widget widget, {bool setName = true}) =>
+MaterialPageRoute materialRoute(
+  Widget widget, {
+  String? routeName,
+  bool setName = true,
+}) =>
     MaterialPageRoute(
       builder: (context) => widget,
-      settings: setName ? RouteSettings(name: _resolveName(widget)) : null,
+      settings:
+          setName ? RouteSettings(name: _resolveName(widget, routeName)) : null,
     );
 
-String _resolveName(Widget widget) {
+String _resolveName(Widget widget, [String? explicitName]) {
+  if (explicitName != null) {
+    return explicitName;
+  }
   if (widget is RouteNameProvider) {
     return widget.routeName;
   }
