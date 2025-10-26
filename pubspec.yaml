@@ -25,7 +25,7 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_cache_manager: ^3.4.1
   photo_view: ^0.15.0
-  connectivity_plus: ^6.1.5
+  connectivity_plus: ^7.0.0
   url_launcher: ^6.3.2
   uuid: ^4.5.1
   path_provider: ^2.1.5
@@ -33,13 +33,13 @@ dependencies:
 
   http: '>=0.12.2 <=1.6.0'
   json_annotation: ^4.9.0
-  chopper: ^8.3.0
+  chopper: ^8.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  build_runner: ^2.7.2
+  build_runner: ^2.10.1
 
 #  json_serializable:
 #    #    path: D:\AS\ASP\Prod\OpenSource\json_serializable\json_serializable
