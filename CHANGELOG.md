@@ -1,3 +1,8 @@
+## 12.1.0
+
+* added RouteNameProvider so the names work fine on flutter web
+
+
 ## 12.0.2
 
 * Update deps.
