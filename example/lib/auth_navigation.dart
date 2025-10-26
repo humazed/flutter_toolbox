@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
 import 'package:flutter_toolbox_example/auth_provider.dart';
 
-class AuthNavHomePage extends StatelessWidget {
+class AuthNavHomePage extends StatelessWidget with RouteNameProvider {
   const AuthNavHomePage({super.key});
+
+  @override
+  String get routeName => 'AuthNavHomePage';
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +47,11 @@ class AuthNavHomePage extends StatelessWidget {
   }
 }
 
-class NeedsAuthPage extends StatelessWidget {
+class NeedsAuthPage extends StatelessWidget with RouteNameProvider {
   const NeedsAuthPage({super.key});
+
+  @override
+  String get routeName => 'NeedsAuthPage';
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +63,11 @@ class NeedsAuthPage extends StatelessWidget {
   }
 }
 
-class NoAuthPage extends StatelessWidget {
+class NoAuthPage extends StatelessWidget with RouteNameProvider {
   const NoAuthPage({super.key});
+
+  @override
+  String get routeName => 'NoAuthPage';
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +79,11 @@ class NoAuthPage extends StatelessWidget {
   }
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatelessWidget with RouteNameProvider {
   const LoginPage({super.key});
+
+  @override
+  String get routeName => 'LoginPage';
 
   @override
   Widget build(BuildContext context) {

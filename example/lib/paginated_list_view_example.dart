@@ -18,8 +18,11 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class PaginatedListViewPage extends StatelessWidget {
+class PaginatedListViewPage extends StatelessWidget with RouteNameProvider {
   const PaginatedListViewPage({super.key});
+
+  @override
+  String get routeName => 'PaginatedListViewPage';
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +48,13 @@ class PaginatedListViewPage extends StatelessWidget {
   }
 }
 
-class PaginatedListViewExample extends StatefulWidget {
+class PaginatedListViewExample extends StatefulWidget with RouteNameProvider {
   static const int PAGE_SIZE = 10;
 
   const PaginatedListViewExample({super.key});
+
+  @override
+  String get routeName => 'PaginatedListViewExample';
 
   @override
   _PaginatedListViewExampleState createState() =>
@@ -98,10 +104,14 @@ class _PaginatedListViewExampleState extends State<PaginatedListViewExample> {
   }
 }
 
-class PaginatedListViewEmptyExample extends StatelessWidget {
+class PaginatedListViewEmptyExample extends StatelessWidget
+    with RouteNameProvider {
   static const int PAGE_SIZE = 0;
 
   const PaginatedListViewEmptyExample({super.key});
+
+  @override
+  String get routeName => 'PaginatedListViewEmptyExample';
 
   @override
   Widget build(BuildContext context) {
@@ -133,10 +143,13 @@ class PaginatedListViewEmptyExample extends StatelessWidget {
   }
 }
 
-class PagewiseSliverListExample extends StatelessWidget {
+class PagewiseSliverListExample extends StatelessWidget with RouteNameProvider {
   static const int PAGE_SIZE = 6;
 
   const PagewiseSliverListExample({super.key});
+
+  @override
+  String get routeName => 'PagewiseSliverListExample';
 
   @override
   Widget build(BuildContext context) {

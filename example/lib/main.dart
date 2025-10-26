@@ -79,8 +79,11 @@ class MyAppState extends State<MyApp> {
   }
 }
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatefulWidget with RouteNameProvider {
   const HomePage({super.key});
+
+  @override
+  String get routeName => 'HomePage';
 
   @override
   HomePageState createState() => HomePageState();

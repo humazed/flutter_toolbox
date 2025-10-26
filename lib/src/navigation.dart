@@ -1,6 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_toolbox/flutter_toolbox.dart';
 
+/// Provides a stable route name for navigation.
+///
+/// In Flutter web release builds, class names are minified (e.g., "PaginatedListViewPage"
+/// becomes "ah7"), which results in URLs like `http://localhost:56917/#ah7` instead of
+/// readable URLs like `http://localhost:57425/#PaginatedListViewPage`.
+///
+/// Implement this mixin on your page widgets to provide explicit, stable route names
+/// that will appear in the URL hash on web platforms.
+///
+/// Example:
+/// ```dart
+/// class MyPage extends StatelessWidget with RouteNameProvider {
+///   const MyPage({super.key});
+///
+///   @override
+///   String get routeName => 'MyPage';
+///
+///   @override
+///   Widget build(BuildContext context) {
+///     return Scaffold(
+///       appBar: AppBar(title: const Text('My Page')),
+///     );
+///   }
+/// }
+/// ```
+///
+/// If a widget doesn't implement this mixin, the navigation helpers will fall back
+/// to using `runtimeType.toString()`, which will be minified in release builds.
+mixin RouteNameProvider on Widget {
+  String get routeName;
+}
+
 Future push(
   BuildContext context,
   Widget widget, {
@@ -43,8 +75,10 @@ Future pushAndRemoveUntil(
       return Navigator.pushAndRemoveUntil(
         context,
         materialRoute(widget),
-        (Route<dynamic> route) =>
-            route.settings.name == untilPage.runtimeType.toString(),
+        (Route<dynamic> route) {
+          if (untilPage == null) return false;
+          return route.settings.name == _resolveName(untilPage);
+        },
       );
     },
     authCheck: authCheck,
@@ -54,9 +88,15 @@ Future pushAndRemoveUntil(
 MaterialPageRoute materialRoute(Widget widget, {bool setName = true}) =>
     MaterialPageRoute(
       builder: (context) => widget,
-      settings:
-          setName ? RouteSettings(name: widget.runtimeType.toString()) : null,
+      settings: setName ? RouteSettings(name: _resolveName(widget)) : null,
     );
+
+String _resolveName(Widget widget) {
+  if (widget is RouteNameProvider) {
+    return widget.routeName;
+  }
+  return widget.runtimeType.toString();
+}
 
 // only navigate if the page in [isUnAuthenticatedPage] or the user [isAuthenticated]
 // also navigate if [isUnAuthenticatedPage] or [isAuthenticated] is unset
