@@ -1,3 +1,7 @@
+## 13.0.0
+
+* Make `push` and `materialRoute` generic to support typed route results (e.g. `push<bool>(context, widget)`).
+
 ## 12.1.1
 
 * Added optional `routeName` parameter to `push`, `pushReplacement`, and `pushAndRemoveUntil` for

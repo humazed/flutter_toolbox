@@ -45,19 +45,19 @@ mixin RouteNameProvider on Widget {
   String get routeName;
 }
 
-Future push(
+Future<T?> push<T>(
   BuildContext context,
   Widget widget, {
   String? routeName,
   bool setName = true,
   bool authCheck = true,
 }) =>
-    _safeNav(
+    _safeNav<T?>(
       context,
       widget,
-      () => Navigator.push(
+      () => Navigator.push<T>(
         context,
-        materialRoute(widget, routeName: routeName, setName: setName),
+        materialRoute<T>(widget, routeName: routeName, setName: setName),
       ),
       authCheck: authCheck,
     );
@@ -104,12 +104,12 @@ Future pushAndRemoveUntil(
   );
 }
 
-MaterialPageRoute materialRoute(
+MaterialPageRoute<T> materialRoute<T>(
   Widget widget, {
   String? routeName,
   bool setName = true,
 }) =>
-    MaterialPageRoute(
+    MaterialPageRoute<T>(
       builder: (context) => widget,
       settings:
           setName ? RouteSettings(name: _resolveName(widget, routeName)) : null,
@@ -127,10 +127,10 @@ String _resolveName(Widget widget, [String? explicitName]) {
 
 // only navigate if the page in [isUnAuthenticatedPage] or the user [isAuthenticated]
 // also navigate if [isUnAuthenticatedPage] or [isAuthenticated] is unset
-Future _safeNav(
+Future<T> _safeNav<T>(
   BuildContext context,
   Widget widget,
-  Function() onCanNavigate, {
+  Future<T> Function() onCanNavigate, {
   bool authCheck = true,
 }) {
   final config = ToolboxConfig.of(context, listen: false);
@@ -143,6 +143,7 @@ Future _safeNav(
       authCheck == false) {
     return onCanNavigate();
   } else {
-    return config.onAuthorizedNavigation!(context, widget.runtimeType);
+    config.onAuthorizedNavigation!(context, widget.runtimeType);
+    return Future<T>.value();
   }
 }
